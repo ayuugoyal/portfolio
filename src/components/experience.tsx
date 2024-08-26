@@ -18,7 +18,7 @@ export function Experience() {
                 <div>
                     <div>
                         <BlurFadeText
-                            text="Work on Antenna Controlling System by implementing a GUI for the system using Java, netbeans and MySQL over TCP/IP protocol."
+                            text="Working on Antenna Controlling System by implementing a GUI for the system using Java, netbeans and MySQL over TCP/IP protocol."
                             className="text-neutral-800 dark:text-neutral-200 mb-2 text-xs md:text-sm font-normal"
                         />
                         <BlurFadeText

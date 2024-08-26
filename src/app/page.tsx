@@ -8,6 +8,10 @@ import { Avatar } from "@/components/ui/avatar";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Badge } from "@/components/ui/badge";
 import { IconCloudDemo } from "@/components/icon-cloud";
+import { cn } from "@/lib/utils";
+import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
+import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 const BLUR_FADE_DELAY = 0.5;
 
@@ -52,6 +56,23 @@ export default function Home() {
                                 delay={BLUR_FADE_DELAY}
                                 text="Robotics Software Engineer with a passion for building cool stuff."
                             />
+                            <Link
+                                href="https://drive.google.com/file/d/1wPyEPWPzfSSmk5lwP6279Tt6vzUMp5xT/view?usp=sharing"
+                                target="_blank"
+                            >
+                                <AnimatedGradientText>
+                                    🎉{" "}
+                                    <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
+                                    <span
+                                        className={cn(
+                                            `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
+                                        )}
+                                    >
+                                        Checkout my Resume
+                                    </span>
+                                    <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+                                </AnimatedGradientText>
+                            </Link>
                         </div>
                         <BlurFade delay={BLUR_FADE_DELAY}>
                             <Avatar className="size-28 border">
