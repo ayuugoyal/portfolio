@@ -90,7 +90,7 @@ const DATA = {
 
 export function Navbar() {
     return (
-        <div className="fixed bottom-10 flex flex-col w-full items-centerjustify-center">
+        <div className="fixed z-50 bottom-10 right-0 left-0 flex flex-col w-full items-center justify-center">
             <TooltipProvider>
                 <Dock direction="middle" className="rounded-full">
                     {DATA.navbar.map((item) => (

@@ -4,6 +4,12 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import DotPattern from "@/components/magicui/dot-pattern";
 import { Navbar } from "@/components/Navbar";
+import { Inter as FontSans } from "next/font/google";
+
+const fontSans = FontSans({
+    subsets: ["latin"],
+    variable: "--font-sans",
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,20 +27,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange
-                >
+            <body
+                className={cn(
+                    "min-h-screen bg-background font-sans antialiased max-w-4xl mx-auto py-12 sm:py-24 px-6",
+                    fontSans.variable
+                )}
+            >
+                <ThemeProvider attribute="class" defaultTheme="light">
                     <Navbar />
                     {children}
-                    <DotPattern
-                        className={cn(
-                            "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]"
-                        )}
-                    />
                 </ThemeProvider>
             </body>
         </html>
