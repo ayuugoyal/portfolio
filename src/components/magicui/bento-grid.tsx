@@ -12,12 +12,7 @@ const BentoGrid = ({
     className?: string;
 }) => {
     return (
-        <div
-            className={cn(
-                "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
-                className
-            )}
-        >
+        <div className={cn("flex flex-col w-full gap-4", className)}>
             {children}
         </div>
     );
@@ -51,7 +46,7 @@ const BentoCard = ({
             className
         )}
     >
-        <div>{background}</div>
+        <div className="absolute">{background}</div>
         <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
             <Icon className="h-12 w-12 origin-left transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75" />
             <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">

@@ -40,11 +40,11 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         >
             <div className="max-w-7xl mx-auto pt-4 sm:pt-20 md:px-8 lg:px-10">
                 <BlurFadeText
-                    className="text-2xl mt-6 mb-3 font-semibold md:text-4xl text-black dark:text-white max-w-4xl"
+                    className="text-2xl mt-6 mb-3 font-semibold md:text-4xl text-black dark:text-white max-w-2xl mx-auto w-full"
                     text="Experience"
                 />
                 <BlurFadeText
-                    className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm"
+                    className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base mx-auto w-full max-w-2xl"
                     text="I've been working on Full Stack Development for the past 2 years. Here's a timeline of my journey"
                 />
             </div>

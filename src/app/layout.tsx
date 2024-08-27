@@ -31,9 +31,19 @@ export default function RootLayout({
                     fontSans.variable
                 )}
             >
-                <ThemeProvider attribute="class" defaultTheme="dark">
+                <ThemeProvider attribute="class" defaultTheme="system">
                     <Navbar />
                     {children}
+                    <DotPattern
+                        width={20}
+                        height={20}
+                        cx={1}
+                        cy={1}
+                        cr={1}
+                        className={cn(
+                            "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] -z-10"
+                        )}
+                    />
                 </ThemeProvider>
             </body>
         </html>
