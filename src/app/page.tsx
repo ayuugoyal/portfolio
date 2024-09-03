@@ -15,6 +15,7 @@ import { CoolMode } from "@/components/magicui/cool-mode";
 import { Button } from "@/components/ui/button";
 import ShinyButton from "@/components/magicui/shiny-button";
 import MagicButton from "@/components/magic-button";
+import TypingAnimation from "@/components/magicui/typing-animation";
 
 const BLUR_FADE_DELAY = 0.5;
 
@@ -118,11 +119,13 @@ export default function Home() {
                 <div className="mx-auto w-full max-w-2xl space-y-4 sm:space-y-8">
                     <div className="gap-2 flex justify-between">
                         <div className="flex-col flex flex-1 space-y-1.5">
-                            <BlurFadeText
-                                className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert"
-                                delay={BLUR_FADE_DELAY}
-                                text="const ayuugoyal = ( name, passion ) =>"
-                            />
+                            <BlurFade delay={BLUR_FADE_DELAY}>
+                                <TypingAnimation
+                                    duration={80}
+                                    className="prose max-w-full mb-1 text-pretty font-sans text-sm text-muted-foreground dark:prose-invert"
+                                    text="const ayuugoyal = ( name, passion ) =>"
+                                />
+                            </BlurFade>
                             <BlurFadeText
                                 delay={BLUR_FADE_DELAY}
                                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
@@ -234,10 +237,9 @@ export default function Home() {
                                     Check out my latest work
                                 </h2>
                                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    I&apos;ve worked on a variety of projects,
-                                    from simple websites to complex web
-                                    applications. Here are a few of my
-                                    favorites.
+                                    I&apos;ve tackled a wide range of projects,
+                                    from sleek websites to intricate web
+                                    applications. Here are some of my top picks.
                                 </p>
                             </div>
                         </div>
@@ -271,15 +273,15 @@ export default function Home() {
                                 Get in Touch
                             </h2>
                             <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                Want to chat? Just shoot me a dm{" "}
+                                Got something on your mind? Slide into my DMs{" "}
                                 <Link
                                     href="https://x.com/ayuugoyal"
                                     className="text-blue-500 hover:underline"
                                 >
-                                    with a direct question on twitter
+                                    on Twitter
                                 </Link>{" "}
-                                and I&apos;ll respond whenever I can. I will
-                                ignore all soliciting.
+                                with a direct question, and I&apos;ll hit you
+                                back when I can.
                             </p>
                         </div>
                     </BlurFade>
