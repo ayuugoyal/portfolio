@@ -7,10 +7,14 @@ import { Badge } from "@/components/ui/badge";
 import { IconCloudDemo } from "@/components/icon-cloud";
 import { cn } from "@/lib/utils";
 import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Github as GitIcon } from "lucide-react";
 import Link from "next/link";
 import { ProjectCard } from "@/components/project-card";
 import { Globe as GlobeIcon } from "lucide-react";
+import { CoolMode } from "@/components/magicui/cool-mode";
+import { Button } from "@/components/ui/button";
+import ShinyButton from "@/components/magicui/shiny-button";
+import MagicButton from "@/components/magic-button";
 
 const BLUR_FADE_DELAY = 0.5;
 
@@ -18,26 +22,34 @@ const skillsList = [
     "React",
     "Next.js",
     "Typescript",
+    "Javascript",
     "Node.js",
-    "rust",
-    "git",
-    "github",
-    "gitlab",
+    "express.js",
+    "Rust",
+    "Git",
+    "Github",
+    "Gitlab",
     "Python",
-    "Go",
-    "Postgres",
+    "PostgresSQL",
     "Docker",
-    "Kubernetes",
     "Java",
     "C++",
+    "html5",
+    "css3",
+    "PrismaORM",
+    "DrizzleORM",
+    "AWS",
+    "Firebase",
+    "Nginx",
+    "vercel",
 ];
 
 const projectsData = [
     {
         title: "Unstudio",
-        href: "https://chatcollect.com",
+        href: "https://unstudio-ai.vercel.app/",
         active: true,
-        dates: "Jan 2024 - Feb 2024",
+        dates: "",
         description:
             "An alternative to excelidraw to create and share your art on canvas by recording or sharing with a freture of adding intro and outro to recoreded videos.",
         technologies: [
@@ -46,44 +58,56 @@ const projectsData = [
             "PostgreSQL",
             "Prisma",
             "TailwindCSS",
-            "Stripe",
             "Shadcn UI",
-            "Magic UI",
+            "OpenAI",
+            "Remotion",
+            "Fabric JS",
+            "NextAuth",
         ],
         links: [
             {
                 type: "Website",
-                href: "https://chatcollect.com",
+                href: "https://unstudio-ai.vercel.app/",
                 icon: <GlobeIcon />,
+            },
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/unstudio/",
+                icon: <GitIcon />,
             },
         ],
         image: "/unstudio.png",
     },
     {
-        title: "Unstudio",
-        href: "https://chatcollect.com",
+        title: "Verdant",
+        href: "https://verdant-phi.vercel.app/",
         active: true,
-        dates: "Jan 2024 - Feb 2024",
+        dates: "",
         description:
-            "An alternative to excelidraw to create and share your art on canvas by recording or sharing with a freture of adding intro and outro to recoreded videos.",
+            "Verdant utilizes Open AI key to personalize event planning. From community yoga sessions to cleanliness drives, AI tailors recommendations to fit users' preferences, making participation seamless and enjoyable.",
         technologies: [
             "Next.js",
             "Typescript",
             "PostgreSQL",
-            "Prisma",
+            "Drizzle",
             "TailwindCSS",
-            "Stripe",
             "Shadcn UI",
-            "Magic UI",
+            "OpenAI",
+            "HuggingFace",
         ],
         links: [
             {
                 type: "Website",
-                href: "https://chatcollect.com",
+                href: "https://verdant-phi.vercel.app/",
                 icon: <GlobeIcon />,
             },
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/verdant/",
+                icon: <GitIcon />,
+            },
         ],
-        image: "/unstudio.png",
+        image: "/verdant.png",
     },
 ];
 
@@ -112,13 +136,14 @@ export default function Home() {
                             />
                             <BlurFade
                                 delay={BLUR_FADE_DELAY}
-                                className="hidden sm:block"
+                                className="hidden sm:flex sm:gap-3"
                             >
                                 <Link
                                     href="https://drive.google.com/file/d/1wPyEPWPzfSSmk5lwP6279Tt6vzUMp5xT/view?usp=sharing"
                                     target="_blank"
+                                    className="flex items-center"
                                 >
-                                    <AnimatedGradientText>
+                                    <AnimatedGradientText className="">
                                         🎉{" "}
                                         <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
                                         <span
@@ -131,11 +156,16 @@ export default function Home() {
                                         <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
                                     </AnimatedGradientText>
                                 </Link>
+                                <MagicButton />
                             </BlurFade>
                         </div>
                         <BlurFade delay={BLUR_FADE_DELAY}>
                             <Avatar className="size-28 border">
-                                <AvatarImage alt="Ayush" src="." />
+                                <AvatarImage
+                                    alt="Ayush"
+                                    className="w-full"
+                                    src="/ayush.JPG"
+                                />
                                 <AvatarFallback className="text-6xl font-bold text-center w-full h-full flex items-center justify-center">
                                     AG
                                 </AvatarFallback>
@@ -144,11 +174,12 @@ export default function Home() {
                     </div>
                     <BlurFade
                         delay={BLUR_FADE_DELAY}
-                        className="block sm:hidden"
+                        className="flex gap-3 sm:hidden"
                     >
                         <Link
                             href="https://drive.google.com/file/d/1wPyEPWPzfSSmk5lwP6279Tt6vzUMp5xT/view?usp=sharing"
                             target="_blank"
+                            className="flex items-center"
                         >
                             <AnimatedGradientText>
                                 🎉{" "}
@@ -163,11 +194,12 @@ export default function Home() {
                                 <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
                             </AnimatedGradientText>
                         </Link>
+                        <MagicButton />
                     </BlurFade>
                 </div>
             </section>
-            <div className="mx-auto w-full max-w-2xl grid items-center grid-cols-2 space-y-8">
-                <div className="flex min-h-0 flex-col gap-y-3">
+            <div className="mx-auto w-full max-w-2xl grid items-center sm:grid-cols-2 sm:space-y-8">
+                <div className="flex gap-3 min-h-0 flex-col">
                     <div className="max-w-7xl">
                         <BlurFadeText
                             className="text-2xl mt-6 font-semibold md:text-4xl text-black dark:text-white max-w-4xl"
@@ -185,7 +217,7 @@ export default function Home() {
                         ))}
                     </div>
                 </div>
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center ml-2 items-center">
                     <IconCloudDemo />
                 </div>
             </div>

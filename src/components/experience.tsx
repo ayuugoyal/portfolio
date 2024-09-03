@@ -8,7 +8,40 @@ import BlurFade from "@/components/magicui/blur-fade";
 
 const BLUR_FADE_DELAY = 0.5;
 
-const techList = ["React", "Next.js", "Tailwind CSS", "Framer Motion"];
+const BEtechList: String[] = [
+    "Java",
+    "C++",
+    "MySQL",
+    "TCP/IP",
+    "Netbeans",
+    "Python",
+    "JFlask",
+];
+
+const MEtechList: String[] = [
+    "Typescript",
+    "Javascript",
+    "React.js",
+    "Next.js",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Drizzle",
+    "PostgreSQL",
+    "Vercel",
+    "Docker",
+    "Git",
+    "Github",
+];
+
+const PItechList: String[] = [
+    "Typescript",
+    "Javascript",
+    "React.js",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Git",
+    "Github",
+];
 
 export function Experience() {
     const data = [
@@ -24,17 +57,17 @@ export function Experience() {
                         <BlurFadeText
                             className="max-w-[600px] md:text-xl mb-4"
                             delay={BLUR_FADE_DELAY}
-                            text="Jun 2023 - Present"
+                            text="Jun 2024 - Present"
                         />
                     </div>
                     <div className="flex min-h-0 flex-col gap-y-3">
                         <div className="flex flex-wrap gap-1">
-                            {techList.map((tech, id) => (
+                            {BEtechList.map((tech, id) => (
                                 <BlurFade
-                                    key={tech}
+                                    key={id}
                                     delay={BLUR_FADE_DELAY + id * 0.05}
                                 >
-                                    <Badge key={tech}>{tech}</Badge>
+                                    <Badge key={id}>{tech}</Badge>
                                 </BlurFade>
                             ))}
                         </div>
@@ -58,16 +91,16 @@ export function Experience() {
                         <BlurFadeText
                             className="max-w-[600px] md:text-xl mb-4"
                             delay={BLUR_FADE_DELAY}
-                            text="Jun 2023 - Present"
+                            text="Nov 2023 - April 2024"
                         />
                         <div className="flex min-h-0 flex-col gap-y-3">
                             <div className="flex flex-wrap gap-1">
-                                {techList.map((tech, id) => (
+                                {MEtechList.map((tech, id) => (
                                     <BlurFade
-                                        key={tech}
+                                        key={id}
                                         delay={BLUR_FADE_DELAY + id * 0.05}
                                     >
-                                        <Badge key={tech}>{tech}</Badge>
+                                        <Badge key={id}>{tech}</Badge>
                                     </BlurFade>
                                 ))}
                             </div>
@@ -83,25 +116,22 @@ export function Experience() {
                     <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8"></p>
                     <div>
                         <BlurFadeText
-                            text="Developed a web application for the company using React,
-                        Next.js, Tailwind CSS, and Framer Motion. The
-                        application allows users to manage their deals and
-                        customers."
+                            text="Develop online presence of the company and showcase their services and products to the customers while also providing a platform for the customers to book services and products."
                             className="text-neutral-800 dark:text-neutral-200 mb-2 text-xs md:text-sm font-normal"
                         />
                         <BlurFadeText
                             className="max-w-[600px] md:text-xl mb-4"
                             delay={BLUR_FADE_DELAY}
-                            text="Jun 2023 - Present"
+                            text="Sep 2023 - Nov 2023"
                         />
                         <div className="flex min-h-0 flex-col gap-y-3">
                             <div className="flex flex-wrap gap-1">
-                                {techList.map((tech, id) => (
+                                {PItechList.map((tech, id) => (
                                     <BlurFade
-                                        key={tech}
+                                        key={id}
                                         delay={BLUR_FADE_DELAY + id * 0.05}
                                     >
-                                        <Badge key={tech}>{tech}</Badge>
+                                        <Badge key={id}>{tech}</Badge>
                                     </BlurFade>
                                 ))}
                             </div>
