@@ -11,38 +11,39 @@ import { ChevronRight, Github as GitIcon } from "lucide-react";
 import Link from "next/link";
 import { ProjectCard } from "@/components/project-card";
 import { Globe as GlobeIcon } from "lucide-react";
-import { CoolMode } from "@/components/magicui/cool-mode";
-import { Button } from "@/components/ui/button";
-import ShinyButton from "@/components/magicui/shiny-button";
 import MagicButton from "@/components/magic-button";
 import TypingAnimation from "@/components/magicui/typing-animation";
 
 const BLUR_FADE_DELAY = 0.5;
 
 const skillsList = [
-    "React",
-    "Next.js",
-    "Typescript",
-    "Javascript",
+    "Typescript/Javascript",
     "Node.js",
-    "express.js",
+    "Python",
+    "Java",
+    "C++",
     "Rust",
+    "React.js",
+    "express.js",
+    "Next.js",
+    "PostgresSQL",
+    "MySQL",
+    "MongoDB",
+    "GraphQL",
+    "SQL/NoSQL DB",
+    "PrismaORM",
+    "DrizzleORM",
     "Git",
     "Github",
     "Gitlab",
-    "Python",
-    "PostgresSQL",
-    "Docker",
-    "Java",
-    "C++",
-    "html5",
-    "css3",
-    "PrismaORM",
-    "DrizzleORM",
     "AWS",
-    "Firebase",
+    "Azure",
     "Nginx",
+    "Docker",
     "vercel",
+    "Supabase",
+    "Firebase",
+    "ROS Humble",
 ];
 
 const projectsData = [
@@ -109,6 +110,108 @@ const projectsData = [
             },
         ],
         image: "/verdant.png",
+    },
+    {
+        title: "lawGuru",
+        href: "https://law-guru.vercel.app/",
+        active: true,
+        dates: "",
+        description:
+            "LawGuru is an advanced web application that leverages AI chatbot technology to offer tailored legal support, making it easier to navigate a wide range of legal matters. It ensures that legal information is accessible and understandable for all users.",
+        technologies: [
+            "Next.js",
+            "Typescript",
+            "PostgreSQL",
+            "Drizzle",
+            "TailwindCSS",
+            "Shadcn UI",
+            "OpenAI",
+            "HuggingFace",
+            "Clerk",
+            "FastAPI",
+            "Uvicorn",
+            "Chroma",
+            "LangChain",
+        ],
+        links: [
+            {
+                type: "Website",
+                href: "https://law-guru.vercel.app/",
+                icon: <GlobeIcon />,
+            },
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/LawGuru/",
+                icon: <GitIcon />,
+            },
+        ],
+        image: "/lawguru.png",
+    },
+    {
+        title: "ThriveAgro",
+        href: "https://thriveagro-eta.vercel.app/",
+        active: true,
+        dates: "",
+        description:
+            "THRIVE AGRO is a web app that enhances farmers' livelihoods by providing inventory management, direct buyer connections, and a reporting system for infrastructure issues, streamlining operations and improving access to resources.",
+        technologies: [
+            "Next.js",
+            "Typescript",
+            "PostgreSQL",
+            "Drizzle",
+            "TailwindCSS",
+            "Shadcn UI",
+            "OpenAI",
+            "HuggingFace",
+        ],
+        links: [
+            {
+                type: "Website",
+                href: "https://thriveagro-eta.vercel.app/",
+                icon: <GlobeIcon />,
+            },
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/thriveagro/",
+                icon: <GitIcon />,
+            },
+        ],
+        image: "/thrivagro.png",
+    },
+    {
+        title: "Surakshit",
+        href: "https://surakshit.vercel.app/",
+        active: true,
+        dates: "",
+        description:
+            "Surakshit is a cybersecurity project designed to shield businesses and individuals from cyber threats like ransomware, phishing, and malicious activities, ensuring a safe online journey through advanced technologies and proactive measures.",
+        technologies: [
+            "Next.js",
+            "Typescript",
+            "PostgreSQL",
+            "Drizzle",
+            "TailwindCSS",
+            "Shadcn UI",
+            "OpenAI",
+            "HuggingFace",
+            "FastAPI",
+            "Uvicorn",
+            "Chroma",
+            "LangChain",
+        ],
+        links: [
+            {
+                type: "Website",
+                href: "https://surakshit.vercel.app/",
+                icon: <GlobeIcon />,
+            },
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/surakshit/",
+                icon: <GitIcon />,
+            },
+        ],
+        image: "/surakshit.png",
     },
 ];
 
@@ -280,8 +383,14 @@ export default function Home() {
                                 >
                                     on Twitter
                                 </Link>{" "}
-                                with a direct question, and I&apos;ll hit you
-                                back when I can.
+                                with a direct question or mail at{" "}
+                                <Link
+                                    href="mailto:ayushgoyal8178@gmail.com"
+                                    className="text-blue-500 hover:underline"
+                                >
+                                    ayushgoyal8178@gmail.com
+                                </Link>
+                                , and I&apos;ll hit you back when I can.
                             </p>
                         </div>
                     </BlurFade>
