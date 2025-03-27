@@ -48,6 +48,70 @@ const skillsList = [
 
 const projectsData = [
     {
+        title: "LawGPT",
+        href: "https://lawgpt.ayuugoyal.tech/",
+        active: true,
+        dates: "",
+        description: "LawGPT is an AI-powered legal assistant that uses Retrieval-Augmented Generation (RAG) to provide instant, document-backed legal guidance. By leveraging advanced technologies like HuggingFace embeddings, FAISS vectorstore, and the Gemini API, it helps users navigate complex legal matters efficiently and accurately.",
+        technologies: [
+            "Next.js",
+            "Typescript",
+            "NeonDB - PostgresSQL",
+            "DrizzleORM",
+            "Tailwindcss/ShadcnUI",
+            "Google Gemini API",
+            "HuggingFace Embeddings",
+            "FAISS Vectorstore",
+            "Clerk",
+            "FastAPI",
+            "LangChain",
+        ],
+        links: [
+            {
+                type: "Website",
+                href: "https://lawgpt.ayuugoyal.tech/",
+                icon: <GlobeIcon />,
+            },
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/lawgpt/",
+                icon: <GitIcon />,
+            },
+        ],
+        image: "/lawgpt.png",
+    },
+    {
+        title: "ThriveAgro",
+        href: "https://thriveagro-eta.vercel.app/",
+        active: true,
+        dates: "",
+        description:
+            "THRIVE AGRO is a web app that enhances farmers' livelihoods by providing inventory management, direct buyer connections, and a reporting system for infrastructure issues, streamlining operations and improving access to resources.",
+        technologies: [
+            "Next.js",
+            "Typescript",
+            "PostgreSQL",
+            "Drizzle",
+            "TailwindCSS",
+            "Shadcn UI",
+            "OpenAI",
+            "HuggingFace",
+        ],
+        links: [
+            {
+                type: "Website",
+                href: "https://thriveagro-eta.vercel.app/",
+                icon: <GlobeIcon />,
+            },
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/thriveagro/",
+                icon: <GitIcon />,
+            },
+        ],
+        image: "/thrivagro.png",
+    },
+    {
         title: "Unstudio",
         href: "https://unstudio-ai.vercel.app/",
         active: true,
@@ -111,73 +175,7 @@ const projectsData = [
         ],
         image: "/verdant.png",
     },
-    {
-        title: "lawGuru",
-        href: "https://law-guru.vercel.app/",
-        active: true,
-        dates: "",
-        description:
-            "LawGuru is an advanced web application that leverages AI chatbot technology to offer tailored legal support, making it easier to navigate a wide range of legal matters. It ensures that legal information is accessible and understandable for all users.",
-        technologies: [
-            "Next.js",
-            "Typescript",
-            "PostgreSQL",
-            "Drizzle",
-            "TailwindCSS",
-            "Shadcn UI",
-            "OpenAI",
-            "HuggingFace",
-            "Clerk",
-            "FastAPI",
-            "Uvicorn",
-            "Chroma",
-            "LangChain",
-        ],
-        links: [
-            {
-                type: "Website",
-                href: "https://law-guru.vercel.app/",
-                icon: <GlobeIcon />,
-            },
-            {
-                type: "Github",
-                href: "https://github.com/ayuugoyal/LawGuru/",
-                icon: <GitIcon />,
-            },
-        ],
-        image: "/lawguru.png",
-    },
-    {
-        title: "ThriveAgro",
-        href: "https://thriveagro-eta.vercel.app/",
-        active: true,
-        dates: "",
-        description:
-            "THRIVE AGRO is a web app that enhances farmers' livelihoods by providing inventory management, direct buyer connections, and a reporting system for infrastructure issues, streamlining operations and improving access to resources.",
-        technologies: [
-            "Next.js",
-            "Typescript",
-            "PostgreSQL",
-            "Drizzle",
-            "TailwindCSS",
-            "Shadcn UI",
-            "OpenAI",
-            "HuggingFace",
-        ],
-        links: [
-            {
-                type: "Website",
-                href: "https://thriveagro-eta.vercel.app/",
-                icon: <GlobeIcon />,
-            },
-            {
-                type: "Github",
-                href: "https://github.com/ayuugoyal/thriveagro/",
-                icon: <GitIcon />,
-            },
-        ],
-        image: "/thrivagro.png",
-    },
+
     {
         title: "Surakshit",
         href: "https://surakshit.vercel.app/",
