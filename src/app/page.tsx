@@ -48,6 +48,29 @@ const skillsList = [
 
 const projectsData = [
     {
+        title: "SCARA Robot",
+        href: "https://github.com/ayuugoyal/scara",
+        active: true,
+        dates: "",
+        description: "A comprehensive control system for a 4-axis SCARA robot that combines an Express.js backend API, Next.js frontend, and Arduino Mega firmware for precise motion control, enabling remote operation and automation via a web interface.",
+        technologies: [
+            "Arduino Mega",
+            "Nema 17 Stepper Motors",
+            "Next.js",
+            "Typescript",
+            "TailwindCSS",
+            "Shadcn UI",
+        ],
+        links: [
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/scara/",
+                icon: <GitIcon />,
+            },
+        ],
+        image: "/scara.png",
+    },
+    {
         title: "LawGPT",
         href: "https://lawgpt.ayuugoyal.tech/",
         active: true,
