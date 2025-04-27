@@ -378,7 +378,6 @@ export default function Home() {
                     <IconCloudDemo />
                 </div>
             </div>
-            <Experience />
             <section
                 id="projects"
                 className="mx-auto sm:mt-32 w-full max-w-2xl space-y-4 sm:space-y-8"
@@ -419,6 +418,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+            <Experience />
             <section id="contact" className="mb-10">
                 <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
                     <BlurFade delay={BLUR_FADE_DELAY}>
