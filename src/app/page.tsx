@@ -48,6 +48,36 @@ const skillsList = [
 
 const projectsData = [
     {
+        title: "ChatterCraft AI",
+        href: "https://chattercraftai.ayuugoyal.tech/",
+        active: true,
+        dates: "",
+        description: "ChatterCraft AI is a lightweight, embeddable AI chatbot built to help businesses provide instant, intelligent customer support.  It answers product queries, recommends related items, and integrates in under 10 seconds.",
+        technologies: [
+            "Next.js",
+            "Typescript",
+            "PostgresSQL",
+            "DrizzleORM",
+            "Tailwindcss/ShadcnUI",
+            "Google Gemini API",
+            "Clerk",
+            "LangChain",
+        ],
+        links: [
+            {
+                type: "Website",
+                href: "https://chattercraftai.ayuugoyal.tech/",
+                icon: <GlobeIcon />,
+            },
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/chattercraft/",
+                icon: <GitIcon />,
+            },
+        ],
+        image: "/chatter.png",
+    },
+    {
         title: "SCARA Robot",
         href: "https://github.com/ayuugoyal/scara",
         active: true,
