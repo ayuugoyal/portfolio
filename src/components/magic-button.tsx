@@ -4,9 +4,11 @@ import { CoolMode } from "./magicui/cool-mode";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { Heart } from "lucide-react";
+import { useTheme } from "next-themes";
 
 function MagicButton() {
     const [clicked, setClicked] = useState<boolean>(false);
+    const { theme } = useTheme();
     return (
         <CoolMode>
             <Button
@@ -24,7 +26,7 @@ function MagicButton() {
                         `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
                     )}
                 >
-                    <Heart color="#ffaa40" fill={clicked ? "#ffaa40" : ""} />
+                    <Heart color="#ffaa40" fill={clicked ? "#ffaa40" : theme == "dark" ? "#000000" : "#ffffff"} />
                 </span>
             </Button>
         </CoolMode>

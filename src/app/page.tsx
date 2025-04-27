@@ -29,21 +29,24 @@ const skillsList = [
     "PostgresSQL",
     "MySQL",
     "MongoDB",
-    "GraphQL",
-    "SQL/NoSQL DB",
     "PrismaORM",
     "DrizzleORM",
     "Git",
     "Github",
-    "Gitlab",
     "AWS",
     "Azure",
     "Nginx",
     "Docker",
-    "vercel",
     "Supabase",
     "Firebase",
     "ROS Humble",
+    "LangChain",
+    "FastAPI",
+    "Flask",
+    "HuggingFace",
+    "OpenAI",
+    "VectorDBs",
+    "ChromaDB",
 ];
 
 const projectsData = [
@@ -78,29 +81,6 @@ const projectsData = [
         image: "/chatter.png",
     },
     {
-        title: "SCARA Robot",
-        href: "https://github.com/ayuugoyal/scara",
-        active: true,
-        dates: "",
-        description: "A comprehensive control system for a 4-axis SCARA robot that combines an Express.js backend API, Next.js frontend, and Arduino Mega firmware for precise motion control, enabling remote operation and automation via a web interface.",
-        technologies: [
-            "Arduino Mega",
-            "Nema 17 Stepper Motors",
-            "Next.js",
-            "Typescript",
-            "TailwindCSS",
-            "Shadcn UI",
-        ],
-        links: [
-            {
-                type: "Github",
-                href: "https://github.com/ayuugoyal/scara/",
-                icon: <GitIcon />,
-            },
-        ],
-        image: "/scara.png",
-    },
-    {
         title: "LawGPT",
         href: "https://lawgpt.ayuugoyal.tech/",
         active: true,
@@ -132,6 +112,29 @@ const projectsData = [
             },
         ],
         image: "/lawgpt.png",
+    },
+    {
+        title: "SCARA Robot",
+        href: "https://github.com/ayuugoyal/scara",
+        active: true,
+        dates: "",
+        description: "A comprehensive control system for a 4-axis SCARA robot that combines an Express.js backend API, Next.js frontend, and Arduino Mega firmware for precise motion control, enabling remote operation and automation via a web interface.",
+        technologies: [
+            "Arduino Mega",
+            "Nema 17 Stepper Motors",
+            "Next.js",
+            "Typescript",
+            "TailwindCSS",
+            "Shadcn UI",
+        ],
+        links: [
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/scara/",
+                icon: <GitIcon />,
+            },
+        ],
+        image: "/scara.png",
     },
     {
         title: "ThriveAgro",
@@ -383,7 +386,7 @@ export default function Home() {
                 className="mx-auto sm:mt-32 w-full max-w-2xl space-y-4 sm:space-y-8"
             >
                 <div className="space-y-12 w-full py-12">
-                    <BlurFade delay={BLUR_FADE_DELAY * 11}>
+                    <BlurFade delay={BLUR_FADE_DELAY * 2}>
                         <div className="flex flex-col items-center justify-center space-y-4">
                             <div className="space-y-2">
                                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -401,7 +404,7 @@ export default function Home() {
                         {projectsData.map((project, id) => (
                             <BlurFade
                                 key={project.title}
-                                delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+                                delay={BLUR_FADE_DELAY * 3 + id * 0.05}
                             >
                                 <ProjectCard
                                     href={project.href}
