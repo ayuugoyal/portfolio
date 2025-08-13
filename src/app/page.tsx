@@ -51,6 +51,32 @@ const skillsList = [
 
 const projectsData = [
     {
+        title: "BCN3D Moveo Control System",
+        href: "https://github.com/ayuugoyal/bcn-3d-control-system",
+        active: true,
+        dates: "",
+        description: "A complete control system for the BCN3D Moveo robot arm with a modern Next.js web interface, ROS2 integration, and Arduino firmware. Features include real-time WebSocket communication, joint and cartesian control modes, 3D visualization, and system health monitoring.",
+        technologies: [
+            "Next.js",
+            "TypeScript",
+            "ROS2 Humble",
+            "ROSBridge",
+            "Python",
+            "C++",
+            "Arduino",
+            "pnpm",
+            "WebSockets",
+        ],
+        links: [
+            {
+                type: "Github",
+                href: "https://github.com/ayuugoyal/bcn-3d-control-system",
+                icon: <GitIcon />,
+            },
+        ],
+        image: "/bcn-3d.jpg",
+    },
+    {
         title: "ChatterCraft AI",
         href: "https://chattercraftai.ayuugoyal.tech/",
         active: true,
