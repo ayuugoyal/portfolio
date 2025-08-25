@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { IconCloudDemo } from "@/components/icon-cloud";
 import { cn } from "@/lib/utils";
 import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
-import { ArrowUpRight, ChevronRight, Github, Github as GitIcon } from "lucide-react";
+import { ArrowUpRight, ChevronRight, Github, Github as GitIcon, Video } from "lucide-react";
 import Link from "next/link";
 import { ProjectCard } from "@/components/project-card";
 import { Globe as GlobeIcon } from "lucide-react";
@@ -73,7 +73,7 @@ const projectsData = [
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/bcn-3d-control-system",
-                icon: <GitIcon />,
+                icon: <Github className="size-4" />,
             },
         ],
         image: "/bcn-3d.jpg",
@@ -98,12 +98,12 @@ const projectsData = [
             {
                 type: "Website",
                 href: "https://chattercraftai.ayuugoyal.tech/",
-                icon: <GlobeIcon />,
+                icon: <GlobeIcon className="size-4" />,
             },
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/chattercraft/",
-                icon: <GitIcon />,
+                icon: <GitIcon className="size-4" />,
             },
         ],
         image: "/chatter.png",
@@ -131,12 +131,12 @@ const projectsData = [
             {
                 type: "Website",
                 href: "https://lawgpt.ayuugoyal.tech/",
-                icon: <GlobeIcon />,
+                icon: <GlobeIcon className="size-4" />,
             },
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/lawgpt/",
-                icon: <GitIcon />,
+                icon: <GitIcon className="size-4" />,
             },
         ],
         image: "/lawgpt.png",
@@ -159,7 +159,12 @@ const projectsData = [
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/scara/",
-                icon: <GitIcon />,
+                icon: <GitIcon className="size-4" />,
+            },
+            {
+                type: "Demo Video",
+                href: "https://github.com/user-attachments/assets/922ea7b5-70ef-4cfa-be29-8c4aa264a613",
+                icon: < Video className="size-4" />,
             },
         ],
         image: "/scara.png",
@@ -185,12 +190,12 @@ const projectsData = [
             {
                 type: "Website",
                 href: "https://thriveagro-eta.vercel.app/",
-                icon: <GlobeIcon />,
+                icon: <GlobeIcon className="size-4" />,
             },
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/thriveagro/",
-                icon: <GitIcon />,
+                icon: <GitIcon className="size-4" />,
             },
         ],
         image: "/thrivagro.png",
@@ -218,12 +223,12 @@ const projectsData = [
             {
                 type: "Website",
                 href: "https://unstudio-ai.vercel.app/",
-                icon: <GlobeIcon />,
+                icon: <GlobeIcon className="size-4" />,
             },
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/unstudio/",
-                icon: <GitIcon />,
+                icon: <GitIcon className="size-4" />,
             },
         ],
         image: "/unstudio.png",
@@ -249,12 +254,12 @@ const projectsData = [
             {
                 type: "Website",
                 href: "https://verdant-phi.vercel.app/",
-                icon: <GlobeIcon />,
+                icon: <GlobeIcon className="size-4" />,
             },
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/verdant/",
-                icon: <GitIcon />,
+                icon: <GitIcon className="size-4" />,
             },
         ],
         image: "/verdant.png",
@@ -336,7 +341,7 @@ const proj = [
 const caseStudies = [
     {
         title: "LawGPT – AI-Powered Legal Assistant",
-        dates: "June 2024 - Aug 2024",
+        dates: "May 2025 - June 2025",
         description:
             "LawGPT is an AI-driven legal research assistant that leverages Retrieval-Augmented Generation (RAG) to deliver document-backed, transparent answers to legal queries. Designed to simplify access to complex legal information, LawGPT attracted *box#FFB6C1 70+ user sign-ups* in its early testing phase, validating strong demand for an AI-powered legal assistant.",
         image:
@@ -487,7 +492,7 @@ export default function Home() {
             <section id="case-studies">
                 <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Case Studies</h2>
+                        <h2 className="text-xl font-bold">Case Studies & Blogs</h2>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
                         <ul className="ml-4 divide-y divide-dashed border-l">

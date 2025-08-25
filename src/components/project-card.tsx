@@ -9,6 +9,7 @@ import {
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import HeroVideoDialog from "./magicui/hero-video-dialog";
 
 interface Props {
     title: string;
@@ -103,15 +104,36 @@ export function ProjectCard({
                 {links && links.length > 0 && (
                     <div className="flex flex-row flex-wrap items-start gap-1">
                         {links?.map((link, idx) => (
-                            <Link href={link?.href} key={idx} target="_blank">
-                                <Badge
-                                    key={idx}
-                                    className="flex gap-2 px-2 py-1 text-[10px]"
-                                >
-                                    {link.icon}
-                                    {link.type}
-                                </Badge>
-                            </Link>
+                            <div key={idx}>
+                                {link.type == "Demo Video" ?
+                                    <div className="">
+                                        <HeroVideoDialog
+                                            className="block dark:hidden"
+                                            animationStyle="from-center"
+                                            videoSrc={link.href}
+                                            thumbnailAlt={link.type}
+                                            icon={link.icon}
+                                        />
+                                        <HeroVideoDialog
+                                            className="hidden dark:block"
+                                            animationStyle="from-center"
+                                            videoSrc={link.href}
+                                            thumbnailAlt={link.type}
+                                            icon={link.icon}
+                                        />
+                                    </div>
+                                    :
+                                    <Link href={link?.href} target="_blank">
+                                        <Badge
+                                            key={idx}
+                                            className="flex gap-2 px-2 py-1 text-[10px]"
+                                        >
+                                            {link.icon}
+                                            {link.type}
+                                        </Badge>
+                                    </Link>
+                                }
+                            </div>
                         ))}
                     </div>
                 )}
