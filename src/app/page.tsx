@@ -349,7 +349,7 @@ const caseStudies = [
         links: [
             {
                 title: "read more",
-                href: "",
+                href: "https://blogs.ayuugoyal.tech/blog/LawGPT-an-AI-Powered-Legal-Assistant",
                 icon: <ArrowUpRight />,
             },
         ],
