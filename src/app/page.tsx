@@ -1,4 +1,3 @@
-import { Experience } from "@/components/experience";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar } from "@/components/ui/avatar";
@@ -7,12 +6,15 @@ import { Badge } from "@/components/ui/badge";
 import { IconCloudDemo } from "@/components/icon-cloud";
 import { cn } from "@/lib/utils";
 import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
-import { ChevronRight, Github as GitIcon } from "lucide-react";
+import { ArrowUpRight, ChevronRight, Github, Github as GitIcon } from "lucide-react";
 import Link from "next/link";
 import { ProjectCard } from "@/components/project-card";
 import { Globe as GlobeIcon } from "lucide-react";
 import MagicButton from "@/components/magic-button";
 import TypingAnimation from "@/components/magicui/typing-animation";
+import { Highlighter } from "@/components/magicui/highlighter";
+import { ResumeCard } from "@/components/resume-card";
+import { HackathonCard } from "@/components/pro-card";
 
 const BLUR_FADE_DELAY = 0.5;
 
@@ -295,6 +297,60 @@ const projectsData = [
     },
 ];
 
+const proj = [
+    {
+        company: "Data Alt Dynamics",
+        href: "",
+        badges: [],
+        location: "Remote",
+        title: "Backend Developer",
+        logoUrl: "/datalogo.png",
+        start: "July 2025",
+        description:
+            "Deployed a Raspberry Pi–based server with multi-sensor integration for real-time data acquisition and control. Designed and optimised local ComfyUI workflows, boosting AI-driven process efficiency by 70%. Built scalable backend architectures and automated pipelines by integrating Cloudflare Tunnel with n8n, enabling secure remote access, seamless cloud sync, and reducing manual operational tasks by 40%."
+    },
+    {
+        company: "Physics Wallah",
+        badges: [],
+        href: "https://pw.live",
+        location: "Noida, IN",
+        title: "Trainee",
+        logoUrl: "/pwlogo.jpg",
+        start: "May 2025",
+        end: "July 2025",
+        description: ""
+    },
+    {
+        company: "Bharat Electronics Limited",
+        href: "https://bel-india.in/homepage/",
+        badges: [],
+        location: "Delhi, IN",
+        title: "Summer Intern",
+        logoUrl: "/bellogo.png",
+        start: "June 2024",
+        end: "Aug 2024",
+        description: ""
+    },
+];
+
+const caseStudies = [
+    {
+        title: "LawGPT – AI-Powered Legal Assistant",
+        dates: "June 2024 - Aug 2024",
+        description:
+            "LawGPT is an AI-driven legal research assistant that leverages Retrieval-Augmented Generation (RAG) to deliver document-backed, transparent answers to legal queries. Designed to simplify access to complex legal information, LawGPT attracted *box#FFB6C1 70+ user sign-ups* in its early testing phase, validating strong demand for an AI-powered legal assistant.",
+        image:
+            "/law_i.png",
+        links: [
+            {
+                title: "read more",
+                href: "",
+                icon: <ArrowUpRight />,
+            },
+        ],
+    },
+];
+
 export default function Home() {
     return (
         <div className="">
@@ -315,11 +371,18 @@ export default function Home() {
                                 yOffset={8}
                                 text="Hi, I'm Ayush 👋"
                             />
-                            <BlurFadeText
-                                className="max-w-[600px] md:text-xl"
-                                delay={BLUR_FADE_DELAY}
-                                text="Robotics Software Engineer with a passion for building cool stuff."
-                            />
+                            <BlurFade delay={BLUR_FADE_DELAY} className="md:text-xl gap-2 flex flex-wrap">
+                                <Highlighter action="underline" color="#FF9800">
+                                    AI Product Manager
+                                </Highlighter> &{" "}
+                                <Highlighter action="underline" color="#8BC34A">
+                                    Robotics Software Engineer
+                                </Highlighter>{" "}
+                                with a passion for{" "}
+                                <Highlighter action="highlight" color="#d677b6">
+                                    building cool
+                                </Highlighter>{" "} stuff.
+                            </BlurFade>
                             <BlurFade
                                 delay={BLUR_FADE_DELAY}
                                 className="hidden sm:flex sm:gap-3"
@@ -384,70 +447,97 @@ export default function Home() {
                     </BlurFade>
                 </div>
             </section>
-            <div className="mx-auto w-full max-w-2xl grid items-center sm:grid-cols-2 sm:space-y-8">
-                <div className="flex gap-3 min-h-0 flex-col">
-                    <div className="max-w-7xl">
-                        <BlurFadeText
-                            className="text-2xl mt-6 font-semibold md:text-4xl text-black dark:text-white max-w-4xl"
-                            text="Skills"
-                        />
-                    </div>
-                    <div className="flex flex-wrap gap-1">
-                        {skillsList.map((skill, id) => (
-                            <BlurFade
-                                key={skill}
-                                delay={BLUR_FADE_DELAY + id * 0.05}
-                            >
-                                <Badge key={skill}>{skill}</Badge>
-                            </BlurFade>
-                        ))}
-                    </div>
-                </div>
-                <div className="flex justify-center ml-2 items-center">
-                    <IconCloudDemo />
-                </div>
-            </div>
-            <section
-                id="projects"
-                className="mx-auto sm:mt-32 w-full max-w-2xl space-y-4 sm:space-y-8"
-            >
-                <div className="space-y-12 w-full py-12">
-                    <BlurFade delay={BLUR_FADE_DELAY * 2}>
-                        <div className="flex flex-col items-center justify-center space-y-4">
-                            <div className="space-y-2">
-                                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                                    Check out my latest work
-                                </h2>
-                                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    I&apos;ve tackled a wide range of projects,
-                                    from sleek websites to intricate web
-                                    applications. Here are some of my top picks.
-                                </p>
-                            </div>
+            <section id="about">
+                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
+                    <BlurFade delay={BLUR_FADE_DELAY * 3}>
+                        <h2 className="text-xl font-bold">About</h2>
+                    </BlurFade>
+                    <BlurFade delay={BLUR_FADE_DELAY * 4}>
+                        <div className="prose max-w-full text-pretty font-sans text-sm dark:prose-invert">
+                            I&apos;m Ayush Goyal, a passionate AI Product Manager and Robotics Software Engineer with a knack for building innovative solutions. With a strong foundation in full-stack development and a love for cutting-edge technologies, I thrive on turning ideas into reality. Whether it&apos;s developing intelligent AI systems or crafting seamless user experiences, I&apos;m driven by the excitement of creating impactful products that make a difference. Let&apos;s connect and explore how we can bring your vision to life!
                         </div>
                     </BlurFade>
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
-                        {projectsData.map((project, id) => (
-                            <BlurFade
-                                key={project.title}
-                                delay={BLUR_FADE_DELAY * 3 + id * 0.05}
-                            >
-                                <ProjectCard
-                                    href={project.href}
-                                    key={project.title}
-                                    title={project.title}
-                                    description={project.description}
-                                    dates={project.dates}
-                                    tags={project.technologies}
-                                    image={project.image}
-                                    links={project.links}
-                                />
-                            </BlurFade>
-                        ))}
-                    </div>
                 </div>
             </section>
-            <Experience />
+            <section id="work-experience">
+                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
+                    <BlurFade delay={BLUR_FADE_DELAY * 3}>
+                        <h2 className="text-xl font-bold">Work Experience</h2>
+                    </BlurFade>
+                    {proj.map((work, id) => (
+                        <BlurFade
+                            key={work.company}
+                            delay={BLUR_FADE_DELAY * 6 + id * 0.05}
+                        >
+                            <ResumeCard
+                                key={work.company}
+                                logoUrl={work.logoUrl}
+                                altText={work.company}
+                                title={work.company}
+                                subtitle={work.title}
+                                href={work.href}
+                                badges={work.badges}
+                                period={`${work.start} - ${work.end ?? "Present"}`}
+                                description={work.description}
+                            />
+                        </BlurFade>
+                    ))}
+                </div>
+            </section>
+            <section id="case-studies">
+                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <h2 className="text-xl font-bold">Case Studies</h2>
+                    </BlurFade>
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <ul className="ml-4 divide-y divide-dashed border-l">
+                            {caseStudies.map((project, id) => (
+                                <BlurFade
+                                    key={project.title + project.dates}
+                                    delay={BLUR_FADE_DELAY * 7 + id * 0.05}
+                                >
+                                    <HackathonCard
+                                        title={project.title}
+                                        description={project.description}
+                                        dates={project.dates}
+                                        image={project.image}
+                                        links={project.links}
+                                    />
+                                </BlurFade>
+                            ))}
+                        </ul>
+                    </BlurFade>
+
+                </div>
+            </section>
+            <section id="projects">
+                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <h2 className="text-xl font-bold">Projects</h2>
+                    </BlurFade>
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <ul className="pt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            {projectsData.map((project, id) => (
+                                <BlurFade
+                                    key={project.title}
+                                    delay={BLUR_FADE_DELAY * 8 + id * 0.05}
+                                >
+                                    <ProjectCard
+                                        href={project.href}
+                                        key={project.title}
+                                        title={project.title}
+                                        description={project.description}
+                                        dates={project.dates}
+                                        tags={project.technologies}
+                                        image={project.image}
+                                        links={project.links}
+                                    />
+                                </BlurFade>
+                            ))}
+                        </ul>
+                    </BlurFade>
+                </div>
+            </section>
             <section id="contact" className="mb-10">
                 <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
                     <BlurFade delay={BLUR_FADE_DELAY}>
@@ -476,6 +566,6 @@ export default function Home() {
                     </BlurFade>
                 </div>
             </section>
-        </div>
+        </div >
     );
 }

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 };
 
 import { cn } from "@/lib/utils";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 export default function RootLayout({
     children,
@@ -27,7 +28,7 @@ export default function RootLayout({
         <html lang="en">
             <body
                 className={cn(
-                    "min-h-screen bg-background font-sans antialiased max-w-4xl mx-auto py-12 sm:py-24 px-6",
+                    "min-h-screen bg-background cursor-none font-sans antialiased max-w-4xl mx-auto py-12 sm:py-24 px-6",
                     fontSans.variable
                 )}
             >
@@ -44,6 +45,7 @@ export default function RootLayout({
                             "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] -z-10"
                         )}
                     />
+                    <SmoothCursor />
                 </ThemeProvider>
             </body>
         </html>
