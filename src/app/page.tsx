@@ -355,6 +355,16 @@ const caseStudies = [
         ],
     },
 ];
+const patentdata = [
+    {
+        title: "3D Printed, Pneumatically Actuated Four- Finger Adaptive Gripper",
+        dates: "June 2025",
+        description:
+            "The proposed design caters to the industrial robotic end -effectors, especially to the pneumatically actuated multi- finger grippers that are capable of grasping objects of various shapes and sizes.",
+        image:
+            "/patent.png",
+    },
+];
 
 export default function Home() {
     return (
@@ -541,6 +551,31 @@ export default function Home() {
                             ))}
                         </ul>
                     </BlurFade>
+                </div>
+            </section>
+            <section id="patents">
+                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <h2 className="text-xl font-bold">Patents</h2>
+                    </BlurFade>
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <ul className="ml-4 divide-y divide-dashed border-l">
+                            {patentdata.map((project, id) => (
+                                <BlurFade
+                                    key={project.title + project.dates}
+                                    delay={BLUR_FADE_DELAY * 7 + id * 0.05}
+                                >
+                                    <HackathonCard
+                                        title={project.title}
+                                        description={project.description}
+                                        dates={project.dates}
+                                        image={project.image}
+                                    />
+                                </BlurFade>
+                            ))}
+                        </ul>
+                    </BlurFade>
+
                 </div>
             </section>
             <section id="contact" className="mb-10">
