@@ -34,7 +34,6 @@ export default function RootLayout({
                 )}
             >
                 <ThemeProvider attribute="class" defaultTheme="system">
-                    <Analytics />
                     <Navbar />
                     {children}
                     <DotPattern
@@ -48,6 +47,7 @@ export default function RootLayout({
                         )}
                     />
                     <SmoothCursor />
+                    <Analytics />
                 </ThemeProvider>
             </body>
         </html>
