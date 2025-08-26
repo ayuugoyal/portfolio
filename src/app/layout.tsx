@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import DotPattern from "@/components/magicui/dot-pattern";
 import { Navbar } from "@/components/Navbar";
 import { Inter as FontSans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
                 )}
             >
                 <ThemeProvider attribute="class" defaultTheme="system">
+                    <Analytics />
                     <Navbar />
                     {children}
                     <DotPattern
