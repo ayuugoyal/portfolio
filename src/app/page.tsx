@@ -370,7 +370,7 @@ const patentdata = [
 
 export default function Home() {
     return (
-        <div >
+        <div className="px-5">
             <section id="hero">
                 <div className="mx-auto w-full max-w-2xl space-y-4 sm:space-y-8">
                     <div className="gap-2 flex justify-between">
@@ -388,7 +388,7 @@ export default function Home() {
                                 yOffset={8}
                                 text="Hi, I'm Ayush 👋"
                             />
-                            <BlurFade delay={BLUR_FADE_DELAY} className="md:text-xl gap-2 flex flex-wrap">
+                            <BlurFade delay={BLUR_FADE_DELAY} className="md:text-xl space-y-2 ">
                                 <Highlighter action="underline" color="#FF9800">
                                     AI Engineer
                                 </Highlighter> &{" "}
@@ -402,7 +402,7 @@ export default function Home() {
                             </BlurFade>
                             <BlurFade
                                 delay={BLUR_FADE_DELAY}
-                                className="hidden sm:flex sm:gap-3 pt-4"
+                                className="hidden sm:flex sm:gap-3 pt-2"
                             >
                                 <Link
                                     href="https://drive.google.com/file/d/1wPyEPWPzfSSmk5lwP6279Tt6vzUMp5xT/view?usp=sharing"
