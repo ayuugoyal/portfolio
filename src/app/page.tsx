@@ -22,33 +22,34 @@ const skillsList = [
     "Typescript/Javascript",
     "Node.js",
     "Python",
-    "Java",
     "C++",
-    "Rust",
     "React.js",
-    "express.js",
     "Next.js",
+    "express.js",
     "PostgresSQL",
     "MySQL",
     "MongoDB",
     "PrismaORM",
     "DrizzleORM",
-    "Git",
-    "Github",
-    "AWS",
-    "Azure",
+    "Git/Github",
+    "AWS/Azure clouds",
     "Nginx",
     "Docker",
-    "Supabase",
-    "Firebase",
-    "ROS Humble",
-    "LangChain",
-    "FastAPI",
-    "Flask",
+    "ROS2",
+    "Arduino",
+    "Raspberry Pi",
+    "Websockets",
+    "REST APIs",
+    "GraphQL",
+    "TailwindCSS",
+    "Shadcn UI",
+    "Framer Motion",
+    "LLM's Integration",
+    "LangChain/LangSmith/LangGraph",
+    "FastAPI/Flask",
     "HuggingFace",
     "OpenAI",
     "VectorDBs",
-    "ChromaDB",
 ];
 
 const projectsData = [
@@ -302,7 +303,7 @@ const projectsData = [
     },
 ];
 
-const proj = [
+const workExp = [
     {
         company: "Data Alt Dynamics",
         href: "",
@@ -355,6 +356,7 @@ const caseStudies = [
         ],
     },
 ];
+
 const patentdata = [
     {
         title: "3D Printed, Pneumatically Actuated Four- Finger Adaptive Gripper",
@@ -368,7 +370,7 @@ const patentdata = [
 
 export default function Home() {
     return (
-        <div className="">
+        <div >
             <section id="hero">
                 <div className="mx-auto w-full max-w-2xl space-y-4 sm:space-y-8">
                     <div className="gap-2 flex justify-between">
@@ -376,7 +378,7 @@ export default function Home() {
                             <BlurFade delay={BLUR_FADE_DELAY}>
                                 <TypingAnimation
                                     duration={80}
-                                    className="prose max-w-full mb-1 text-pretty font-sans text-sm text-muted-foreground dark:prose-invert"
+                                    className="prose max-w-full mb-1 text-pretty font-sans text-xs sm:text-sm text-muted-foreground dark:prose-invert"
                                     text="const ayuugoyal = ( name, passion ) =>"
                                 />
                             </BlurFade>
@@ -388,7 +390,7 @@ export default function Home() {
                             />
                             <BlurFade delay={BLUR_FADE_DELAY} className="md:text-xl gap-2 flex flex-wrap">
                                 <Highlighter action="underline" color="#FF9800">
-                                    AI Product Manager
+                                    AI Engineer
                                 </Highlighter> &{" "}
                                 <Highlighter action="underline" color="#8BC34A">
                                     Robotics Software Engineer
@@ -400,7 +402,7 @@ export default function Home() {
                             </BlurFade>
                             <BlurFade
                                 delay={BLUR_FADE_DELAY}
-                                className="hidden sm:flex sm:gap-3"
+                                className="hidden sm:flex sm:gap-3 pt-4"
                             >
                                 <Link
                                     href="https://drive.google.com/file/d/1wPyEPWPzfSSmk5lwP6279Tt6vzUMp5xT/view?usp=sharing"
@@ -423,12 +425,12 @@ export default function Home() {
                                 <MagicButton />
                             </BlurFade>
                         </div>
-                        <BlurFade delay={BLUR_FADE_DELAY}>
+                        <BlurFade delay={BLUR_FADE_DELAY} className="sm:p-10">
                             <Avatar className="size-28 border">
                                 <AvatarImage
                                     alt="Ayush"
                                     className="w-full"
-                                    src="/ayush.JPG"
+                                    src="/sakuta.png"
                                 />
                                 <AvatarFallback className="text-6xl font-bold text-center w-full h-full flex items-center justify-center">
                                     AG
@@ -469,7 +471,7 @@ export default function Home() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 4}>
                         <div className="prose max-w-full text-pretty font-sans text-sm dark:prose-invert">
-                            I&apos;m Ayush Goyal, a passionate AI Product Manager and Robotics Software Engineer with a knack for building innovative solutions. With a strong foundation in full-stack development and a love for cutting-edge technologies, I thrive on turning ideas into reality. Whether it&apos;s developing intelligent AI systems or crafting seamless user experiences, I&apos;m driven by the excitement of creating impactful products that make a difference. Let&apos;s connect and explore how we can bring your vision to life!
+                            I&apos;m Ayush Goyal, a passionate AI Engineer and Robotics Software Engineer with a knack for building innovative solutions. With a strong foundation in full-stack development and a love for cutting-edge technologies, I thrive on turning ideas into reality. Whether it&apos;s developing intelligent AI systems or crafting seamless user experiences, I&apos;m driven by the excitement of creating impactful products that make a difference. Let&apos;s connect and explore how we can bring your vision to life!
                         </div>
                     </BlurFade>
                 </div>
@@ -479,7 +481,7 @@ export default function Home() {
                     <BlurFade delay={BLUR_FADE_DELAY * 3}>
                         <h2 className="text-xl font-bold">Work Experience</h2>
                     </BlurFade>
-                    {proj.map((work, id) => (
+                    {workExp.map((work, id) => (
                         <BlurFade
                             key={work.company}
                             delay={BLUR_FADE_DELAY * 6 + id * 0.05}
@@ -525,6 +527,52 @@ export default function Home() {
 
                 </div>
             </section>
+            <section id="patents">
+                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <h2 className="text-xl font-bold">Patents</h2>
+                    </BlurFade>
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <ul className="ml-4 divide-y divide-dashed border-l">
+                            {patentdata.map((project, id) => (
+                                <BlurFade
+                                    key={project.title + project.dates}
+                                    delay={BLUR_FADE_DELAY * 7 + id * 0.05}
+                                >
+                                    <HackathonCard
+                                        title={project.title}
+                                        description={project.description}
+                                        dates={project.dates}
+                                        image={project.image}
+                                    />
+                                </BlurFade>
+                            ))}
+                        </ul>
+                    </BlurFade>
+                </div>
+            </section>
+            <section id="skills">
+                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <h2 className="text-xl font-bold">Skills</h2>
+                    </BlurFade>
+                    <div className="flex justify-start items-center flex-col sm:flex-row gap-4">
+                        <div className="flex flex-wrap gap-1">
+                            {skillsList.map((skill, id) => (
+                                <BlurFade
+                                    key={skill}
+                                    delay={BLUR_FADE_DELAY + id * 0.05}
+                                >
+                                    <Badge key={skill}>{skill}</Badge>
+                                </BlurFade>
+                            ))}
+                        </div>
+                        <div className="px-14 sm:px-0 w-full">
+                            <IconCloudDemo />
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section id="projects">
                 <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
@@ -551,31 +599,6 @@ export default function Home() {
                             ))}
                         </ul>
                     </BlurFade>
-                </div>
-            </section>
-            <section id="patents">
-                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
-                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Patents</h2>
-                    </BlurFade>
-                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <ul className="ml-4 divide-y divide-dashed border-l">
-                            {patentdata.map((project, id) => (
-                                <BlurFade
-                                    key={project.title + project.dates}
-                                    delay={BLUR_FADE_DELAY * 7 + id * 0.05}
-                                >
-                                    <HackathonCard
-                                        title={project.title}
-                                        description={project.description}
-                                        dates={project.dates}
-                                        image={project.image}
-                                    />
-                                </BlurFade>
-                            ))}
-                        </ul>
-                    </BlurFade>
-
                 </div>
             </section>
             <section id="contact" className="mb-10">

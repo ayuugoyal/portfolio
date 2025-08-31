@@ -29,7 +29,7 @@ export default function RootLayout({
         <html lang="en">
             <body
                 className={cn(
-                    "min-h-screen bg-background cursor-none font-sans antialiased max-w-4xl mx-auto py-12 sm:py-24 px-6",
+                    "min-h-screen bg-background font-sans antialiased py-12 sm:py-24",
                     fontSans.variable
                 )}
             >

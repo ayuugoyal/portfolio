@@ -8,7 +8,8 @@ import { useTheme } from "next-themes";
 
 function MagicButton() {
     const [clicked, setClicked] = useState<boolean>(false);
-    const { theme } = useTheme();
+    const { theme, systemTheme } = useTheme();
+    console.log(theme, systemTheme);
     return (
         <CoolMode>
             <Button
@@ -26,7 +27,7 @@ function MagicButton() {
                         `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
                     )}
                 >
-                    <Heart color="#ffaa40" fill={clicked ? "#ffaa40" : theme == "dark" ? "#000000" : "#ffffff"} />
+                    <Heart color="#ffaa40" />
                 </span>
             </Button>
         </CoolMode>
