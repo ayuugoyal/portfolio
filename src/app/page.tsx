@@ -359,12 +359,18 @@ const caseStudies = [
 
 const patentdata = [
     {
-        title: "3D Printed, Pneumatically Actuated Four- Finger Adaptive Gripper",
+        title: "3D Printed, Pneumatically Actuated Four-Finger Adaptive Gripper",
         dates: "June 2025",
         description:
-            "The proposed design caters to the industrial robotic end -effectors, especially to the pneumatically actuated multi- finger grippers that are capable of grasping objects of various shapes and sizes.",
-        image:
-            "/patent.png",
+            "UK Design Registration for an innovative industrial robotic end-effector featuring pneumatically actuated multi-finger grippers capable of grasping objects of various shapes and sizes. This patented design represents a breakthrough in adaptive robotics technology for manufacturing applications.",
+        image: "/patent.png",
+        links: [
+            {
+                title: "View Patent",
+                href: "/patents/6450987",
+                icon: <ArrowUpRight />,
+            }
+        ],
     },
 ];
 
@@ -405,8 +411,7 @@ export default function Home() {
                                 className="hidden sm:flex sm:gap-3 pt-2"
                             >
                                 <Link
-                                    href="https://drive.google.com/file/d/1wPyEPWPzfSSmk5lwP6279Tt6vzUMp5xT/view?usp=sharing"
-                                    target="_blank"
+                                    href="/resume"
                                     className="flex items-center"
                                 >
                                     <AnimatedGradientText className="">
@@ -443,8 +448,7 @@ export default function Home() {
                         className="flex gap-3 sm:hidden"
                     >
                         <Link
-                            href="https://drive.google.com/file/d/1wPyEPWPzfSSmk5lwP6279Tt6vzUMp5xT/view?usp=sharing"
-                            target="_blank"
+                            href="/resume"
                             className="flex items-center"
                         >
                             <AnimatedGradientText>
@@ -544,6 +548,7 @@ export default function Home() {
                                         description={project.description}
                                         dates={project.dates}
                                         image={project.image}
+                                        links={project.links}
                                     />
                                 </BlurFade>
                             ))}
