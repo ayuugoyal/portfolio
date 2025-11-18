@@ -396,7 +396,7 @@ export default function Home() {
                             />
                             <BlurFade delay={BLUR_FADE_DELAY} className="md:text-xl space-y-2 ">
                                 <Highlighter action="underline" color="#FF9800">
-                                    DevOps Engineer
+                                    GenAI Engineer
                                 </Highlighter> &{" "}
                                 <Highlighter action="underline" color="#8BC34A">
                                     Robotics Software Engineer
