@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(dir:*)",
+      "WebFetch(domain:www.loadshare.net)",
+      "Bash(curl:*)"
+    ]
+  }
+}

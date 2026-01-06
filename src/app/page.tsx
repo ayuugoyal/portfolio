@@ -305,6 +305,17 @@ const projectsData = [
 
 const workExp = [
     {
+        company: "Loadshare Networks",
+        href: "https://www.loadshare.net/",
+        badges: [],
+        location: "Remote",
+        title: "AI Engineer",
+        logoUrl: "/loadshare.svg",
+        start: "Nov 2025",
+        description:
+            "Working as an AI Engineer at Loadshare Networks, a leading logistics and supply chain technology company. Developing and implementing AI-driven solutions to optimize logistics operations, enhance delivery efficiency, and improve customer experience. Additionally providing freelance consulting services for AI/ML projects across various domains."
+    },
+    {
         company: "Data Alt Dynamics",
         href: "",
         badges: [],
@@ -312,6 +323,7 @@ const workExp = [
         title: "Backend Developer",
         logoUrl: "/datalogo.png",
         start: "July 2025",
+        end: "Nov 2025",
         description:
             "Deployed a Raspberry Pi–based server with multi-sensor integration for real-time data acquisition and control. Designed and optimised local ComfyUI workflows, boosting AI-driven process efficiency by 70%. Built scalable backend architectures and automated pipelines by integrating Cloudflare Tunnel with n8n, enabling secure remote access, seamless cloud sync, and reducing manual operational tasks by 40%."
     },
