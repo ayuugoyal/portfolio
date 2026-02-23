@@ -171,37 +171,6 @@ const projectsData = [
         image: "/scara.png",
     },
     {
-        title: "ThriveAgro",
-        href: "https://thriveagro-eta.vercel.app/",
-        active: true,
-        dates: "",
-        description:
-            "THRIVE AGRO is a web app that enhances farmers' livelihoods by providing inventory management, direct buyer connections, and a reporting system for infrastructure issues, streamlining operations and improving access to resources.",
-        technologies: [
-            "Next.js",
-            "Typescript",
-            "PostgreSQL",
-            "Drizzle",
-            "TailwindCSS",
-            "Shadcn UI",
-            "OpenAI",
-            "HuggingFace",
-        ],
-        links: [
-            {
-                type: "Website",
-                href: "https://thriveagro-eta.vercel.app/",
-                icon: <GlobeIcon className="size-4" />,
-            },
-            {
-                type: "Github",
-                href: "https://github.com/ayuugoyal/thriveagro/",
-                icon: <GitIcon className="size-4" />,
-            },
-        ],
-        image: "/thrivagro.png",
-    },
-    {
         title: "Unstudio",
         href: "https://unstudio-ai.vercel.app/",
         active: true,
@@ -264,43 +233,7 @@ const projectsData = [
             },
         ],
         image: "/verdant.png",
-    },
-
-    {
-        title: "Surakshit",
-        href: "https://surakshit.vercel.app/",
-        active: true,
-        dates: "",
-        description:
-            "Surakshit is a cybersecurity project designed to shield businesses and individuals from cyber threats like ransomware, phishing, and malicious activities, ensuring a safe online journey through advanced technologies and proactive measures.",
-        technologies: [
-            "Next.js",
-            "Typescript",
-            "PostgreSQL",
-            "Drizzle",
-            "TailwindCSS",
-            "Shadcn UI",
-            "OpenAI",
-            "HuggingFace",
-            "FastAPI",
-            "Uvicorn",
-            "Chroma",
-            "LangChain",
-        ],
-        links: [
-            {
-                type: "Website",
-                href: "https://surakshit.vercel.app/",
-                icon: <GlobeIcon />,
-            },
-            {
-                type: "Github",
-                href: "https://github.com/ayuugoyal/surakshit/",
-                icon: <GitIcon />,
-            },
-        ],
-        image: "/surakshit.png",
-    },
+    }
 ];
 
 const workExp = [
