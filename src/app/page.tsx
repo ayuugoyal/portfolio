@@ -457,7 +457,7 @@ export default function Home() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 4}>
                         <div className="prose max-w-full text-pretty font-sans text-sm dark:prose-invert">
-                            I&apos;m Ayush Goyal, a passionate AI Engineer and Robotics Software Engineer with a knack for building innovative solutions. With a strong foundation in full-stack development and a love for cutting-edge technologies, I thrive on turning ideas into reality. Whether it&apos;s developing intelligent AI systems or crafting seamless user experiences, I&apos;m driven by the excitement of creating impactful products that make a difference. Let&apos;s connect and explore how we can bring your vision to life!
+                            I&apos;m Ayush Goyal — AI Engineer building production-grade GenAI systems and robotics software. I work across the full stack: RAG pipelines, LLM integrations, MCP servers, and embedded control systems. Currently at Loadshare Networks optimising logistics with AI, and contributing to open-source AI platforms. I ship things that work in the real world — from enterprise chatbots with paying customers to patented robotic grippers.
                         </div>
                     </BlurFade>
                 </div>
