@@ -4,7 +4,29 @@
       "Bash(ls:*)",
       "Bash(dir:*)",
       "WebFetch(domain:www.loadshare.net)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(find /Users/lsn-ayush/portfolio/src -type f -name *.tsx -o -name *.ts)",
+      "WebFetch(domain:rndynamolabs.tech)",
+      "Bash(gh repo:*)",
+      "Bash(gh issue:*)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d.get\\(''''readme'''',''''''''\\)[:3000]\\)\")",
+      "Bash(gh pr:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node_modules/.bin/tsc --noEmit)",
+      "Bash(pnpm exec:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm install:*)",
+      "WebFetch(domain:pw.live)",
+      "WebFetch(domain:bel-india.in)",
+      "WebFetch(domain:dataaltdynamics.com)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(source ~/.zshrc)",
+      "Bash(gh auth:*)",
+      "Bash(git config:*)",
+      "Bash(GIT_COMMITTER_NAME=\"ayuugoyal\" GIT_COMMITTER_EMAIL=\"ayushgoyal8178@gmail.com\" git commit --amend --reset-author --no-edit)",
+      "Bash(git remote:*)"
     ]
   }
 }

@@ -18,42 +18,36 @@ import { HackathonCard } from "@/components/pro-card";
 
 const BLUR_FADE_DELAY = 0.5;
 
-const skillsList = [
-    "Typescript/Javascript",
-    "Node.js",
-    "Python",
-    "C++",
-    "React.js",
-    "Next.js",
-    "express.js",
-    "PostgresSQL",
-    "MySQL",
-    "MongoDB",
-    "PrismaORM",
-    "DrizzleORM",
-    "Git/Github",
-    "AWS/Azure clouds",
-    "Nginx",
-    "Docker",
-    "ROS2",
-    "Arduino",
-    "Raspberry Pi",
-    "Websockets",
-    "REST APIs",
-    "GraphQL",
-    "TailwindCSS",
-    "Shadcn UI",
-    "Framer Motion",
-    "LLM's Integration",
-    "LangChain/LangSmith/LangGraph",
-    "FastAPI/Flask",
-    "HuggingFace",
-    "OpenAI",
-    "VectorDBs",
+const skillsData = [
+    {
+        category: "AI / GenAI",
+        skills: ["LangChain", "LangGraph", "LangSmith", "OpenAI API", "Gemini API", "HuggingFace", "RAG", "VectorDBs", "MCP Servers", "Prompt Engineering", "LLM Fine-tuning"],
+    },
+    {
+        category: "AI Dev Tools",
+        skills: ["Claude Code", "Cursor", "Antigravity", "n8n"],
+    },
+    {
+        category: "Physical AI / Robotics",
+        skills: ["ROS2", "Arduino", "Raspberry Pi", "Embedded Systems", "WebSockets"],
+    },
+    {
+        category: "Languages",
+        skills: ["Python", "TypeScript / JavaScript", "C++"],
+    },
+    {
+        category: "Backend & Frameworks",
+        skills: ["Next.js", "FastAPI", "Flask", "Express.js", "React.js", "GraphQL", "REST APIs"],
+    },
+    {
+        category: "Databases & Infrastructure",
+        skills: ["PostgreSQL", "MongoDB", "MySQL", "Docker", "AWS / Azure", "Nginx", "PrismaORM", "DrizzleORM"],
+    },
 ];
 
 const projectsData = [
     {
+        category: "Physical AI / Robotics",
         title: "BCN3D Moveo Control System",
         href: "https://github.com/ayuugoyal/bcn-3d-control-system",
         active: true,
@@ -85,6 +79,7 @@ const projectsData = [
         image: "/bcn-3d.jpg",
     },
     {
+        category: "AI",
         title: "Chatter AI",
         href: "https://www.chatterai.tech/",
         active: true,
@@ -115,6 +110,7 @@ const projectsData = [
         image: "/chatter.png",
     },
     {
+        category: "AI",
         title: "LawGPT",
         href: "https://lawgpt.rndynamolabs.tech/",
         active: true,
@@ -148,6 +144,7 @@ const projectsData = [
         image: "/lawgpt.png",
     },
     {
+        category: "Physical AI / Robotics",
         title: "SCARA Robot",
         href: "https://github.com/ayuugoyal/scara",
         active: true,
@@ -176,6 +173,7 @@ const projectsData = [
         image: "/scara.png",
     },
     {
+        category: "AI",
         title: "QuickDocs",
         href: "https://github.com/ayuugoyal/quickdocs",
         active: true,
@@ -198,30 +196,6 @@ const projectsData = [
             },
         ],
         image: "/quickdocs.png",
-    },
-    {
-        title: "Maintain AI",
-        href: "https://rndynamolabs.tech/",
-        active: true,
-        dates: "",
-        description:
-            "Industry-grade operations chatbot deployed for internal use at a Singapore company. Enterprise deployment with active paying customers — handles operational queries, maintenance workflows, and internal knowledge retrieval.",
-        technologies: [
-            "Next.js",
-            "TypeScript",
-            "LLM Integration",
-            "RAG",
-            "PostgreSQL",
-            "Docker",
-        ],
-        links: [
-            {
-                type: "Website",
-                href: "https://rndynamolabs.tech/",
-                icon: <GlobeIcon className="size-4" />,
-            },
-        ],
-        image: "/surakshit.png",
     },
 ];
 
@@ -493,7 +467,7 @@ export default function Home() {
                         <h2 className="text-xl font-bold">Open Source Contributions</h2>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <ul className="ml-4 divide-y divide-dashed border-l">
+                        <ul className="flex flex-col gap-2">
                             {openSourceData.map((project, id) => (
                                 <BlurFade
                                     key={project.title + project.dates}
@@ -518,7 +492,7 @@ export default function Home() {
                         <h2 className="text-xl font-bold">Patents</h2>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <ul className="ml-4 divide-y divide-dashed border-l">
+                        <ul className="flex flex-col gap-2">
                             {patentdata.map((project, id) => (
                                 <BlurFade
                                     key={project.title + project.dates}
@@ -542,49 +516,58 @@ export default function Home() {
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
                         <h2 className="text-xl font-bold">Skills</h2>
                     </BlurFade>
-                    <div className="flex justify-start items-center flex-col sm:flex-row gap-4">
-                        <div className="flex flex-wrap gap-1">
-                            {skillsList.map((skill, id) => (
-                                <BlurFade
-                                    key={skill}
-                                    delay={BLUR_FADE_DELAY + id * 0.05}
-                                >
-                                    <Badge key={skill}>{skill}</Badge>
+                    <div className="flex flex-col sm:flex-row gap-6">
+                        <div className="flex flex-col gap-3 flex-1">
+                            {skillsData.map((group, i) => (
+                                <BlurFade key={group.category} delay={BLUR_FADE_DELAY + i * 0.08}>
+                                    <div>
+                                        <p className="text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{group.category}</p>
+                                        <div className="flex flex-wrap gap-1">
+                                            {group.skills.map((skill) => (
+                                                <Badge key={skill} variant="secondary">{skill}</Badge>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </BlurFade>
                             ))}
                         </div>
-                        <div className="px-14 sm:px-0 w-full">
+                        <div className="px-14 sm:px-0 sm:w-64 w-full shrink-0">
                             <IconCloudDemo />
                         </div>
                     </div>
                 </div>
             </section>
             <section id="projects">
-                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
+                <div className="mx-auto w-full max-w-2xl pt-4 space-y-4">
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
                         <h2 className="text-xl font-bold">Projects</h2>
                     </BlurFade>
-                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <ul className="pt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                            {projectsData.map((project, id) => (
-                                <BlurFade
-                                    key={project.title}
-                                    delay={BLUR_FADE_DELAY * 8 + id * 0.05}
-                                >
-                                    <ProjectCard
-                                        href={project.href}
-                                        key={project.title}
-                                        title={project.title}
-                                        description={project.description}
-                                        dates={project.dates}
-                                        tags={project.technologies}
-                                        image={project.image}
-                                        links={project.links}
-                                    />
-                                </BlurFade>
-                            ))}
-                        </ul>
-                    </BlurFade>
+                    {(["AI", "Physical AI / Robotics"] as const).map((cat) => (
+                        <BlurFade key={cat} delay={BLUR_FADE_DELAY * 5}>
+                            <div className="space-y-2">
+                                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{cat}</p>
+                                <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                    {projectsData.filter(p => p.category === cat).map((project, id) => (
+                                        <BlurFade
+                                            key={project.title}
+                                            delay={BLUR_FADE_DELAY * 8 + id * 0.05}
+                                        >
+                                            <ProjectCard
+                                                href={project.href}
+                                                key={project.title}
+                                                title={project.title}
+                                                description={project.description}
+                                                dates={project.dates}
+                                                tags={project.technologies}
+                                                image={project.image}
+                                                links={project.links}
+                                            />
+                                        </BlurFade>
+                                    ))}
+                                </ul>
+                            </div>
+                        </BlurFade>
+                    ))}
                 </div>
             </section>
             <section id="contact" className="mb-10">
