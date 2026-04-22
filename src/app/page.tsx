@@ -293,9 +293,9 @@ const patentdata = [
 const openSourceData = [
     {
         title: "archestra-ai/archestra",
-        dates: "2025",
+        dates: "2026",
         description:
-            "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. *box#c3b1e1 Built Notion knowledge connector* — full-workspace & incremental sync via lastSyncedAt checkpoint, recursive block-to-Markdown conversion up to 3 levels deep (PR#3555). Added provider-agnostic Gemini embedding API client with outputDimensionality support (PR#3611). Fixed OAuth HTTPS metadata generation behind TLS-terminating reverse proxies via ARCHESTRA_TRUST_PROXY env var (PR#3400). Built Microsoft SharePoint knowledge connector with incremental sync & multimodal embedding support — merged by maintainer from my commits (PR#3656). Added recursive SharePoint subfolder traversal (PR#3960). Built OneDrive for Business knowledge connector with BFS traversal & incremental sync (PR#3958). *box#FFD700 Awarded $400 in bounties* by maintainers.",
+            "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. Contributed Notion connector, Gemini embeddings, SharePoint & OneDrive connectors, OAuth proxy fix, and recursive subfolder traversal across 6 PRs. *box#FFD700 Awarded $400 in bounties* by maintainers.",
         image: "https://github.com/archestra-ai.png",
         links: [
             {
