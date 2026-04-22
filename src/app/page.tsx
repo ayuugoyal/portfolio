@@ -103,7 +103,7 @@ const projectsData = [
             },
             {
                 type: "Github",
-                href: "https://github.com/ayuugoyal/chattercraft/",
+                href: "https://github.com/ayuugoyal/chatterai/",
                 icon: <GitIcon className="size-4" />,
             },
         ],
@@ -531,7 +531,7 @@ export default function Home() {
                                 </BlurFade>
                             ))}
                         </div>
-                        <div className="px-14 sm:px-0 sm:w-64 w-full shrink-0">
+                        <div className="w-full sm:w-72 shrink-0">
                             <IconCloudDemo />
                         </div>
                     </div>
