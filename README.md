@@ -1,65 +1,28 @@
-# Ayuugoyal Portfolio
+# ayush goyal — portfolio 😎
 
-Welcome to the repository for my personal portfolio website. This project showcases my skills as a robotics software developer, leveraging technologies like Next.js, Shadcn, Tailwind CSS, and my creative approach to web design.
+Personal portfolio of **Ayush Goyal** — AI Engineer & Robotics Software Engineer.
 
-## 👨‍💻 About Me
+Live at → [ayuugoyal.vercel.app](https://ayuugoyal.vercel.app)
 
-I’m Ayush Goyal, a passionate Robotics Software Developer with expertise in developing intuitive user interfaces and complex robotics systems. My focus is on leveraging cutting-edge technologies to create automation solutions for warehousing, logistics, and more.
+## what's inside
 
-## 🛠️ Technologies Used
+- **Work Experience** — Loadshare Networks, Data Alt Dynamics, Physics Wallah, BEL
+- **Open Source Contributions** — archestra-ai (6 PRs, $400 bounties), bolna-ai
+- **Patents** — UK Design Patent 6450987 (Pneumatic Adaptive Gripper)
+- **Skills** — AI/GenAI, Physical AI/Robotics, AI Dev Tools (Claude Code, Cursor, Antigravity)
+- **Projects** — categorised into AI and Physical AI / Robotics
 
--   **[Next.js](https://nextjs.org/):** React framework for server-side rendering and static site generation.
--   **[Shadcn](https://shadcn.dev/):** UI components and utilities for rapid development.
--   **[Tailwind CSS](https://tailwindcss.com/):** Utility-first CSS framework for styling.
+## stack
 
-## 🚀 Features
+- **Framework** — Next.js 14 (App Router)
+- **Language** — TypeScript
+- **UI** — Shadcn UI + Radix UI + Tailwind CSS
+- **Animation** — Framer Motion, Rough Notation
+- **Analytics** — Vercel Analytics
 
--   **Responsive Design:** Optimized for all devices, ensuring a seamless experience across different screen sizes.
--   **Modern UI:** Clean and professional interface using Shadcn and Tailwind CSS.
--   **Performance:** Fast load times and smooth interactions using Next.js.
--   **Custom Animations:** Subtle animations to enhance user engagement.
+## run locally
 
-## 📂 Project Structure
-
-Here’s an overview of the key folders and files in the codebase:
-
--   **`/src/components`**: Reusable components for the UI.
--   **`/src/app/page`**: Main page of the application.
-
-## 📦 Installation
-
-To run this project locally, follow these steps:
-
-1. **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/ayuugoyal/portfolio.git
-    ```
-
-2. **Navigate to the project directory:**
-
-    ```bash
-    cd portfolio
-    ```
-
-3. **Install dependencies:**
-
-    ```bash
-    pnpm install
-    ```
-
-4. **Run the development server:**
-
-    ```bash
-    pnpm run dev
-    ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the site in action.
-
-## 📝 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
-## 🌟 Acknowledgments
-
-A big thank you to the creators of [Next.js](https://nextjs.org/), [Shadcn](https://shadcn.dev/), and [Tailwind CSS](https://tailwindcss.com/) for their incredible tools that made this project possible.
+```bash
+pnpm install
+pnpm dev
+```
