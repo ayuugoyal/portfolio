@@ -303,6 +303,26 @@ const openSourceData = [
                 href: "https://github.com/archestra-ai/archestra",
                 icon: <Github />,
             },
+            {
+                title: "PR #3555",
+                href: "https://github.com/archestra-ai/archestra/pull/3555",
+                icon: <ArrowUpRight />,
+            },
+            {
+                title: "PR #3588",
+                href: "https://github.com/archestra-ai/archestra/pull/3588",
+                icon: <ArrowUpRight />,
+            },
+            {
+                title: "PR #3400",
+                href: "https://github.com/archestra-ai/archestra/pull/3400",
+                icon: <ArrowUpRight />,
+            },
+            {
+                title: "PR #3958",
+                href: "https://github.com/archestra-ai/archestra/pull/3958",
+                icon: <ArrowUpRight />,
+            },
         ],
     },
     {
