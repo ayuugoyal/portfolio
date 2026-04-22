@@ -76,15 +76,20 @@ const projectsData = [
                 href: "https://github.com/ayuugoyal/bcn-3d-control-system",
                 icon: <Github className="size-4" />,
             },
+            {
+                type: "Demo Video",
+                href: "https://rndynamolabs.tech/bcn3d.mp4",
+                icon: <Video className="size-4" />,
+            },
         ],
         image: "/bcn-3d.jpg",
     },
     {
-        title: "ChatterCraft AI",
-        href: "https://chattercraftai.ayuugoyal.tech/",
+        title: "Chatter AI",
+        href: "https://www.chatterai.tech/",
         active: true,
         dates: "",
-        description: "ChatterCraft AI is a lightweight, embeddable AI chatbot built to help businesses provide instant, intelligent customer support.  It answers product queries, recommends related items, and integrates in under 10 seconds.",
+        description: "Chatter AI is a lightweight, embeddable AI chatbot built to help businesses provide instant, intelligent customer support. It answers product queries, recommends related items, and integrates in under 10 seconds.",
         technologies: [
             "Next.js",
             "Typescript",
@@ -98,7 +103,7 @@ const projectsData = [
         links: [
             {
                 type: "Website",
-                href: "https://chattercraftai.ayuugoyal.tech/",
+                href: "https://www.chatterai.tech/",
                 icon: <GlobeIcon className="size-4" />,
             },
             {
@@ -111,7 +116,7 @@ const projectsData = [
     },
     {
         title: "LawGPT",
-        href: "https://lawgpt.ayuugoyal.tech/",
+        href: "https://lawgpt.rndynamolabs.tech/",
         active: true,
         dates: "",
         description: "LawGPT is an AI-powered legal assistant that uses Retrieval-Augmented Generation (RAG) to provide instant, document-backed legal guidance. By leveraging advanced technologies like HuggingFace embeddings, FAISS vectorstore, and the Gemini API, it helps users navigate complex legal matters efficiently and accurately.",
@@ -131,7 +136,7 @@ const projectsData = [
         links: [
             {
                 type: "Website",
-                href: "https://lawgpt.ayuugoyal.tech/",
+                href: "https://lawgpt.rndynamolabs.tech/",
                 icon: <GlobeIcon className="size-4" />,
             },
             {
@@ -164,76 +169,60 @@ const projectsData = [
             },
             {
                 type: "Demo Video",
-                href: "https://github.com/user-attachments/assets/922ea7b5-70ef-4cfa-be29-8c4aa264a613",
-                icon: < Video className="size-4" />,
+                href: "https://rndynamolabs.tech/scara.mp4",
+                icon: <Video className="size-4" />,
             },
         ],
         image: "/scara.png",
     },
     {
-        title: "Unstudio",
-        href: "https://unstudio-ai.vercel.app/",
+        title: "QuickDocs",
+        href: "https://github.com/ayuugoyal/quickdocs",
         active: true,
         dates: "",
         description:
-            "An alternative to excelidraw to create and share your art on canvas by recording or sharing with a freture of adding intro and outro to recoreded videos.",
+            "Instant documentation fetcher for any service. CLI + MCP server powered by llms.txt — fetch docs for any library or API in seconds directly from your terminal or AI agent.",
         technologies: [
-            "Next.js",
-            "Typescript",
-            "PostgreSQL",
-            "Prisma",
-            "TailwindCSS",
-            "Shadcn UI",
-            "OpenAI",
-            "Remotion",
-            "Fabric JS",
-            "NextAuth",
+            "TypeScript",
+            "Shell",
+            "MCP Server",
+            "CLI",
+            "llms.txt",
+            "Node.js",
         ],
         links: [
             {
-                type: "Website",
-                href: "https://unstudio-ai.vercel.app/",
-                icon: <GlobeIcon className="size-4" />,
-            },
-            {
                 type: "Github",
-                href: "https://github.com/ayuugoyal/unstudio/",
+                href: "https://github.com/ayuugoyal/quickdocs",
                 icon: <GitIcon className="size-4" />,
             },
         ],
-        image: "/unstudio.png",
+        image: "/quickdocs.png",
     },
     {
-        title: "Verdant",
-        href: "https://verdant-phi.vercel.app/",
+        title: "Maintain AI",
+        href: "https://rndynamolabs.tech/",
         active: true,
         dates: "",
         description:
-            "Verdant utilizes Open AI key to personalize event planning. From community yoga sessions to cleanliness drives, AI tailors recommendations to fit users' preferences, making participation seamless and enjoyable.",
+            "Industry-grade operations chatbot deployed for internal use at a Singapore company. Enterprise deployment with active paying customers — handles operational queries, maintenance workflows, and internal knowledge retrieval.",
         technologies: [
             "Next.js",
-            "Typescript",
+            "TypeScript",
+            "LLM Integration",
+            "RAG",
             "PostgreSQL",
-            "Drizzle",
-            "TailwindCSS",
-            "Shadcn UI",
-            "OpenAI",
-            "HuggingFace",
+            "Docker",
         ],
         links: [
             {
                 type: "Website",
-                href: "https://verdant-phi.vercel.app/",
+                href: "https://rndynamolabs.tech/",
                 icon: <GlobeIcon className="size-4" />,
             },
-            {
-                type: "Github",
-                href: "https://github.com/ayuugoyal/verdant/",
-                icon: <GitIcon className="size-4" />,
-            },
         ],
-        image: "/verdant.png",
-    }
+        image: "/surakshit.png",
+    },
 ];
 
 const workExp = [
@@ -250,7 +239,7 @@ const workExp = [
     },
     {
         company: "Data Alt Dynamics",
-        href: "",
+        href: "https://dataaltdynamics.com/",
         badges: [],
         location: "Remote",
         title: "Backend Developer",
@@ -263,13 +252,13 @@ const workExp = [
     {
         company: "Physics Wallah",
         badges: [],
-        href: "https://pw.live",
+        href: "https://www.pw.live",
         location: "Noida, IN",
         title: "Trainee",
         logoUrl: "/pwlogo.jpg",
         start: "May 2025",
         end: "July 2025",
-        description: ""
+        description: "Contributed to backend development and platform engineering at India's leading ed-tech platform serving millions of students across JEE, NEET, and school curricula."
     },
     {
         company: "Bharat Electronics Limited",
@@ -280,25 +269,7 @@ const workExp = [
         logoUrl: "/bellogo.png",
         start: "June 2024",
         end: "Aug 2024",
-        description: ""
-    },
-];
-
-const caseStudies = [
-    {
-        title: "LawGPT – AI-Powered Legal Assistant",
-        dates: "May 2025 - June 2025",
-        description:
-            "LawGPT is an AI-driven legal research assistant that leverages Retrieval-Augmented Generation (RAG) to deliver document-backed, transparent answers to legal queries. Designed to simplify access to complex legal information, LawGPT attracted *box#FFB6C1 70+ user sign-ups* in its early testing phase, validating strong demand for an AI-powered legal assistant.",
-        image:
-            "/law_i.png",
-        links: [
-            {
-                title: "read more",
-                href: "https://blogs.ayuugoyal.tech/blog/Why-Is-Legal-Advice-Still-Out-of-Reach-for-Most-People/",
-                icon: <ArrowUpRight />,
-            },
-        ],
+        description: "Worked on embedded systems and electronics projects at India's premier defence electronics manufacturer under the Ministry of Defence, gaining hands-on experience with industrial hardware systems."
     },
 ];
 
@@ -315,6 +286,42 @@ const patentdata = [
                 href: "/patents/6450987",
                 icon: <ArrowUpRight />,
             }
+        ],
+    },
+];
+
+const openSourceData = [
+    {
+        title: "archestra-ai/archestra",
+        dates: "2025",
+        description:
+            "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. *box#c3b1e1 Built Notion knowledge connector* — full-workspace & incremental sync via lastSyncedAt checkpoint, recursive block-to-Markdown conversion up to 3 levels deep; *box#FFD700 awarded $400 in bounties* by maintainers (PR#3555, PR#3588, PR#3958). Added native Gemini embedding API client with outputDimensionality support and dynamic model discovery (PR#3588). Fixed OAuth HTTPS metadata generation behind TLS-terminating reverse proxies via ARCHESTRA_TRUST_PROXY env var (PR#3400). Added SharePoint & OneDrive for Business knowledge connectors with BFS recursive traversal (PR#3958, issues #3629, #3665, #3959).",
+        image: "https://github.com/archestra-ai.png",
+        links: [
+            {
+                title: "archestra-ai/archestra",
+                href: "https://github.com/archestra-ai/archestra",
+                icon: <Github />,
+            },
+        ],
+    },
+    {
+        title: "bolna-ai/bolna",
+        dates: "2025",
+        description:
+            "Open-source voice AI agent framework (telephony, LLM, TTS pipelines). Resolved duplicate .env file requirement in telephony server Dockerfiles (Twilio & Plivo), centralising config via docker-compose env_file directive (PR#310).",
+        image: "https://github.com/bolna-ai.png",
+        links: [
+            {
+                title: "bolna-ai/bolna",
+                href: "https://github.com/bolna-ai/bolna",
+                icon: <Github />,
+            },
+            {
+                title: "PR #310",
+                href: "https://github.com/bolna-ai/bolna/pull/310",
+                icon: <ArrowUpRight />,
+            },
         ],
     },
 ];
@@ -450,14 +457,14 @@ export default function Home() {
                     ))}
                 </div>
             </section>
-            <section id="case-studies">
+            <section id="patents">
                 <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Case Studies & Blogs</h2>
+                        <h2 className="text-xl font-bold">Patents</h2>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
                         <ul className="ml-4 divide-y divide-dashed border-l">
-                            {caseStudies.map((project, id) => (
+                            {patentdata.map((project, id) => (
                                 <BlurFade
                                     key={project.title + project.dates}
                                     delay={BLUR_FADE_DELAY * 7 + id * 0.05}
@@ -473,17 +480,16 @@ export default function Home() {
                             ))}
                         </ul>
                     </BlurFade>
-
                 </div>
             </section>
-            <section id="patents">
+            <section id="open-source">
                 <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Patents</h2>
+                        <h2 className="text-xl font-bold">Open Source</h2>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
                         <ul className="ml-4 divide-y divide-dashed border-l">
-                            {patentdata.map((project, id) => (
+                            {openSourceData.map((project, id) => (
                                 <BlurFade
                                     key={project.title + project.dates}
                                     delay={BLUR_FADE_DELAY * 7 + id * 0.05}

@@ -52,7 +52,6 @@ export function HackathonCard({
     HighlighterComponent: React.ComponentType<HighlighterProps>
   ): React.ReactNode => {
     if (!text) return text;
-    console.log(text);
 
     const parts = text.split(/(\*[^*]+\*)/g);
 
