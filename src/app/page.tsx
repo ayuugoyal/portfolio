@@ -295,7 +295,7 @@ const openSourceData = [
         title: "archestra-ai/archestra",
         dates: "2025",
         description:
-            "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. *box#c3b1e1 Built Notion knowledge connector* — full-workspace & incremental sync via lastSyncedAt checkpoint, recursive block-to-Markdown conversion up to 3 levels deep; *box#FFD700 awarded $400 in bounties* by maintainers (PR#3555, PR#3588, PR#3958). Added native Gemini embedding API client with outputDimensionality support and dynamic model discovery (PR#3588). Fixed OAuth HTTPS metadata generation behind TLS-terminating reverse proxies via ARCHESTRA_TRUST_PROXY env var (PR#3400). Added SharePoint & OneDrive for Business knowledge connectors with BFS recursive traversal (PR#3958, issues #3629, #3665, #3959).",
+            "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. *box#c3b1e1 Built Notion knowledge connector* — full-workspace & incremental sync via lastSyncedAt checkpoint, recursive block-to-Markdown conversion up to 3 levels deep (PR#3555). Added provider-agnostic Gemini embedding API client with outputDimensionality support (PR#3611). Fixed OAuth HTTPS metadata generation behind TLS-terminating reverse proxies via ARCHESTRA_TRUST_PROXY env var (PR#3400). Built Microsoft SharePoint knowledge connector with incremental sync & multimodal embedding support — merged by maintainer from my commits (PR#3656). Added recursive SharePoint subfolder traversal (PR#3960). *box#FFD700 Awarded $400 in bounties* by maintainers.",
         image: "https://github.com/archestra-ai.png",
         links: [
             {
@@ -309,18 +309,23 @@ const openSourceData = [
                 icon: <ArrowUpRight />,
             },
             {
-                title: "PR #3588",
-                href: "https://github.com/archestra-ai/archestra/pull/3588",
+                title: "PR #3611",
+                href: "https://github.com/archestra-ai/archestra/pull/3611",
+                icon: <ArrowUpRight />,
+            },
+            {
+                title: "PR #3656",
+                href: "https://github.com/archestra-ai/archestra/pull/3656",
+                icon: <ArrowUpRight />,
+            },
+            {
+                title: "PR #3960",
+                href: "https://github.com/archestra-ai/archestra/pull/3960",
                 icon: <ArrowUpRight />,
             },
             {
                 title: "PR #3400",
                 href: "https://github.com/archestra-ai/archestra/pull/3400",
-                icon: <ArrowUpRight />,
-            },
-            {
-                title: "PR #3958",
-                href: "https://github.com/archestra-ai/archestra/pull/3958",
                 icon: <ArrowUpRight />,
             },
         ],
