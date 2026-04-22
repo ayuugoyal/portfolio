@@ -487,14 +487,14 @@ export default function Home() {
                     ))}
                 </div>
             </section>
-            <section id="patents">
+            <section id="open-source">
                 <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Patents</h2>
+                        <h2 className="text-xl font-bold">Open Source Contributions</h2>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
                         <ul className="ml-4 divide-y divide-dashed border-l">
-                            {patentdata.map((project, id) => (
+                            {openSourceData.map((project, id) => (
                                 <BlurFade
                                     key={project.title + project.dates}
                                     delay={BLUR_FADE_DELAY * 7 + id * 0.05}
@@ -512,14 +512,14 @@ export default function Home() {
                     </BlurFade>
                 </div>
             </section>
-            <section id="open-source">
+            <section id="patents">
                 <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Open Source</h2>
+                        <h2 className="text-xl font-bold">Patents</h2>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
                         <ul className="ml-4 divide-y divide-dashed border-l">
-                            {openSourceData.map((project, id) => (
+                            {patentdata.map((project, id) => (
                                 <BlurFade
                                     key={project.title + project.dates}
                                     delay={BLUR_FADE_DELAY * 7 + id * 0.05}
