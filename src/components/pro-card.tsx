@@ -92,7 +92,7 @@ export function HackathonCard({
   };
   return (
     <li className="relative ml-14 py-4">
-      <div className="absolute -left-14 top-2 flex items-center justify-center bg-background rounded-full">
+      <div className="absolute -left-14 top-2">
         <Avatar className="border size-12 m-auto">
           <AvatarImage src={image} alt={title} className="object-contain" />
           <AvatarFallback>{title[0]}</AvatarFallback>
