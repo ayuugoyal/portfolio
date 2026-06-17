@@ -13,8 +13,9 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-    title: "Ayush Goyal | Portfolio",
-    description: "Ayush Goyal's Portfolio",
+    metadataBase: new URL("https://www.ayuugoyal.tech"),
+    title: "Ayush Goyal | Physical AI & Robotics Engineer",
+    description: "Ayush Goyal — AI Engineer focused on Physical AI and robotics. Building GenAI systems and the robotics software that brings them into the real world.",
     icons: {
         icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>😎</text></svg>",
     },

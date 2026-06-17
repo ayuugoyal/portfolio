@@ -20,16 +20,16 @@ const BLUR_FADE_DELAY = 0.5;
 
 const skillsData = [
     {
+        category: "Physical AI / Robotics",
+        skills: ["ROS2", "ROSBridge", "Arduino", "Raspberry Pi", "Embedded Systems", "Motion Control", "Sensor Integration", "Computer Vision", "WebSockets"],
+    },
+    {
         category: "AI / GenAI",
         skills: ["LangChain", "LangGraph", "LangSmith", "OpenAI API", "Gemini API", "HuggingFace", "RAG", "VectorDBs", "MCP Servers", "Prompt Engineering", "LLM Fine-tuning"],
     },
     {
         category: "AI Dev Tools",
         skills: ["Claude Code", "Cursor", "Antigravity", "n8n"],
-    },
-    {
-        category: "Physical AI / Robotics",
-        skills: ["ROS2", "Arduino", "Raspberry Pi", "Embedded Systems", "WebSockets"],
     },
     {
         category: "Languages",
@@ -201,6 +201,17 @@ const projectsData = [
 
 const workExp = [
     {
+        company: "TAP Innovations",
+        href: "https://tapinnov.com/",
+        badges: [],
+        location: "Remote, US",
+        title: "AI Engineer",
+        logoUrl: "/tapinnov.png",
+        start: "May 2026",
+        description:
+            "AI Engineer at TAP Innovations, a US-based software startup building integrations, analytics, and custom applications for enterprise systems. Designing and shipping AI-driven solutions in a fully remote role, while sharpening my focus on Physical AI — bringing machine intelligence into real-world robots and embedded hardware, which I believe is the next big thing."
+    },
+    {
         company: "Loadshare Networks",
         href: "https://www.loadshare.net/",
         badges: [],
@@ -208,8 +219,9 @@ const workExp = [
         title: "AI Engineer",
         logoUrl: "/loadshare.svg",
         start: "Nov 2025",
+        end: "Apr 2026",
         description:
-            "Working as an AI Engineer at Loadshare Networks, a leading logistics and supply chain technology company. Developing and implementing AI-driven solutions to optimize logistics operations, enhance delivery efficiency, and improve customer experience. Additionally providing freelance consulting services for AI/ML projects across various domains."
+            "Worked as an AI Engineer at Loadshare Networks, a leading logistics and supply chain technology company. Developed and implemented AI-driven solutions to optimize logistics operations, enhance delivery efficiency, and improve customer experience. Additionally provided freelance consulting services for AI/ML projects across various domains."
     },
     {
         company: "Data Alt Dynamics",
@@ -352,15 +364,15 @@ export default function Home() {
                             />
                             <BlurFade delay={BLUR_FADE_DELAY} className="md:text-xl space-y-2 ">
                                 <Highlighter action="underline" color="#FF9800">
-                                    GenAI Engineer
+                                    Physical AI
                                 </Highlighter> &{" "}
                                 <Highlighter action="underline" color="#8BC34A">
-                                    Robotics Software Engineer
+                                    Robotics Engineer
                                 </Highlighter>{" "}
                                 with a passion for{" "}
                                 <Highlighter action="highlight" color="#d677b6">
-                                    building cool
-                                </Highlighter>{" "} stuff.
+                                    building robots
+                                </Highlighter>{" "} that think.
                             </BlurFade>
                             <BlurFade
                                 delay={BLUR_FADE_DELAY}
@@ -431,7 +443,7 @@ export default function Home() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 4}>
                         <div className="prose max-w-full text-pretty font-sans text-sm dark:prose-invert">
-                            I&apos;m Ayush Goyal — AI Engineer building production-grade GenAI systems and robotics software. I work across the full stack: RAG pipelines, LLM integrations, MCP servers, and embedded control systems. Currently at Loadshare Networks optimising logistics with AI, and contributing to open-source AI platforms. I ship things that work in the real world — from enterprise chatbots with paying customers to patented robotic grippers.
+                            I&apos;m Ayush Goyal — an AI Engineer focused on Physical AI: bringing intelligence into the real world through robots and embedded systems. I build production-grade GenAI systems — RAG pipelines, LLM integrations, MCP servers — and the robotics software that puts them into motion, from ROS2 control stacks and Arduino firmware to patented robotic hardware. Currently an AI Engineer at TAP Innovations (remote, US), I&apos;m betting on Physical AI as the next big thing and building toward it. I ship things that work in the real world — enterprise chatbots with paying customers, open-source AI platforms, and robots you can actually control.
                         </div>
                     </BlurFade>
                 </div>
@@ -542,7 +554,7 @@ export default function Home() {
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
                         <h2 className="text-xl font-bold">Projects</h2>
                     </BlurFade>
-                    {(["AI", "Physical AI / Robotics"] as const).map((cat) => (
+                    {(["Physical AI / Robotics", "AI"] as const).map((cat) => (
                         <BlurFade key={cat} delay={BLUR_FADE_DELAY * 5}>
                             <div className="space-y-2">
                                 <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{cat}</p>

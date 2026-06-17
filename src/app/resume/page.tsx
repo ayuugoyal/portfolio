@@ -7,7 +7,7 @@ import { ArrowUpRight, Download, ExternalLink, ChevronLeft } from "lucide-react"
 
 export const metadata: Metadata = {
   title: 'Resume - Ayush Goyal',
-  description: 'AI Engineer & Robotics Software Engineer Resume',
+  description: 'Resume of Ayush Goyal — AI Engineer focused on Physical AI & Robotics',
 };
 
 const BLUR_FADE_DELAY = 0.04;
@@ -40,7 +40,7 @@ export default function ResumePage() {
 
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-              AI Engineer & Robotics Software Engineer with a passion for building innovative solutions.
+              AI Engineer focused on Physical AI & Robotics — building intelligent machines for the real world.
             </div>
           </BlurFade>
 
@@ -66,9 +66,9 @@ export default function ResumePage() {
             </Link>
 
             <div className="flex flex-wrap gap-1">
-              <Badge variant="secondary">AI Engineer</Badge>
+              <Badge variant="secondary">Physical AI</Badge>
               <Badge variant="secondary">Robotics</Badge>
-              <Badge variant="secondary">Full Stack</Badge>
+              <Badge variant="secondary">AI Engineer</Badge>
             </div>
           </BlurFade>
         </div>
