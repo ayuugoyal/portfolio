@@ -15,6 +15,7 @@ import TypingAnimation from "@/components/magicui/typing-animation";
 import { Highlighter } from "@/components/magicui/highlighter";
 import { ResumeCard } from "@/components/resume-card";
 import { HackathonCard } from "@/components/pro-card";
+import { VisitorCount } from "@/components/visitor-count";
 
 const BLUR_FADE_DELAY = 0.5;
 
@@ -205,11 +206,11 @@ const workExp = [
         href: "https://tapinnov.com/",
         badges: [],
         location: "Remote, US",
-        title: "AI Engineer",
+        title: "AI (Harness) Engineer",
         logoUrl: "/tapinnov.png",
         start: "May 2026",
         description:
-            "AI Engineer at TAP Innovations, a US-based software startup building integrations, analytics, and custom applications for enterprise systems. Designing and shipping AI-driven solutions in a fully remote role, while sharpening my focus on Physical AI — bringing machine intelligence into real-world robots and embedded hardware, which I believe is the next big thing."
+            "AI (Harness) Engineer at TAP Innovations, a US-based software startup building integrations, analytics, and custom applications for enterprise systems. Designing and shipping AI-driven solutions in a fully remote role, while sharpening my focus on Physical AI — bringing machine intelligence into real-world robots and embedded hardware, which I believe is the next big thing."
     },
     {
         company: "Loadshare Networks",
@@ -443,7 +444,7 @@ export default function Home() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 4}>
                         <div className="prose max-w-full text-pretty font-sans text-sm dark:prose-invert">
-                            I&apos;m Ayush Goyal — an AI Engineer focused on Physical AI: bringing intelligence into the real world through robots and embedded systems. I build production-grade GenAI systems — RAG pipelines, LLM integrations, MCP servers — and the robotics software that puts them into motion, from ROS2 control stacks and Arduino firmware to patented robotic hardware. Currently an AI Engineer at TAP Innovations (remote, US), I&apos;m betting on Physical AI as the next big thing and building toward it. I ship things that work in the real world — enterprise chatbots with paying customers, open-source AI platforms, and robots you can actually control.
+                            I&apos;m Ayush Goyal — an AI Engineer focused on Physical AI: bringing intelligence into the real world through robots and embedded systems. I build production-grade GenAI systems — RAG pipelines, LLM integrations, MCP servers — and the robotics software that puts them into motion, from ROS2 control stacks and Arduino firmware to patented robotic hardware. Currently an AI (Harness) Engineer at TAP Innovations (remote, US), I&apos;m betting on Physical AI as the next big thing and building toward it. I ship things that work in the real world — enterprise chatbots with paying customers, open-source AI platforms, and robots you can actually control.
                         </div>
                     </BlurFade>
                 </div>
@@ -606,6 +607,9 @@ export default function Home() {
                                 </Link>
                                 , and I&apos;ll hit you back when I can.
                             </p>
+                            <div className="flex justify-center pt-2">
+                                <VisitorCount />
+                            </div>
                         </div>
                     </BlurFade>
                 </div>
