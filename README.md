@@ -13,17 +13,29 @@ AI Engineer focused on Physical AI — bringing intelligence into the real world
 - **Framework** — Next.js 14 (App Router)
 - **Language** — TypeScript
 - **UI** — Shadcn UI + Radix UI + Tailwind CSS
-- **Animation** — Framer Motion, Rough Notation
+- **Type** — Syne (display), Space Grotesk (body), JetBrains Mono (meta)
+- **Animation** — Framer Motion, Rough Notation, CSS marquee
 - **Analytics** — Vercel Analytics
+
+## 🎨 Design
+
+Minimal and mostly monochrome. Hairline `border-border` rules and dividers instead
+of boxes, two button weights (`.btn-solid` / `.btn-quiet`), lowercase mono for all
+metadata, and one lime accent (`--brand`) used **only as a fill** — a live dot, a
+hover, an underline — never as text on the page background, where it has no
+contrast. Copy is written in Gen-Z voice throughout.
 
 ## 🚀 Features
 
+- **Hero** — live status line, outlined surname, two CTAs
+- **Currently** — what I'm cooking / obsessed with / down for, as a definition list
 - **Categorised Projects** — AI and Physical AI / Robotics sections
-- **Open Source Section** — archestra-ai contributions with PR links
+- **Open Source Section** — archestra-ai + bolna contributions with PR links
 - **Patents** — UK Design Patent 6450987
 - **Skills** — AI/GenAI, Physical AI/Robotics, AI Dev Tools (Claude Code, Cursor, Antigravity)
 - **Responsive Design** — optimised for all devices
 - **Dark / Light Mode** — system-aware theming
+- **Reduced motion** — the marquee respects `prefers-reduced-motion`
 
 ## 📂 Project Structure
 

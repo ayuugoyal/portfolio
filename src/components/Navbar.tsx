@@ -92,7 +92,10 @@ export function Navbar() {
     return (
         <div className="fixed z-50 bottom-10 right-0 left-0 flex flex-col w-full items-center justify-center">
             <TooltipProvider>
-                <Dock direction="middle" className="rounded-full">
+                <Dock
+                    direction="middle"
+                    className="rounded-full border border-border bg-background/70"
+                >
                     {DATA.navbar.map((item) => (
                         <DockIcon key={item.label}>
                             <Tooltip>
@@ -110,7 +113,7 @@ export function Navbar() {
                                         <item.icon className="size-4" />
                                     </Link>
                                 </TooltipTrigger>
-                                <TooltipContent>
+                                <TooltipContent className="font-mono text-[10px] lowercase">
                                     <p>{item.label}</p>
                                 </TooltipContent>
                             </Tooltip>
@@ -136,7 +139,7 @@ export function Navbar() {
                                             <social.icon className="size-4" />
                                         </Link>
                                     </TooltipTrigger>
-                                    <TooltipContent>
+                                    <TooltipContent className="font-mono text-[10px] lowercase">
                                         <p>{name}</p>
                                     </TooltipContent>
                                 </Tooltip>

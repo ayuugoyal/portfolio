@@ -24,58 +24,59 @@ export default function ResumePage() {
           <BlurFade delay={BLUR_FADE_DELAY}>
             <Link
               href="/"
-              className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
             >
-              <ChevronLeft className="mr-1 h-4 w-4" />
-              Back to Portfolio
+              <ChevronLeft className="mr-1 h-3 w-3" />
+              back to portfolio
             </Link>
           </BlurFade>
 
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 2}
-            className="text-3xl font-bold tracking-tighter sm:text-4xl"
+            className="font-display text-4xl font-bold lowercase tracking-tight sm:text-5xl"
             yOffset={8}
-            text="Resume"
+            text="the resume"
           />
 
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-              AI Engineer focused on Physical AI & Robotics — building intelligent machines for the real world.
+            <div className="max-w-lg text-pretty text-sm text-muted-foreground">
+              One page, zero filler. AI engineer doing Physical AI — machines that
+              work outside a browser tab.
             </div>
           </BlurFade>
 
           {/* Action Buttons */}
-          <BlurFade delay={BLUR_FADE_DELAY * 4} className="flex flex-wrap gap-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 4} className="flex flex-wrap items-center gap-2.5">
             <Link
               href={`https://drive.google.com/file/d/${driveFileId}/view?usp=sharing`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm font-medium"
+              className="btn-solid"
             >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Open in Google Drive
-              <ArrowUpRight className="ml-1 h-3 w-3" />
+              <ExternalLink className="h-3.5 w-3.5" />
+              open in drive
+              <ArrowUpRight className="h-3 w-3" />
             </Link>
 
             <Link
               href={`https://drive.google.com/uc?export=download&id=${driveFileId}`}
-              className="inline-flex items-center px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80 transition-colors text-sm font-medium"
+              className="btn-quiet"
             >
-              <Download className="w-4 h-4 mr-2" />
-              Download PDF
+              <Download className="h-3.5 w-3.5" />
+              download pdf
             </Link>
 
             <div className="flex flex-wrap gap-1">
-              <Badge variant="secondary">Physical AI</Badge>
-              <Badge variant="secondary">Robotics</Badge>
-              <Badge variant="secondary">AI Engineer</Badge>
+              <Badge variant="chip">Physical AI</Badge>
+              <Badge variant="chip">Robotics</Badge>
+              <Badge variant="chip">AI Engineer</Badge>
             </div>
           </BlurFade>
         </div>
 
         {/* PDF Viewer Container */}
         <BlurFade delay={BLUR_FADE_DELAY * 5}>
-          <div className="relative bg-card rounded-lg border overflow-hidden">
+          <div className="relative overflow-hidden rounded-xl border border-border bg-card">
             <div className="aspect-[3/4] w-full min-h-[800px]">
               <iframe
                 src={embedUrl}
@@ -117,10 +118,10 @@ export default function ResumePage() {
 
         {/* Footer Info */}
         <BlurFade delay={BLUR_FADE_DELAY * 6}>
-          <div className="mt-8 p-4 bg-muted/30 rounded-lg border border-dashed">
-            <div className="text-center space-y-2">
-              <p className="text-sm text-muted-foreground">
-                Looking for more details about my experience and projects?
+          <div className="mt-8 border-t border-border pt-4">
+            <div className="space-y-2 text-center">
+              <p className="font-mono text-[10px] lowercase text-muted-foreground">
+                want the long version?
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
                 <Link

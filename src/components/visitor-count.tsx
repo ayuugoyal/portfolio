@@ -26,12 +26,12 @@ export function VisitorCount() {
     }, []);
 
     return (
-        <div className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-            <Eye className="size-4" />
-            <span className="tabular-nums">
-                {count === null ? "—" : count.toLocaleString()}
+        <div className="inline-flex items-center gap-1.5 font-mono text-[10px] lowercase text-muted-foreground">
+            <Eye className="size-3" />
+            <span className="tabular-nums text-foreground">
+                {count === null ? "···" : count.toLocaleString()}
             </span>
-            <span>visitors</span>
+            <span>pulled up</span>
         </div>
     );
 }

@@ -85,9 +85,7 @@ export default function HeroVideoDialog({
         aria-label="Play video"
         onClick={() => setIsVideoOpen(true)}
       >
-        <Badge
-          className="flex gap-2 px-2 py-1 text-[10px]"
-        >
+        <Badge variant="link" className="[&_svg]:size-3">
           {icon}
           {thumbnailAlt}
         </Badge>

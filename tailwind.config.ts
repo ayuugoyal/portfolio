@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config = {
     darkMode: ["class"],
@@ -18,12 +19,26 @@ const config = {
             },
         },
         extend: {
+            fontFamily: {
+                sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
+                display: [
+                    "var(--font-display)",
+                    "var(--font-sans)",
+                    ...defaultTheme.fontFamily.sans,
+                ],
+                mono: ["var(--font-mono)", ...defaultTheme.fontFamily.mono],
+            },
             colors: {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
                 ring: "hsl(var(--ring))",
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
+                // lime accent — fills only, never text on the page background
+                brand: {
+                    DEFAULT: "hsl(var(--brand))",
+                    foreground: "hsl(var(--brand-foreground))",
+                },
                 primary: {
                     DEFAULT: "hsl(var(--primary))",
                     foreground: "hsl(var(--primary-foreground))",
@@ -72,11 +87,22 @@ const config = {
                         backgroundPosition: "var(--bg-size) 0",
                     },
                 },
+                marquee: {
+                    from: { transform: "translateX(0)" },
+                    to: { transform: "translateX(-100%)" },
+                },
+                "marquee-reverse": {
+                    from: { transform: "translateX(-100%)" },
+                    to: { transform: "translateX(0)" },
+                },
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
                 gradient: "gradient 8s linear infinite",
+                marquee: "marquee var(--marquee-duration, 32s) linear infinite",
+                "marquee-reverse":
+                    "marquee-reverse var(--marquee-duration, 32s) linear infinite",
             },
         },
     },

@@ -18,6 +18,8 @@ interface ResumeCardProps {
   badges?: readonly string[];
   period: string;
   description?: string;
+  /** true for the role currently held — gets the pulsing dot */
+  current?: boolean;
 }
 
 type AnnotationAction =
@@ -41,7 +43,6 @@ interface HighlighterProps {
   isView?: boolean;
 }
 
-
 export const ResumeCard = ({
   logoUrl,
   altText,
@@ -51,6 +52,7 @@ export const ResumeCard = ({
   badges,
   period,
   description,
+  current,
 }: ResumeCardProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
@@ -106,79 +108,89 @@ export const ResumeCard = ({
 
   return (
     <div
-      className={cn("block", description && "cursor-pointer")}
+      className={cn(
+        "rounded-lg px-2 py-2.5 transition-colors hover:bg-secondary/60",
+        description && "cursor-pointer"
+      )}
       onClick={handleToggle}
     >
-      <div className="flex justify-center items-center">
+      <div className="flex items-start gap-3">
         <div className="flex-none">
           {href ? (
             <Link href={href} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-              <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
+              <Avatar className="size-9 rounded-lg border border-border bg-white">
                 <AvatarImage
                   src={logoUrl}
                   alt={altText}
-                  className="object-contain"
+                  className="object-contain p-0.5"
                 />
-                <AvatarFallback>{altText[0]}</AvatarFallback>
+                <AvatarFallback className="rounded-lg font-display text-sm font-bold">{altText[0]}</AvatarFallback>
               </Avatar>
             </Link>
           ) : (
-            <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
+            <Avatar className="size-9 rounded-lg border border-border bg-white">
               <AvatarImage
                 src={logoUrl}
                 alt={altText}
-                className="object-contain"
+                className="object-contain p-0.5"
               />
-              <AvatarFallback>{altText[0]}</AvatarFallback>
+              <AvatarFallback className="rounded-lg font-display text-sm font-bold">{altText[0]}</AvatarFallback>
             </Avatar>
           )}
         </div>
-        <div className="flex-grow ml-4 items-center flex-col group">
-          <div>
-            <div className="flex items-center justify-between gap-x-2 text-base">
-              <h3 className="inline-flex items-center gap-x-1 font-semibold leading-none text-xs sm:text-sm">
-                {href ? (
-                  <Link
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline inline-flex items-center gap-x-1"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {title}
-                    <ExternalLink className="size-3 text-muted-foreground" />
-                  </Link>
-                ) : (
-                  title
-                )}
-                {badges && (
-                  <span className="inline-flex gap-x-1">
-                    {badges.map((badge, index) => (
-                      <Badge
-                        variant="secondary"
-                        className="align-middle text-xs"
-                        key={index}
-                      >
-                        {badge}
-                      </Badge>
-                    ))}
-                  </span>
-                )}
-                {description && (
-                  <ChevronRightIcon
-                    className={cn(
-                      "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",
-                      isExpanded ? "rotate-90" : "rotate-0"
-                    )}
-                  />
-                )}
-              </h3>
-              <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
-                {period}
-              </div>
+
+        <div className="flex flex-grow flex-col">
+          <div className="flex items-start justify-between gap-x-2">
+            <h3 className="inline-flex items-center gap-x-1.5 font-display text-sm font-bold leading-tight">
+              {href ? (
+                <Link
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-x-1 underline-offset-4 hover:underline"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {title}
+                  <ExternalLink className="size-3 text-muted-foreground" />
+                </Link>
+              ) : (
+                title
+              )}
+              {current && (
+                <span className="relative flex size-1.5" title="current role">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
+                  <span className="relative inline-flex size-1.5 rounded-full bg-brand" />
+                </span>
+              )}
+              {badges && badges.length > 0 && (
+                <span className="inline-flex gap-x-1">
+                  {badges.map((badge, index) => (
+                    <Badge variant="chip" key={index}>
+                      {badge}
+                    </Badge>
+                  ))}
+                </span>
+              )}
+              {description && (
+                <ChevronRightIcon
+                  className={cn(
+                    "size-3.5 shrink-0 text-muted-foreground transition-transform duration-300 ease-out",
+                    isExpanded ? "rotate-90" : "rotate-0"
+                  )}
+                />
+              )}
+            </h3>
+            <div className="shrink-0 whitespace-nowrap font-mono text-[10px] tabular-nums text-muted-foreground">
+              {period}
             </div>
-            {subtitle && <div className="font-sans text-xs">{subtitle}</div>}
           </div>
+
+          {subtitle && (
+            <div className="font-mono text-[11px] lowercase tracking-tight text-muted-foreground">
+              {subtitle}
+            </div>
+          )}
+
           {description && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
@@ -187,12 +199,14 @@ export const ResumeCard = ({
                 height: isExpanded ? "auto" : 0,
               }}
               transition={{
-                duration: 0.7,
+                duration: 0.5,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="text-xs sm:text-sm"
+              className="overflow-hidden text-xs leading-relaxed text-muted-foreground"
             >
-              {parseTextWithHighlighter(description, Highlighter)}
+              <div className="pt-2">
+                {parseTextWithHighlighter(description, Highlighter)}
+              </div>
             </motion.div>
           )}
         </div>

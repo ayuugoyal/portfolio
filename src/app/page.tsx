@@ -1,23 +1,41 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { Avatar } from "@/components/ui/avatar";
-import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Badge } from "@/components/ui/badge";
 import { IconCloudDemo } from "@/components/icon-cloud";
-import { cn } from "@/lib/utils";
-import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
-import { ArrowUpRight, ChevronRight, Github, Github as GitIcon, Video } from "lucide-react";
+import { ArrowUpRight, Github, Github as GitIcon, Mail, Video } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { ProjectCard } from "@/components/project-card";
 import { Globe as GlobeIcon } from "lucide-react";
-import MagicButton from "@/components/magic-button";
 import TypingAnimation from "@/components/magicui/typing-animation";
 import { Highlighter } from "@/components/magicui/highlighter";
 import { ResumeCard } from "@/components/resume-card";
 import { HackathonCard } from "@/components/pro-card";
 import { VisitorCount } from "@/components/visitor-count";
+import { Marquee } from "@/components/marquee";
+import { SectionHeading } from "@/components/section-heading";
 
 const BLUR_FADE_DELAY = 0.5;
+
+const marqueeItems = [
+    "physical ai",
+    "ros2",
+    "rag pipelines",
+    "mcp servers",
+    "arduino",
+    "langgraph",
+    "robot arms",
+    "embedded systems",
+    "computer vision",
+    "things that move",
+];
+
+const currently = [
+    { label: "cooking", value: "AI harness systems @ TAP Innovations" },
+    { label: "obsessed w/", value: "Physical AI — ROS2 + embedded control" },
+    { label: "shipping", value: "RAG & MCP servers that don't fold in prod" },
+    { label: "down for", value: "robotics/AI roles + unhinged hardware collabs" },
+];
 
 const skillsData = [
     {
@@ -53,7 +71,7 @@ const projectsData = [
         href: "https://github.com/ayuugoyal/bcn-3d-control-system",
         active: true,
         dates: "",
-        description: "A complete control system for the BCN3D Moveo robot arm with a modern Next.js web interface, ROS2 integration, and Arduino firmware. Features include real-time WebSocket communication, joint and cartesian control modes, 3D visualization, and system health monitoring.",
+        description: "Full control system for the BCN3D Moveo robot arm — Next.js web UI, ROS2 integration, Arduino firmware. Real-time WebSocket comms, joint + cartesian control modes, 3D visualisation, and health monitoring so you know the second it's cooked.",
         technologies: [
             "Next.js",
             "TypeScript",
@@ -69,12 +87,12 @@ const projectsData = [
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/bcn-3d-control-system",
-                icon: <Github className="size-4" />,
+                icon: <Github className="size-3" />,
             },
             {
                 type: "Demo Video",
                 href: "https://rndynamolabs.tech/bcn3d.mp4",
-                icon: <Video className="size-4" />,
+                icon: <Video className="size-3" />,
             },
         ],
         image: "/bcn-3d.jpg",
@@ -85,7 +103,7 @@ const projectsData = [
         href: "https://www.chatterai.tech/",
         active: true,
         dates: "",
-        description: "Chatter AI is a lightweight, embeddable AI chatbot built to help businesses provide instant, intelligent customer support. It answers product queries, recommends related items, and integrates in under 10 seconds.",
+        description: "Lightweight embeddable AI chatbot so businesses stop leaving customers on read. Answers product questions, recommends related items, and drops into a site in under 10 seconds.",
         technologies: [
             "Next.js",
             "Typescript",
@@ -100,12 +118,12 @@ const projectsData = [
             {
                 type: "Website",
                 href: "https://www.chatterai.tech/",
-                icon: <GlobeIcon className="size-4" />,
+                icon: <GlobeIcon className="size-3" />,
             },
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/chatterai/",
-                icon: <GitIcon className="size-4" />,
+                icon: <GitIcon className="size-3" />,
             },
         ],
         image: "/chatter.png",
@@ -116,7 +134,7 @@ const projectsData = [
         href: "https://lawgpt.rndynamolabs.tech/",
         active: true,
         dates: "",
-        description: "LawGPT is an AI-powered legal assistant that uses Retrieval-Augmented Generation (RAG) to provide instant, document-backed legal guidance. By leveraging advanced technologies like HuggingFace embeddings, FAISS vectorstore, and the Gemini API, it helps users navigate complex legal matters efficiently and accurately.",
+        description: "AI legal assistant running RAG, so every answer comes with receipts instead of vibes. HuggingFace embeddings + FAISS vectorstore + Gemini API, turning legal chaos into something you can actually read.",
         technologies: [
             "Next.js",
             "Typescript",
@@ -134,12 +152,12 @@ const projectsData = [
             {
                 type: "Website",
                 href: "https://lawgpt.rndynamolabs.tech/",
-                icon: <GlobeIcon className="size-4" />,
+                icon: <GlobeIcon className="size-3" />,
             },
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/lawgpt/",
-                icon: <GitIcon className="size-4" />,
+                icon: <GitIcon className="size-3" />,
             },
         ],
         image: "/lawgpt.png",
@@ -150,7 +168,7 @@ const projectsData = [
         href: "https://github.com/ayuugoyal/scara",
         active: true,
         dates: "",
-        description: "A comprehensive control system for a 4-axis SCARA robot that combines an Express.js backend API, Next.js frontend, and Arduino Mega firmware for precise motion control, enabling remote operation and automation via a web interface.",
+        description: "Control system for a 4-axis SCARA robot — Express.js API, Next.js frontend, Arduino Mega firmware. Precise motion control you can run remotely from a browser tab.",
         technologies: [
             "Arduino Mega",
             "Nema 17 Stepper Motors",
@@ -163,12 +181,12 @@ const projectsData = [
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/scara/",
-                icon: <GitIcon className="size-4" />,
+                icon: <GitIcon className="size-3" />,
             },
             {
                 type: "Demo Video",
                 href: "https://rndynamolabs.tech/scara.mp4",
-                icon: <Video className="size-4" />,
+                icon: <Video className="size-3" />,
             },
         ],
         image: "/scara.png",
@@ -180,7 +198,7 @@ const projectsData = [
         active: true,
         dates: "",
         description:
-            "Instant documentation fetcher for any service. CLI + MCP server powered by llms.txt — fetch docs for any library or API in seconds directly from your terminal or AI agent.",
+            "Instant docs for any service. CLI + MCP server powered by llms.txt — pull docs for any library or API in seconds, straight from your terminal or your agent. No more 40 open tabs.",
         technologies: [
             "TypeScript",
             "Shell",
@@ -193,7 +211,7 @@ const projectsData = [
             {
                 type: "Github",
                 href: "https://github.com/ayuugoyal/quickdocs",
-                icon: <GitIcon className="size-4" />,
+                icon: <GitIcon className="size-3" />,
             },
         ],
         image: "/quickdocs.png",
@@ -209,8 +227,9 @@ const workExp = [
         title: "AI (Harness) Engineer",
         logoUrl: "/tapinnov.png",
         start: "May 2026",
+        current: true,
         description:
-            "AI (Harness) Engineer at TAP Innovations, a US-based software startup building integrations, analytics, and custom applications for enterprise systems. Designing and shipping AI-driven solutions in a fully remote role, while sharpening my focus on Physical AI — bringing machine intelligence into real-world robots and embedded hardware, which I believe is the next big thing."
+            "AI (Harness) Engineer at TAP Innovations, a US software startup building integrations, analytics and custom apps for enterprise systems. Fully remote, shipping AI-driven solutions — while going all in on Physical AI, i.e. machine intelligence inside actual robots and embedded hardware. Calling it now: that's the next big thing."
     },
     {
         company: "Loadshare Networks",
@@ -222,7 +241,7 @@ const workExp = [
         start: "Nov 2025",
         end: "Apr 2026",
         description:
-            "Worked as an AI Engineer at Loadshare Networks, a leading logistics and supply chain technology company. Developed and implemented AI-driven solutions to optimize logistics operations, enhance delivery efficiency, and improve customer experience. Additionally provided freelance consulting services for AI/ML projects across various domains."
+            "AI Engineer at Loadshare Networks, a big name in logistics and supply chain tech. Built AI-driven solutions to optimise logistics ops, make deliveries way less painful, and level up the customer experience. Also freelanced AI/ML consulting on the side across a bunch of domains."
     },
     {
         company: "Data Alt Dynamics",
@@ -234,7 +253,7 @@ const workExp = [
         start: "July 2025",
         end: "Nov 2025",
         description:
-            "Deployed a Raspberry Pi–based server with multi-sensor integration for real-time data acquisition and control. Designed and optimised local ComfyUI workflows, boosting AI-driven process efficiency by 70%. Built scalable backend architectures and automated pipelines by integrating Cloudflare Tunnel with n8n, enabling secure remote access, seamless cloud sync, and reducing manual operational tasks by 40%."
+            "Shipped a Raspberry Pi server with multi-sensor integration for real-time data acquisition and control. Tuned local ComfyUI workflows and made AI-driven processes 70% more efficient. Glued Cloudflare Tunnel to n8n for secure remote access and clean cloud sync, which deleted 40% of the manual busywork."
     },
     {
         company: "Physics Wallah",
@@ -245,7 +264,7 @@ const workExp = [
         logoUrl: "/pwlogo.jpg",
         start: "May 2025",
         end: "July 2025",
-        description: "Contributed to backend development and platform engineering at India's leading ed-tech platform serving millions of students across JEE, NEET, and school curricula."
+        description: "Backend and platform engineering at India's biggest ed-tech, serving millions of students across JEE, NEET and school curricula. Real traffic, real stakes, zero room to fumble."
     },
     {
         company: "Bharat Electronics Limited",
@@ -256,7 +275,7 @@ const workExp = [
         logoUrl: "/bellogo.png",
         start: "June 2024",
         end: "Aug 2024",
-        description: "Worked on embedded systems and electronics projects at India's premier defence electronics manufacturer under the Ministry of Defence, gaining hands-on experience with industrial hardware systems."
+        description: "Embedded systems and electronics at India's top defence electronics manufacturer, under the Ministry of Defence. First proper taste of industrial hardware, and the reason i'm stuck on this stuff now."
     },
 ];
 
@@ -265,11 +284,11 @@ const patentdata = [
         title: "3D Printed, Pneumatically Actuated Four-Finger Adaptive Gripper",
         dates: "June 2025",
         description:
-            "UK Design Registration for an innovative industrial robotic end-effector featuring pneumatically actuated multi-finger grippers capable of grasping objects of various shapes and sizes. This patented design represents a breakthrough in adaptive robotics technology for manufacturing applications.",
+            "UK Design Registration for an industrial robotic end-effector: a pneumatically actuated four-finger gripper that grabs objects of basically any shape or size. Adaptive robotics for manufacturing, officially on record.",
         image: "/patent.png",
         links: [
             {
-                title: "View Patent",
+                title: "see the patent",
                 href: "/patents/6450987",
                 icon: <ArrowUpRight />,
             }
@@ -282,7 +301,7 @@ const openSourceData = [
         title: "archestra-ai/archestra",
         dates: "2026",
         description:
-            "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. Contributed Notion connector, Gemini embeddings, SharePoint & OneDrive connectors, OAuth proxy fix, and recursive subfolder traversal across 6 PRs. *box#FFD700 Awarded $400 in bounties* by maintainers.",
+            "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. Shipped the Notion connector, Gemini embeddings, SharePoint & OneDrive connectors, an OAuth proxy fix, and recursive subfolder traversal across 6 PRs. *underline#84cc16 Maintainers paid out $400 in bounties.* Big W.",
         image: "https://github.com/archestra-ai.png",
         links: [
             {
@@ -291,32 +310,32 @@ const openSourceData = [
                 icon: <Github />,
             },
             {
-                title: "PR #3555",
+                title: "pr #3555",
                 href: "https://github.com/archestra-ai/archestra/pull/3555",
                 icon: <ArrowUpRight />,
             },
             {
-                title: "PR #3611",
+                title: "pr #3611",
                 href: "https://github.com/archestra-ai/archestra/pull/3611",
                 icon: <ArrowUpRight />,
             },
             {
-                title: "PR #3656",
+                title: "pr #3656",
                 href: "https://github.com/archestra-ai/archestra/pull/3656",
                 icon: <ArrowUpRight />,
             },
             {
-                title: "PR #3960",
+                title: "pr #3960",
                 href: "https://github.com/archestra-ai/archestra/pull/3960",
                 icon: <ArrowUpRight />,
             },
             {
-                title: "PR #3400",
+                title: "pr #3400",
                 href: "https://github.com/archestra-ai/archestra/pull/3400",
                 icon: <ArrowUpRight />,
             },
             {
-                title: "PR #3958",
+                title: "pr #3958",
                 href: "https://github.com/archestra-ai/archestra/pull/3958",
                 icon: <ArrowUpRight />,
             },
@@ -326,7 +345,7 @@ const openSourceData = [
         title: "bolna-ai/bolna",
         dates: "2025",
         description:
-            "Open-source voice AI agent framework (telephony, LLM, TTS pipelines). Resolved duplicate .env file requirement in telephony server Dockerfiles (Twilio & Plivo), centralising config via docker-compose env_file directive (PR#310).",
+            "Open-source voice AI agent framework (telephony, LLM, TTS pipelines). Killed the duplicate .env situation in the telephony server Dockerfiles (Twilio & Plivo) by centralising config through the docker-compose env_file directive. Small PR, big ick removed.",
         image: "https://github.com/bolna-ai.png",
         links: [
             {
@@ -335,7 +354,7 @@ const openSourceData = [
                 icon: <Github />,
             },
             {
-                title: "PR #310",
+                title: "pr #310",
                 href: "https://github.com/bolna-ai/bolna/pull/310",
                 icon: <ArrowUpRight />,
             },
@@ -345,275 +364,349 @@ const openSourceData = [
 
 export default function Home() {
     return (
-        <div className="px-5">
-            <section id="hero">
-                <div className="mx-auto w-full max-w-2xl space-y-4 sm:space-y-8">
-                    <div className="gap-2 flex justify-between">
-                        <div className="flex-col flex flex-1 space-y-1.5">
+        <div className="overflow-x-clip">
+            {/* ───────────────────────── hero ───────────────────────── */}
+            <section id="hero" className="px-5">
+                <div className="mx-auto w-full max-w-2xl space-y-5">
+                    <BlurFade delay={BLUR_FADE_DELAY}>
+                        <div className="inline-flex items-center gap-2 font-mono text-[10px] lowercase text-muted-foreground">
+                            <span className="relative flex size-1.5">
+                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
+                                <span className="relative inline-flex size-1.5 rounded-full bg-brand" />
+                            </span>
+                            open to work — robots preferred
+                        </div>
+                    </BlurFade>
+
+                    <div className="flex items-start justify-between gap-5">
+                        <div className="flex flex-1 flex-col space-y-3">
                             <BlurFade delay={BLUR_FADE_DELAY}>
                                 <TypingAnimation
-                                    duration={80}
-                                    className="prose max-w-full mb-1 text-pretty font-sans text-xs sm:text-sm text-muted-foreground dark:prose-invert"
-                                    text="const ayuugoyal = ( name, passion ) =>"
+                                    duration={70}
+                                    className="max-w-full text-pretty font-mono text-[11px] font-normal leading-none text-muted-foreground"
+                                    text="// certified robot whisperer, allegedly"
                                 />
                             </BlurFade>
+
                             <BlurFadeText
                                 delay={BLUR_FADE_DELAY}
-                                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+                                className="font-display text-5xl font-bold lowercase leading-[0.9] tracking-tight sm:text-6xl"
                                 yOffset={8}
-                                text="Hi, I'm Ayush 👋"
+                                text="ayush"
                             />
-                            <BlurFade delay={BLUR_FADE_DELAY} className="md:text-xl space-y-2 ">
-                                <Highlighter action="underline" color="#FF9800">
-                                    Physical AI
-                                </Highlighter> &{" "}
-                                <Highlighter action="underline" color="#8BC34A">
-                                    Robotics Engineer
-                                </Highlighter>{" "}
-                                with a passion for{" "}
-                                <Highlighter action="highlight" color="#d677b6">
-                                    building robots
-                                </Highlighter>{" "} that think.
-                            </BlurFade>
+                            <BlurFadeText
+                                delay={BLUR_FADE_DELAY + 0.1}
+                                className="text-outline -mt-1 font-display text-5xl font-bold lowercase leading-[0.9] tracking-tight sm:text-6xl"
+                                yOffset={8}
+                                text="goyal"
+                            />
+
                             <BlurFade
                                 delay={BLUR_FADE_DELAY}
-                                className="hidden sm:flex sm:gap-3 pt-2"
+                                className="max-w-md pt-1 text-sm leading-relaxed text-muted-foreground"
                             >
-                                <Link
-                                    href="/resume"
-                                    className="flex items-center"
-                                >
-                                    <AnimatedGradientText className="">
-                                        🎉{" "}
-                                        <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
-                                        <span
-                                            className={cn(
-                                                `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
-                                            )}
-                                        >
-                                            Checkout my Resume
-                                        </span>
-                                        <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-                                    </AnimatedGradientText>
-                                </Link>
-                                <MagicButton />
+                                i do{" "}
+                                <Highlighter action="underline" color="#a3e635">
+                                    <span className="text-foreground">Physical AI</span>
+                                </Highlighter>{" "}
+                                — giving machines a brain, then making them actually move.
+                                it&apos;s giving sentient.
                             </BlurFade>
                         </div>
-                        <BlurFade delay={BLUR_FADE_DELAY} className="sm:p-10">
-                            <Avatar className="size-28 border">
-                                <AvatarImage
-                                    alt="Ayush"
-                                    className="w-full"
-                                    src="/sakuta.png"
-                                />
-                                <AvatarFallback className="text-6xl font-bold text-center w-full h-full flex items-center justify-center">
-                                    AG
-                                </AvatarFallback>
-                            </Avatar>
-                        </BlurFade>
-                    </div>
-                    <BlurFade
-                        delay={BLUR_FADE_DELAY}
-                        className="flex gap-3 sm:hidden"
-                    >
-                        <Link
-                            href="/resume"
-                            className="flex items-center"
-                        >
-                            <AnimatedGradientText>
-                                🎉{" "}
-                                <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
-                                <span
-                                    className={cn(
-                                        `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
-                                    )}
-                                >
-                                    Checkout my Resume
-                                </span>
-                                <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-                            </AnimatedGradientText>
-                        </Link>
-                        <MagicButton />
-                    </BlurFade>
-                </div>
-            </section>
-            <section id="about">
-                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
-                    <BlurFade delay={BLUR_FADE_DELAY * 3}>
-                        <h2 className="text-xl font-bold">About</h2>
-                    </BlurFade>
-                    <BlurFade delay={BLUR_FADE_DELAY * 4}>
-                        <div className="prose max-w-full text-pretty font-sans text-sm dark:prose-invert">
-                            I&apos;m Ayush Goyal — an AI Engineer focused on Physical AI: bringing intelligence into the real world through robots and embedded systems. I build production-grade GenAI systems — RAG pipelines, LLM integrations, MCP servers — and the robotics software that puts them into motion, from ROS2 control stacks and Arduino firmware to patented robotic hardware. Currently an AI (Harness) Engineer at TAP Innovations (remote, US), I&apos;m betting on Physical AI as the next big thing and building toward it. I ship things that work in the real world — enterprise chatbots with paying customers, open-source AI platforms, and robots you can actually control.
-                        </div>
-                    </BlurFade>
-                </div>
-            </section>
-            <section id="work-experience">
-                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
-                    <BlurFade delay={BLUR_FADE_DELAY * 3}>
-                        <h2 className="text-xl font-bold">Work Experience</h2>
-                    </BlurFade>
-                    {workExp.map((work, id) => (
-                        <BlurFade
-                            key={work.company}
-                            delay={BLUR_FADE_DELAY * 6 + id * 0.05}
-                        >
-                            <ResumeCard
-                                key={work.company}
-                                logoUrl={work.logoUrl}
-                                altText={work.company}
-                                title={work.company}
-                                subtitle={work.title}
-                                href={work.href}
-                                badges={work.badges}
-                                period={`${work.start} - ${work.end ?? "Present"}`}
-                                description={work.description}
+
+                        <BlurFade delay={BLUR_FADE_DELAY} className="shrink-0">
+                            <Image
+                                src="/sakuta.png"
+                                alt="Ayush Goyal"
+                                width={160}
+                                height={160}
+                                className="size-16 rounded-2xl border border-border object-cover sm:size-24"
+                                priority
                             />
                         </BlurFade>
-                    ))}
+                    </div>
+
+                    <BlurFade
+                        delay={BLUR_FADE_DELAY}
+                        className="flex flex-wrap items-center gap-2"
+                    >
+                        <Link href="/resume" className="btn-solid">
+                            peep the resume
+                            <ArrowUpRight className="size-3.5" />
+                        </Link>
+                        <Link
+                            href="mailto:ayushgoyal8178@gmail.com"
+                            className="btn-quiet"
+                        >
+                            <Mail className="size-3.5" />
+                            slide in
+                        </Link>
+                    </BlurFade>
                 </div>
             </section>
-            <section id="open-source">
-                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
-                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Open Source Contributions</h2>
+
+            {/* ───────────────────────── ticker ───────────────────────── */}
+            <BlurFade delay={BLUR_FADE_DELAY} className="my-12">
+                <Marquee items={marqueeItems} duration={40} />
+            </BlurFade>
+
+            {/* ───────────────────────── about ───────────────────────── */}
+            <section id="about" className="px-5">
+                <div className="mx-auto w-full max-w-2xl space-y-4">
+                    <BlurFade delay={BLUR_FADE_DELAY * 3}>
+                        <SectionHeading index="01" title="the lore" kicker="no yap, promise" />
                     </BlurFade>
-                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <ul className="flex flex-col gap-2">
-                            {openSourceData.map((project, id) => (
-                                <BlurFade
-                                    key={project.title + project.dates}
-                                    delay={BLUR_FADE_DELAY * 7 + id * 0.05}
+                    <BlurFade delay={BLUR_FADE_DELAY * 4}>
+                        <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                            AI engineer, but make it physical. I got bored of things that only
+                            live in a browser tab, so now I build{" "}
+                            <span className="text-foreground">Physical AI</span> — real GenAI
+                            in prod (RAG pipelines, LLM integrations, MCP servers) wired
+                            straight into hardware that moves. ROS2 control stacks, Arduino
+                            firmware, and a robotic gripper the UK government looked at and
+                            went yeah, that&apos;s new. Currently AI (Harness) Engineer at TAP
+                            Innovations, remote for a US team. Everything I ship has to survive
+                            the real world: chatbots with actual paying customers, open-source
+                            AI platforms, robot arms you can drive from a browser. No demos
+                            that only work on my laptop.
+                        </p>
+                    </BlurFade>
+
+                    <BlurFade delay={BLUR_FADE_DELAY * 4}>
+                        <dl className="divide-y divide-border border-y border-border">
+                            {currently.map((c) => (
+                                <div
+                                    key={c.label}
+                                    className="flex flex-col gap-0.5 py-2.5 sm:flex-row sm:items-baseline sm:gap-4"
                                 >
-                                    <HackathonCard
-                                        title={project.title}
-                                        description={project.description}
-                                        dates={project.dates}
-                                        image={project.image}
-                                        links={project.links}
-                                    />
-                                </BlurFade>
+                                    <dt className="w-28 shrink-0 font-mono text-[10px] lowercase text-muted-foreground">
+                                        {c.label}
+                                    </dt>
+                                    <dd className="text-sm">{c.value}</dd>
+                                </div>
                             ))}
-                        </ul>
+                        </dl>
                     </BlurFade>
                 </div>
             </section>
-            <section id="patents">
-                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
-                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Patents</h2>
+
+            {/* ───────────────────────── work ───────────────────────── */}
+            <section id="work-experience" className="px-5 pt-14">
+                <div className="mx-auto w-full max-w-2xl space-y-3">
+                    <BlurFade delay={BLUR_FADE_DELAY * 3}>
+                        <SectionHeading
+                            index="02"
+                            title="where i've been cooking"
+                            kicker="tap for the yap"
+                        />
                     </BlurFade>
-                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <ul className="flex flex-col gap-2">
-                            {patentdata.map((project, id) => (
-                                <BlurFade
-                                    key={project.title + project.dates}
-                                    delay={BLUR_FADE_DELAY * 7 + id * 0.05}
-                                >
-                                    <HackathonCard
-                                        title={project.title}
-                                        description={project.description}
-                                        dates={project.dates}
-                                        image={project.image}
-                                        links={project.links}
-                                    />
-                                </BlurFade>
-                            ))}
-                        </ul>
-                    </BlurFade>
+                    <div>
+                        {workExp.map((work, id) => (
+                            <BlurFade
+                                key={work.company}
+                                delay={BLUR_FADE_DELAY * 6 + id * 0.05}
+                            >
+                                <ResumeCard
+                                    logoUrl={work.logoUrl}
+                                    altText={work.company}
+                                    title={work.company}
+                                    subtitle={work.title}
+                                    href={work.href}
+                                    badges={work.badges}
+                                    current={work.current}
+                                    period={`${work.start} — ${work.end ?? "now"}`}
+                                    description={work.description}
+                                />
+                            </BlurFade>
+                        ))}
+                    </div>
                 </div>
             </section>
-            <section id="skills">
-                <div className="mx-auto w-full max-w-2xl pt-4 space-y-2">
+
+            {/* ───────────────────────── open source ───────────────────────── */}
+            <section id="open-source" className="px-5 pt-14">
+                <div className="mx-auto w-full max-w-2xl space-y-2">
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Skills</h2>
+                        <SectionHeading
+                            index="03"
+                            title="free labor era"
+                            kicker="except it paid"
+                        />
                     </BlurFade>
-                    <div className="flex flex-col sm:flex-row gap-6">
-                        <div className="flex flex-col gap-3 flex-1">
+                    <ul className="divide-y divide-border">
+                        {openSourceData.map((project, id) => (
+                            <BlurFade
+                                key={project.title + project.dates}
+                                delay={BLUR_FADE_DELAY * 7 + id * 0.05}
+                            >
+                                <HackathonCard
+                                    title={project.title}
+                                    description={project.description}
+                                    dates={project.dates}
+                                    image={project.image}
+                                    links={project.links}
+                                />
+                            </BlurFade>
+                        ))}
+                    </ul>
+                </div>
+            </section>
+
+            {/* ───────────────────────── patents ───────────────────────── */}
+            <section id="patents" className="px-5 pt-14">
+                <div className="mx-auto w-full max-w-2xl space-y-2">
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <SectionHeading
+                            index="04"
+                            title="certified inventor arc"
+                            kicker="the uk agreed"
+                        />
+                    </BlurFade>
+                    <ul className="divide-y divide-border">
+                        {patentdata.map((project, id) => (
+                            <BlurFade
+                                key={project.title + project.dates}
+                                delay={BLUR_FADE_DELAY * 7 + id * 0.05}
+                            >
+                                <HackathonCard
+                                    title={project.title}
+                                    description={project.description}
+                                    dates={project.dates}
+                                    image={project.image}
+                                    links={project.links}
+                                />
+                            </BlurFade>
+                        ))}
+                    </ul>
+                </div>
+            </section>
+
+            {/* ───────────────────────── skills ───────────────────────── */}
+            <section id="skills" className="px-5 pt-14">
+                <div className="mx-auto w-full max-w-2xl space-y-4">
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                        <SectionHeading
+                            index="05"
+                            title="the arsenal"
+                            kicker="stuff i actually use"
+                        />
+                    </BlurFade>
+                    <div className="flex flex-col gap-6 sm:flex-row">
+                        <div className="flex flex-1 flex-col gap-3.5">
                             {skillsData.map((group, i) => (
                                 <BlurFade key={group.category} delay={BLUR_FADE_DELAY + i * 0.08}>
                                     <div>
-                                        <p className="text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{group.category}</p>
+                                        <p className="mb-1.5 font-mono text-[10px] lowercase text-muted-foreground">
+                                            {group.category}
+                                        </p>
                                         <div className="flex flex-wrap gap-1">
                                             {group.skills.map((skill) => (
-                                                <Badge key={skill} variant="secondary">{skill}</Badge>
+                                                <Badge key={skill} variant="chip">
+                                                    {skill}
+                                                </Badge>
                                             ))}
                                         </div>
                                     </div>
                                 </BlurFade>
                             ))}
                         </div>
-                        <div className="w-full sm:w-72 shrink-0">
+                        <div className="w-full shrink-0 sm:w-56">
                             <IconCloudDemo />
                         </div>
                     </div>
                 </div>
             </section>
-            <section id="projects">
-                <div className="mx-auto w-full max-w-2xl pt-4 space-y-4">
+
+            {/* ───────────────────────── projects ───────────────────────── */}
+            <section id="projects" className="px-5 pt-14">
+                <div className="mx-auto w-full max-w-2xl space-y-5">
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Projects</h2>
+                        <SectionHeading index="06" title="the receipts" kicker="click around" />
                     </BlurFade>
                     {(["Physical AI / Robotics", "AI"] as const).map((cat) => (
                         <BlurFade key={cat} delay={BLUR_FADE_DELAY * 5}>
-                            <div className="space-y-2">
-                                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{cat}</p>
-                                <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                    {projectsData.filter(p => p.category === cat).map((project, id) => (
-                                        <BlurFade
-                                            key={project.title}
-                                            delay={BLUR_FADE_DELAY * 8 + id * 0.05}
-                                        >
-                                            <ProjectCard
-                                                href={project.href}
+                            <div className="space-y-2.5">
+                                <p className="font-mono text-[10px] lowercase text-muted-foreground">
+                                    {cat}
+                                </p>
+                                <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                                    {projectsData
+                                        .filter((p) => p.category === cat)
+                                        .map((project, id) => (
+                                            <BlurFade
                                                 key={project.title}
-                                                title={project.title}
-                                                description={project.description}
-                                                dates={project.dates}
-                                                tags={project.technologies}
-                                                image={project.image}
-                                                links={project.links}
-                                            />
-                                        </BlurFade>
-                                    ))}
+                                                delay={BLUR_FADE_DELAY * 8 + id * 0.05}
+                                            >
+                                                <ProjectCard
+                                                    href={project.href}
+                                                    title={project.title}
+                                                    description={project.description}
+                                                    dates={project.dates}
+                                                    tags={project.technologies}
+                                                    image={project.image}
+                                                    links={project.links}
+                                                />
+                                            </BlurFade>
+                                        ))}
                                 </ul>
                             </div>
                         </BlurFade>
                     ))}
                 </div>
             </section>
-            <section id="contact" className="mb-10">
-                <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
+
+            {/* ───────────────────────── contact ───────────────────────── */}
+            <section id="contact" className="px-5 pb-20 pt-16">
+                <div className="mx-auto w-full max-w-2xl">
                     <BlurFade delay={BLUR_FADE_DELAY}>
-                        <div className="space-y-3">
-                            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                                Get in Touch
-                            </h2>
-                            <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                Got something on your mind? Slide into my DMs{" "}
-                                <Link
-                                    href="https://x.com/ayuugoyal"
-                                    className="text-blue-500 hover:underline"
-                                >
-                                    on Twitter
-                                </Link>{" "}
-                                with a direct question or mail at{" "}
+                        <SectionHeading index="07" title="hit me up" kicker="dms are open" />
+                    </BlurFade>
+
+                    <BlurFade delay={BLUR_FADE_DELAY}>
+                        <div className="mt-6 space-y-4">
+                            <h3 className="font-display text-2xl font-bold lowercase tracking-tight sm:text-3xl">
+                                got a robot that needs a brain?
+                            </h3>
+                            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+                                Slide into my DMs with an actual question, or just email me. I
+                                reply to everything that isn&apos;t a recruiter copy-paste.
+                            </p>
+                            <div className="flex flex-wrap gap-2">
                                 <Link
                                     href="mailto:ayushgoyal8178@gmail.com"
-                                    className="text-blue-500 hover:underline"
+                                    className="btn-solid"
                                 >
-                                    ayushgoyal8178@gmail.com
+                                    <Mail className="size-3.5" />
+                                    email me
                                 </Link>
-                                , and I&apos;ll hit you back when I can.
-                            </p>
-                            <div className="flex justify-center pt-2">
-                                <VisitorCount />
+                                <Link
+                                    href="https://x.com/ayuugoyal"
+                                    target="_blank"
+                                    className="btn-quiet"
+                                >
+                                    @ayuugoyal
+                                    <ArrowUpRight className="size-3.5" />
+                                </Link>
+                                <Link
+                                    href="https://github.com/ayuugoyal"
+                                    target="_blank"
+                                    className="btn-quiet"
+                                >
+                                    <Github className="size-3.5" />
+                                    github
+                                </Link>
                             </div>
+                        </div>
+                    </BlurFade>
+
+                    <BlurFade delay={BLUR_FADE_DELAY}>
+                        <div className="mt-14 flex flex-col items-center justify-between gap-2 border-t border-border pt-4 font-mono text-[10px] lowercase text-muted-foreground sm:flex-row">
+                            <span>ayush goyal — india, remote-friendly</span>
+                            <VisitorCount />
                         </div>
                     </BlurFade>
                 </div>
             </section>
-        </div >
+        </div>
     );
 }

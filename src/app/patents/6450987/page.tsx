@@ -26,68 +26,72 @@ export default function PatentPage() {
           <BlurFade delay={BLUR_FADE_DELAY}>
             <Link
               href="/"
-              className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
             >
-              <ChevronLeft className="mr-1 h-4 w-4" />
-              Back to Portfolio
+              <ChevronLeft className="mr-1 h-3 w-3" />
+              back to portfolio
             </Link>
           </BlurFade>
 
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 2}
-            className="text-3xl font-bold tracking-tighter sm:text-4xl"
+            className="font-display text-4xl font-bold lowercase tracking-tight sm:text-5xl"
             yOffset={8}
-            text="UK Design Patent"
+            text="uk design patent"
           />
 
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <div className="space-y-2">
-              <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-                <strong>Pneumatically Actuated Four-Finger Adaptive Gripper Industrial Robot</strong>
-              </div>
-              <div className="text-xs text-muted-foreground">
-                Design Number: 6450987 • Registered: 13 June 2025 • Granted: 30 June 2025
+              <p className="max-w-2xl text-pretty text-sm font-medium">
+                Pneumatically Actuated Four-Finger Adaptive Gripper Industrial Robot
+              </p>
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] lowercase text-muted-foreground">
+                <span className="text-foreground">no. 6450987</span>
+                <span className="opacity-40">/</span>
+                <span>registered 13 jun 2025</span>
+                <span className="opacity-40">/</span>
+                <span>granted 30 jun 2025</span>
               </div>
             </div>
           </BlurFade>
 
           {/* Action Buttons */}
-          <BlurFade delay={BLUR_FADE_DELAY * 4} className="flex flex-wrap gap-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 4} className="flex flex-wrap items-center gap-2.5">
             <Link
               href={officialPatentUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm font-medium"
+              className="btn-solid"
             >
-              <Shield className="w-4 h-4 mr-2" />
-              Check on Official UK IPO Record
-              <ArrowUpRight className="ml-1 h-3 w-3" />
+              <Shield className="h-3.5 w-3.5" />
+              verify on uk ipo
+              <ArrowUpRight className="h-3 w-3" />
             </Link>
 
             <Link
               href={`https://drive.google.com/file/d/${driveFileId}/view?usp=sharing`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80 transition-colors text-sm font-medium"
+              className="btn-quiet"
             >
-              <FileText className="w-4 h-4 mr-2" />
-              View Certificate
-              <ArrowUpRight className="ml-1 h-3 w-3" />
+              <FileText className="h-3.5 w-3.5" />
+              certificate
+              <ArrowUpRight className="h-3 w-3" />
             </Link>
 
             <Link
               href={`https://drive.google.com/uc?export=download&id=${driveFileId}`}
-              className="inline-flex items-center px-4 py-2 bg-muted text-muted-foreground rounded-md hover:bg-muted/80 transition-colors text-sm font-medium"
+              className="btn-quiet"
             >
-              <Download className="w-4 h-4 mr-2" />
-              Download PDF
+              <Download className="h-3.5 w-3.5" />
+              download
             </Link>
 
             <div className="flex flex-wrap gap-1">
-              <Badge variant="secondary">Robotics</Badge>
-              <Badge variant="secondary">Industrial Design</Badge>
-              <Badge variant="secondary">Pneumatic Systems</Badge>
-              <Badge variant="secondary">UK Patent</Badge>
+              <Badge variant="chip">Robotics</Badge>
+              <Badge variant="chip">Industrial Design</Badge>
+              <Badge variant="chip">Pneumatic Systems</Badge>
+              <Badge variant="chip">UK Patent</Badge>
             </div>
           </BlurFade>
         </div>
@@ -95,7 +99,7 @@ export default function PatentPage() {
 
         {/* PDF Viewer Container */}
         <BlurFade delay={BLUR_FADE_DELAY * 6}>
-          <div className="relative bg-card rounded-lg border overflow-hidden">
+          <div className="relative overflow-hidden rounded-xl border border-border bg-card">
             <div className="aspect-[3/4] w-full min-h-[800px]">
               <iframe
                 src={embedUrl}
@@ -146,29 +150,34 @@ export default function PatentPage() {
 
         {/* Technology & Innovation Section */}
         <BlurFade delay={BLUR_FADE_DELAY * 7}>
-          <div className="mt-8 p-6 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg border">
+          <div className="mt-8">
             <div className="space-y-4">
-              <div className="text-center space-y-2">
-                <h3 className="text-xl font-semibold">Innovation Highlight</h3>
-                <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-                  This pneumatically actuated four-finger adaptive gripper represents a breakthrough in industrial robotics,
-                  combining precision control with adaptive grasping capabilities for complex manufacturing applications.
+              <div className="space-y-2">
+                <h3 className="font-display text-lg font-bold lowercase tracking-tight">
+                  why it goes hard
+                </h3>
+                <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Four pneumatically actuated fingers that just conform to whatever
+                  they pick up — no reprogramming per object. Precision control plus
+                  adaptive grasping, built for messy real-world manufacturing lines.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div className="p-3 bg-background/50 rounded-lg">
-                  <div className="text-lg font-semibold text-primary">4-Finger</div>
-                  <div className="text-xs text-muted-foreground">Adaptive Design</div>
-                </div>
-                <div className="p-3 bg-background/50 rounded-lg">
-                  <div className="text-lg font-semibold text-primary">Pneumatic</div>
-                  <div className="text-xs text-muted-foreground">Actuation System</div>
-                </div>
-                <div className="p-3 bg-background/50 rounded-lg">
-                  <div className="text-lg font-semibold text-primary">Industrial</div>
-                  <div className="text-xs text-muted-foreground">Robot Application</div>
-                </div>
+              <div className="grid grid-cols-1 divide-y divide-border border-y border-border md:grid-cols-3 md:divide-x md:divide-y-0">
+                {[
+                  { value: "4-finger", label: "adaptive design" },
+                  { value: "pneumatic", label: "actuation system" },
+                  { value: "industrial", label: "robot application" },
+                ].map((item) => (
+                  <div key={item.label} className="py-3 md:px-4">
+                    <div className="font-display text-base font-bold lowercase">
+                      {item.value}
+                    </div>
+                    <div className="font-mono text-[10px] lowercase text-muted-foreground">
+                      {item.label}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -176,10 +185,10 @@ export default function PatentPage() {
 
         {/* Footer Info */}
         <BlurFade delay={BLUR_FADE_DELAY * 8}>
-          <div className="mt-8 p-4 bg-muted/30 rounded-lg border border-dashed">
-            <div className="text-center space-y-2">
-              <p className="text-sm text-muted-foreground">
-                Interested in my robotics work and other innovative projects?
+          <div className="mt-8 border-t border-border pt-4">
+            <div className="space-y-2 text-center">
+              <p className="font-mono text-[10px] lowercase text-muted-foreground">
+                more robots this way
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
                 <Link

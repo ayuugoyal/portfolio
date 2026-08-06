@@ -90,40 +90,63 @@ export function HackathonCard({
       return part;
     });
   };
+
   return (
-    <li className="relative ml-14 py-4">
-      <div className="absolute -left-14 top-2">
-        <Avatar className="border size-12 m-auto">
-          <AvatarImage src={image} alt={title} className="object-contain" />
-          <AvatarFallback>{title[0]}</AvatarFallback>
-        </Avatar>
-      </div>
-      <div className="flex flex-1 flex-col justify-start gap-1">
-        {dates && (
-          <time className="text-xs text-muted-foreground">{dates}</time>
-        )}
-        <h2 className="font-semibold leading-none">{title}</h2>
+    <li className="flex items-start gap-3 py-4">
+      <Avatar className="size-9 shrink-0 rounded-lg border border-border bg-white">
+        <AvatarImage src={image} alt={title} className="object-contain" />
+        <AvatarFallback className="rounded-lg font-display text-sm font-bold">
+          {title[0]}
+        </AvatarFallback>
+      </Avatar>
+
+      <div className="flex min-w-0 flex-1 flex-col gap-1">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-2">
+          <h3 className="font-display text-sm font-bold tracking-tight">
+            {title}
+          </h3>
+          {dates && (
+            <time className="font-mono text-[10px] text-muted-foreground">
+              {dates}
+            </time>
+          )}
+        </div>
+
         {location && (
-          <p className="text-sm text-muted-foreground">{location}</p>
+          <p className="font-mono text-[11px] text-muted-foreground">{location}</p>
         )}
+
         {description && (
-          <span className="prose dark:prose-invert text-sm text-muted-foreground">
+          <span className="text-xs leading-relaxed text-muted-foreground">
             {parseTextWithHighlighter(description, Highlighter)}
           </span>
         )}
+
+        {links && links.length > 0 && (
+          <div className="mt-1.5 flex flex-row flex-wrap items-start gap-1.5">
+            {links.map((link, idx) => {
+              const external = link.href.startsWith("http");
+              return (
+                <Link
+                  href={link.href}
+                  key={idx}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                >
+                  <Badge
+                    variant="link"
+                    title={link.title}
+                    className="[&_svg]:size-3"
+                  >
+                    {link.title}
+                    {link.icon}
+                  </Badge>
+                </Link>
+              );
+            })}
+          </div>
+        )}
       </div>
-      {links && links.length > 0 && (
-        <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
-          {links?.map((link, idx) => (
-            <Link href={link.href} key={idx} target="_blank" rel="noopener noreferrer">
-              <Badge key={idx} title={link.title} className="flex gap-2">
-                {link.title}
-                {link.icon}
-              </Badge>
-            </Link>
-          ))}
-        </div>
-      )}
     </li>
   );
 }
