@@ -458,17 +458,11 @@ export default function Home() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 4}>
                         <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
-                            AI engineer, but make it physical. I got bored of things that only
-                            live in a browser tab, so now I build{" "}
+                            AI engineer, but make it physical. I got bored of things that
+                            only live in a browser tab, so now I build{" "}
                             <span className="text-foreground">Physical AI</span> — real GenAI
-                            in prod (RAG pipelines, LLM integrations, MCP servers) wired
-                            straight into hardware that moves. ROS2 control stacks, Arduino
-                            firmware, and a robotic gripper the UK government looked at and
-                            went yeah, that&apos;s new. Currently AI (Harness) Engineer at TAP
-                            Innovations, remote for a US team. Everything I ship has to survive
-                            the real world: chatbots with actual paying customers, open-source
-                            AI platforms, robot arms you can drive from a browser. No demos
-                            that only work on my laptop.
+                            in prod, wired straight into hardware that moves. No demos that
+                            only work on my laptop.
                         </p>
                     </BlurFade>
 
