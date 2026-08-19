@@ -4,6 +4,8 @@ interface SectionHeadingProps {
     /** two-digit section number, e.g. "01" */
     index: string;
     title: string;
+    /** plain-language label, so a playful title is still scannable */
+    sub?: string;
     /** the throwaway line on the right — the actual personality */
     kicker?: string;
     className?: string;
@@ -12,6 +14,7 @@ interface SectionHeadingProps {
 export function SectionHeading({
     index,
     title,
+    sub,
     kicker,
     className,
 }: SectionHeadingProps) {
@@ -29,6 +32,11 @@ export function SectionHeading({
                 <h2 className="font-display text-lg font-bold tracking-tight sm:text-xl">
                     {title}
                 </h2>
+                {sub && (
+                    <span className="font-mono text-[10px] lowercase text-muted-foreground">
+                        / {sub}
+                    </span>
+                )}
             </div>
             {kicker && (
                 <span className="font-mono text-[10px] lowercase text-muted-foreground">

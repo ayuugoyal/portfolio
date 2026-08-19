@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import BlurFade from "@/components/magicui/blur-fade";
-import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { Footer } from "@/components/footer";
 import { ArrowUpRight, Download, ExternalLink, ChevronLeft, FileText, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -33,12 +33,11 @@ export default function PatentPage() {
             </Link>
           </BlurFade>
 
-          <BlurFadeText
-            delay={BLUR_FADE_DELAY * 2}
-            className="font-display text-4xl font-bold lowercase tracking-tight sm:text-5xl"
-            yOffset={8}
-            text="uk design patent"
-          />
+          <BlurFade delay={BLUR_FADE_DELAY * 2}>
+              <h1 className="font-display text-4xl font-bold lowercase tracking-tight sm:text-5xl">
+                  uk design patent
+              </h1>
+          </BlurFade>
 
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <div className="space-y-2">
@@ -223,6 +222,10 @@ export default function PatentPage() {
           </div>
         </BlurFade>
       </section>
+
+      <div className="pb-4 pt-12">
+        <Footer />
+      </div>
     </div>
   );
 }

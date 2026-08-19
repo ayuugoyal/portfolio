@@ -36,8 +36,16 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     const mouseX = useMotionValue(Infinity);
 
     const renderChildren = () => {
-      return React.Children.map(children, (child: any) => {
-        return React.cloneElement(child, {
+      return React.Children.map(children, (child) => {
+        // Only DockIcon understands these props; injecting them into anything
+        // else (the Separator) leaks them onto a DOM node and React warns.
+        // Matched on displayName rather than identity so the check survives a
+        // Fast Refresh reload, which swaps the module's component reference.
+        if (!React.isValidElement(child)) return child;
+        const type = child.type as { displayName?: string } | undefined;
+        if (type?.displayName !== "DockIcon") return child;
+
+        return React.cloneElement(child as React.ReactElement<DockIconProps>, {
           mouseX: mouseX,
           magnification: magnification,
           distance: distance,
@@ -85,8 +93,12 @@ const DockIcon = ({
   ...props
 }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  // Standalone fallback so the hooks below always get a real motion value,
+  // even if this renders outside a Dock.
+  const fallbackMouseX = useMotionValue(Infinity);
+  const trackedMouseX = mouseX ?? fallbackMouseX;
 
-  const distanceCalc = useTransform(mouseX, (val: number) => {
+  const distanceCalc = useTransform(trackedMouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
 
     return val - bounds.x - bounds.width / 2;

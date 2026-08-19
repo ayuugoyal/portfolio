@@ -22,6 +22,24 @@ interface Props {
     className?: string;
 }
 
+/** Wraps the card banner in a link only when there is a destination. */
+function Banner({
+    href,
+    className,
+    children,
+}: {
+    href?: string;
+    className?: string;
+    children: React.ReactNode;
+}) {
+    if (!href) return <div className={className}>{children}</div>;
+    return (
+        <Link href={href} target="_blank" rel="noopener noreferrer" className={className}>
+            {children}
+        </Link>
+    );
+}
+
 export function ProjectCard({
     title,
     href,
@@ -36,10 +54,9 @@ export function ProjectCard({
 }: Props) {
     return (
         <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors duration-200 hover:border-foreground/20">
-            <Link
-                href={href || "#"}
-                target="_blank"
-                className={cn("block cursor-pointer overflow-hidden", className)}
+            <Banner
+                href={href}
+                className={cn("block overflow-hidden", href && "cursor-pointer", className)}
             >
                 {video && (
                     <video
@@ -54,19 +71,29 @@ export function ProjectCard({
                 {image && (
                     <Image
                         src={image}
-                        alt={title}
+                        alt={`${title} — project screenshot`}
                         width={500}
                         height={300}
                         className="h-36 w-full object-cover object-top"
                     />
                 )}
-            </Link>
+                {!image && !video && (
+                    // keeps the grid even for repos with no screenshot
+                    <div className="flex h-36 w-full items-end bg-secondary/70 p-3.5">
+                        <span className="font-mono text-[11px] lowercase text-muted-foreground">
+                            {title}
+                        </span>
+                    </div>
+                )}
+            </Banner>
 
             <div className="flex flex-1 flex-col gap-2 p-3.5">
                 <div className="space-y-1.5">
                     <h3 className="flex items-center gap-1 font-display text-sm font-bold tracking-tight">
                         {title}
-                        <ArrowUpRight className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                        {href && (
+                            <ArrowUpRight className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                        )}
                     </h3>
                     {dates && (
                         <time className="font-mono text-[10px] text-muted-foreground">
