@@ -4,15 +4,12 @@ import { ArrowUpRight, CalendarDays, ChevronLeft } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 import { Footer } from "@/components/footer";
 import { ProjectCard } from "@/components/project-card";
-import { SectionHeading } from "@/components/section-heading";
-import { FaqList } from "@/components/faq-list";
 import { JsonLd } from "@/components/structured-data";
 import { withIcons } from "@/components/project-links";
-import { FAQS, PROJECTS, SITE, SKILLS } from "@/lib/site";
+import { PROJECTS, SITE, SKILLS } from "@/lib/site";
 import {
     IDS,
     breadcrumbSchema,
-    faqSchema,
     patentSchema,
     projectListSchema,
 } from "@/lib/schema";
@@ -60,7 +57,6 @@ export default function RoboticsPage() {
                     },
                     projectListSchema(robots, "Robots"),
                     patentSchema(),
-                    faqSchema(`${SITE.url}${PATH}#faq`, FAQS.robots),
                 ]}
             />
 
@@ -88,9 +84,7 @@ export default function RoboticsPage() {
                     </BlurFade>
                     <BlurFade delay={D}>
                         <p className="max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground">
-                            Day job is AI. After hours it&apos;s motors, firmware and ROS2 —
-                            putting the same models into machines that move. Firmware to
-                            browser, all of it.
+                            Day job is AI. After hours it&apos;s motors, firmware and ROS2.
                         </p>
                     </BlurFade>
                 </div>
@@ -101,9 +95,9 @@ export default function RoboticsPage() {
                             <ProjectCard
                                 href={p.href}
                                 title={p.title}
-                                description={p.description}
+                                description={p.blurb ?? p.description}
                                 dates={p.dates}
-                                tags={p.technologies}
+                                tags={[]}
                                 image={p.image}
                                 links={withIcons(p.links)}
                             />
@@ -121,15 +115,6 @@ export default function RoboticsPage() {
                         ))}
                     </p>
                 </BlurFade>
-
-                <section className="space-y-2 pt-6">
-                    <BlurFade delay={D}>
-                        <SectionHeading index="01" title="questions" sub="faq" />
-                    </BlurFade>
-                    <BlurFade delay={D}>
-                        <FaqList faqs={FAQS.robots} />
-                    </BlurFade>
-                </section>
 
                 <BlurFade delay={D}>
                     <div className="mb-16 space-y-4 border-t border-border pt-8">

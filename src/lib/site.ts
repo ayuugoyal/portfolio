@@ -339,8 +339,10 @@ export type Project = {
     technologies: string[];
     links: ProjectLink[];
     image?: string;
-    /** one short line for the home page; only featured projects have one */
+    /** one short line for compact lists */
     blurb?: string;
+    /** shown in "selected work" on the home page */
+    featured?: boolean;
 };
 
 export const PROJECT_CATEGORIES = [
@@ -353,6 +355,7 @@ export const PROJECTS: Project[] = [
     // ── freelance fde deployments (live in production) ──
     {
         slug: "machine-maintenance-bot",
+        featured: true,
         blurb: "WhatsApp breakdown & maintenance tickets, live on a factory floor",
         category: "Freelance FDE Deployments",
         title: "Machine Maintenance Bot",
@@ -364,6 +367,7 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "siteos",
+        featured: true,
         blurb: "WhatsApp-to-dashboard site tracking for an architecture studio",
         category: "Freelance FDE Deployments",
         title: "SiteOS",
@@ -385,6 +389,7 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "sensor-dash",
+        blurb: "Raspberry Pi sensor server with a live factory dashboard",
         category: "Robots & Physical AI",
         title: "Sensor Dash — IoT Factory Server",
         dates: "2025",
@@ -422,6 +427,7 @@ export const PROJECTS: Project[] = [
     // ── ai engineering ──
     {
         slug: "ai-devops-agent",
+        featured: true,
         blurb: "run cloud infra from Slack through MCP",
         category: "Personal Projects",
         title: "AI DevOps Agent",
@@ -489,6 +495,7 @@ export const PROJECTS: Project[] = [
     // ── robots ──
     {
         slug: "bcn3d-moveo",
+        featured: true,
         blurb: "ROS2 control stack for a 6-DOF robot arm",
         category: "Robots & Physical AI",
         title: "BCN3D Moveo Control System",
@@ -505,6 +512,7 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "scara-robot",
+        blurb: "4-axis SCARA arm you drive from a browser tab",
         category: "Robots & Physical AI",
         title: "SCARA Robot",
         href: "https://github.com/ayuugoyal/scara",
@@ -520,6 +528,7 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "ardupilot-assistant",
+        featured: true,
         blurb: "voice & natural-language control of ArduPilot vehicles",
         category: "Robots & Physical AI",
         title: "ArduPilot Assistant",
@@ -535,6 +544,7 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "pneumatic-gripper",
+        blurb: "3D-printed pneumatic four-finger gripper — UK Design 6450987",
         category: "Robots & Physical AI",
         title: "Pneumatic Four-Finger Gripper",
         href: "/patents/6450987",
@@ -624,6 +634,10 @@ export const OPEN_SOURCE = [
         summary:
             "AI agent platform. Shipped the Notion connector, Gemini embeddings, SharePoint & OneDrive connectors, an OAuth proxy fix, and recursive subfolder traversal across 6 PRs. Awarded $400 in maintainer bounties.",
         prs: [3555, 3611, 3656, 3960, 3400, 3958],
+        image: "https://github.com/archestra-ai.png",
+        /** home-page copy; *action#color text* renders as a hand-drawn highlight */
+        display:
+            "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. Shipped the Notion connector, Gemini embeddings, SharePoint & OneDrive connectors, an OAuth proxy fix, and recursive subfolder traversal across 6 PRs. *underline#84cc16 Maintainers paid out $400 in bounties.* Big W.",
     },
     {
         title: "bolna-ai/bolna",
@@ -632,6 +646,9 @@ export const OPEN_SOURCE = [
         summary:
             "Open-source voice AI agent framework. Centralised duplicate .env config across the Twilio and Plivo telephony Dockerfiles via docker-compose env_file.",
         prs: [310],
+        image: "https://github.com/bolna-ai.png",
+        display:
+            "Open-source voice AI agent framework (telephony, LLM, TTS pipelines). Killed the duplicate .env situation in the telephony server Dockerfiles (Twilio & Plivo) by centralising config through the docker-compose env_file directive. Small PR, big ick removed.",
     },
 ];
 

@@ -2,7 +2,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import TypingAnimation from "@/components/magicui/typing-animation";
 import { Highlighter } from "@/components/magicui/highlighter";
-import { ArrowUpRight, CalendarDays, Mail } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Github, Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { SectionHeading } from "@/components/section-heading";
@@ -10,7 +10,7 @@ import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/structured-data";
 import { ResumeCard } from "@/components/resume-card";
 import { HackathonCard } from "@/components/pro-card";
-import { EXPERIENCE, HATS, PATENT, PROJECTS, SITE } from "@/lib/site";
+import { EXPERIENCE, HATS, OPEN_SOURCE, PATENT, PROJECTS, SITE } from "@/lib/site";
 import {
     IDS,
     experienceSchema,
@@ -28,7 +28,7 @@ const D = 0.06;
  * /index.md — so crawlers and LLMs still get the full picture.
  */
 
-const featured = PROJECTS.filter((p) => p.blurb);
+const featured = PROJECTS.filter((p) => p.featured);
 
 /** ProfilePage is Google's recommended type for a personal site's home page. */
 function HomeSchema() {
@@ -183,12 +183,46 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* ───────────────────────── open source ───────────────────────── */}
+            <section id="open-source" className="px-5 pt-16">
+                <div className="mx-auto w-full max-w-2xl space-y-2">
+                    <BlurFade delay={D}>
+                        <SectionHeading
+                            index="02"
+                            title="free labor era"
+                            sub="open source"
+                            kicker="except it paid"
+                        />
+                    </BlurFade>
+                    <ul className="divide-y divide-border">
+                        {OPEN_SOURCE.map((o) => (
+                            <BlurFade key={o.title} delay={D}>
+                                <HackathonCard
+                                    title={o.title}
+                                    description={o.display}
+                                    dates={o.dates}
+                                    image={o.image}
+                                    links={[
+                                        { title: o.title, href: o.repo, icon: <Github /> },
+                                        ...o.prs.map((n) => ({
+                                            title: `pr #${n}`,
+                                            href: `${o.repo}/pull/${n}`,
+                                            icon: <ArrowUpRight />,
+                                        })),
+                                    ]}
+                                />
+                            </BlurFade>
+                        ))}
+                    </ul>
+                </div>
+            </section>
+
             {/* ──────────────────────── selected work ──────────────────────── */}
             <section id="work" className="px-5 pt-16">
                 <div className="mx-auto w-full max-w-2xl space-y-3">
                     <BlurFade delay={D}>
                         <SectionHeading
-                            index="02"
+                            index="03"
                             title="selected work"
                             sub="projects"
                             kicker={`${PROJECTS.length} total`}
@@ -250,7 +284,7 @@ export default function Home() {
                 <div className="mx-auto w-full max-w-2xl space-y-3">
                     <BlurFade delay={D}>
                         <SectionHeading
-                            index="03"
+                            index="04"
                             title="where i've been cooking"
                             sub="experience"
                             kicker="tap for the yap"
@@ -280,7 +314,7 @@ export default function Home() {
                 <div className="mx-auto w-full max-w-2xl space-y-2">
                     <BlurFade delay={D}>
                         <SectionHeading
-                            index="04"
+                            index="05"
                             title="certified inventor arc"
                             sub="uk design patent"
                             kicker="the uk agreed"

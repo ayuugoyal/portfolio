@@ -3,14 +3,10 @@ import Link from "next/link";
 import { ArrowUpRight, CalendarDays, ChevronLeft, Mail } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 import { Footer } from "@/components/footer";
-import { ServiceCard } from "@/components/service-card";
-import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
-import { FaqList } from "@/components/faq-list";
 import { JsonLd } from "@/components/structured-data";
-import { withIcons } from "@/components/project-links";
-import { ENGAGEMENTS, FAQS, PLAYBOOK, PROJECTS, SERVICES, SITE } from "@/lib/site";
-import { IDS, breadcrumbSchema, faqSchema, projectListSchema } from "@/lib/schema";
+import { FAQS, PLAYBOOK, PROJECTS, SITE } from "@/lib/site";
+import { IDS, breadcrumbSchema, projectListSchema } from "@/lib/schema";
 
 const D = 0.06;
 const PATH = "/forward-deployed-engineer";
@@ -34,6 +30,11 @@ export const metadata: Metadata = {
     twitter: { title: `${TITLE} — ${SITE.name}`, description: DESCRIPTION },
 };
 
+/**
+ * Kept short for humans: what an FDE is, proof, how it runs, one CTA. The
+ * full service catalogue and FAQ live on /services; the markdown twin
+ * (/forward-deployed-engineer.md) carries everything for crawlers.
+ */
 const deployed = PROJECTS.filter((p) => p.category === "Freelance FDE Deployments");
 
 export default function FdePage() {
@@ -52,7 +53,6 @@ export default function FdePage() {
                         mainEntity: { "@id": IDS.person },
                         isPartOf: { "@id": IDS.website },
                     },
-                    faqSchema(`${SITE.url}${PATH}#faq`, FAQS.fde),
                     projectListSchema(deployed, "Freelance FDE deployments"),
                 ]}
             />
@@ -81,9 +81,8 @@ export default function FdePage() {
                     </BlurFade>
                     <BlurFade delay={D}>
                         <p className="max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground">
-                            I embed with your team, sit with the people doing the work, and
-                            ship AI into your production stack. You get running software, not
-                            a slide deck.
+                            I embed with your team and ship AI into your production stack.
+                            Running software, not a slide deck.
                         </p>
                     </BlurFade>
                     <BlurFade delay={D} className="flex flex-wrap items-center gap-2 pt-1">
@@ -115,90 +114,46 @@ export default function FdePage() {
                     </div>
                 </BlurFade>
 
-                <section className="space-y-4 pt-6">
+                <section id="deployed" className="scroll-mt-24 space-y-3 pt-6">
                     <BlurFade delay={D}>
-                        <SectionHeading index="01" title="how it runs" sub="playbook" />
+                        <SectionHeading index="01" title="live deployments" sub="proof" />
                     </BlurFade>
-                    <BlurFade delay={D}>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
-                            {PLAYBOOK.map((p) => (
-                                <div key={p.step} className="space-y-1">
-                                    <div className="font-mono text-[10px] tabular-nums text-muted-foreground">
-                                        {p.step}
-                                    </div>
-                                    <h3 className="font-display text-sm font-bold tracking-tight">
-                                        {p.title}
-                                    </h3>
-                                    <p className="text-xs leading-relaxed text-muted-foreground">
-                                        {p.body}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </BlurFade>
-                    <BlurFade delay={D}>
-                        <dl className="divide-y divide-border border-y border-border">
-                            {ENGAGEMENTS.map((e) => (
-                                <div
-                                    key={e.title}
-                                    className="flex flex-col gap-0.5 py-2.5 sm:flex-row sm:items-baseline sm:gap-4"
-                                >
-                                    <dt className="w-36 shrink-0 font-mono text-[10px] lowercase text-muted-foreground">
-                                        {e.title}
-                                    </dt>
-                                    <dd className="text-sm">{e.body}</dd>
-                                </div>
-                            ))}
-                        </dl>
-                    </BlurFade>
-                </section>
-
-                <section className="space-y-2 pt-6">
-                    <BlurFade delay={D}>
-                        <SectionHeading index="02" title="what i deploy" sub="services" />
-                    </BlurFade>
-                    <div>
-                        {SERVICES.map((s, i) => (
-                            <BlurFade key={s.slug} delay={D}>
-                                <ServiceCard
-                                    index={i + 1}
-                                    title={s.title}
-                                    summary={s.summary}
-                                    deliverables={s.deliverables}
-                                    proof={s.proof}
-                                />
-                            </BlurFade>
-                        ))}
-                    </div>
-                </section>
-
-                <section id="deployed" className="scroll-mt-24 space-y-4 pt-6">
-                    <BlurFade delay={D}>
-                        <SectionHeading index="03" title="where i've deployed" sub="live in production" />
-                    </BlurFade>
-                    <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <ul className="divide-y divide-border border-y border-border">
                         {deployed.map((p) => (
                             <BlurFade key={p.slug} delay={D}>
-                                <ProjectCard
-                                    href={p.href}
-                                    title={p.title}
-                                    description={p.description}
-                                    dates={p.dates}
-                                    tags={p.technologies}
-                                    image={p.image}
-                                    links={withIcons(p.links)}
-                                />
+                                <li className="flex items-baseline justify-between gap-4 py-3">
+                                    <span className="min-w-0">
+                                        <span className="font-display text-sm font-bold tracking-tight">
+                                            {p.title}
+                                        </span>
+                                        <span className="text-sm text-muted-foreground">
+                                            {" "}
+                                            — {p.blurb}
+                                        </span>
+                                    </span>
+                                    <span className="inline-flex shrink-0 items-center gap-1.5 font-mono text-[10px] lowercase text-muted-foreground">
+                                        <span className="size-1.5 rounded-full bg-brand" />
+                                        live
+                                    </span>
+                                </li>
                             </BlurFade>
                         ))}
                     </ul>
                 </section>
 
-                <section className="space-y-2 pt-6">
+                <section className="space-y-3 pt-6">
                     <BlurFade delay={D}>
-                        <SectionHeading index="04" title="questions" sub="faq" />
+                        <SectionHeading index="02" title="how it runs" sub="playbook" />
                     </BlurFade>
                     <BlurFade delay={D}>
-                        <FaqList faqs={FAQS.fde.slice(1)} />
+                        <ol className="flex flex-wrap items-baseline gap-x-2 gap-y-1 font-mono text-[11px] lowercase">
+                            {PLAYBOOK.map((p, i) => (
+                                <li key={p.step} className="flex items-baseline gap-2">
+                                    {i > 0 && <span className="text-muted-foreground">→</span>}
+                                    <span>{p.title}</span>
+                                </li>
+                            ))}
+                        </ol>
                     </BlurFade>
                 </section>
 
@@ -218,7 +173,7 @@ export default function FdePage() {
                                 book a scope call
                             </Link>
                             <Link href="/services" className="btn-quiet">
-                                all services
+                                everything i deploy
                                 <ArrowUpRight className="size-3.5" />
                             </Link>
                         </div>

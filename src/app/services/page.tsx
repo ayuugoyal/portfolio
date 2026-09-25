@@ -6,10 +6,13 @@ import BlurFade from "@/components/magicui/blur-fade";
 import { ServiceCard } from "@/components/service-card";
 import { FaqList } from "@/components/faq-list";
 import { JsonLd } from "@/components/structured-data";
-import { FAQS, PLAYBOOK, SERVICES, SITE } from "@/lib/site";
+import { ENGAGEMENTS, FAQS, PLAYBOOK, SERVICES, SITE } from "@/lib/site";
 import { IDS, breadcrumbSchema, faqSchema } from "@/lib/schema";
 
 const D = 0.06;
+
+/** /services is the one deep page, so every FAQ group lives here. */
+const ALL_FAQS = [...FAQS.fde, ...FAQS.general, ...FAQS.robots];
 
 const DESCRIPTION =
     "What a forward deployed engineer ships: AI agents, WhatsApp and voice agents, enterprise integrations, RAG, MCP servers, LLMOps, automation and Physical AI. Freelance, remote worldwide.";
@@ -41,7 +44,7 @@ export default function ServicesPage() {
                         about: { "@id": IDS.service },
                         isPartOf: { "@id": IDS.website },
                     },
-                    faqSchema(`${SITE.url}/services#faq`, FAQS.general),
+                    faqSchema(`${SITE.url}/services#faq`, ALL_FAQS),
                 ]}
             />
             <section className="mx-auto w-full max-w-2xl space-y-6">
@@ -128,11 +131,27 @@ export default function ServicesPage() {
                 </BlurFade>
 
                 <BlurFade delay={D}>
+                    <dl className="divide-y divide-border border-y border-border">
+                        {ENGAGEMENTS.map((e) => (
+                            <div
+                                key={e.title}
+                                className="flex flex-col gap-0.5 py-2.5 sm:flex-row sm:items-baseline sm:gap-4"
+                            >
+                                <dt className="w-36 shrink-0 font-mono text-[10px] lowercase text-muted-foreground">
+                                    {e.title}
+                                </dt>
+                                <dd className="text-sm">{e.body}</dd>
+                            </div>
+                        ))}
+                    </dl>
+                </BlurFade>
+
+                <BlurFade delay={D}>
                     <div className="space-y-2 pt-4">
                         <h2 className="font-display text-lg font-bold tracking-tight">
                             Questions I actually get
                         </h2>
-                        <FaqList faqs={FAQS.general} />
+                        <FaqList faqs={ALL_FAQS} />
                     </div>
                 </BlurFade>
 
