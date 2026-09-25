@@ -1,51 +1,26 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
 
+const PAGES: [path: string, freq: "weekly" | "monthly" | "yearly", priority: number][] = [
+    ["/", "weekly", 1],
+    ["/forward-deployed-engineer", "monthly", 0.95],
+    ["/robotics", "monthly", 0.85],
+    ["/services", "monthly", 0.8],
+    ["/resume", "monthly", 0.7],
+    ["/patents/6450987", "yearly", 0.6],
+    ["/index.md", "weekly", 0.5],
+    ["/forward-deployed-engineer.md", "monthly", 0.5],
+    ["/robotics.md", "monthly", 0.5],
+    ["/llms.txt", "weekly", 0.5],
+    ["/llms-full.txt", "weekly", 0.5],
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = new Date();
-
-    return [
-        {
-            url: `${SITE.url}/`,
-            lastModified: now,
-            changeFrequency: "weekly",
-            priority: 1,
-        },
-        {
-            url: `${SITE.url}/services`,
-            lastModified: now,
-            changeFrequency: "monthly",
-            priority: 0.9,
-        },
-        {
-            url: `${SITE.url}/resume`,
-            lastModified: now,
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            url: `${SITE.url}/patents/6450987`,
-            lastModified: now,
-            changeFrequency: "yearly",
-            priority: 0.6,
-        },
-        {
-            url: `${SITE.url}/index.md`,
-            lastModified: now,
-            changeFrequency: "weekly",
-            priority: 0.5,
-        },
-        {
-            url: `${SITE.url}/llms.txt`,
-            lastModified: now,
-            changeFrequency: "weekly",
-            priority: 0.5,
-        },
-        {
-            url: `${SITE.url}/llms-full.txt`,
-            lastModified: now,
-            changeFrequency: "weekly",
-            priority: 0.5,
-        },
-    ];
+    return PAGES.map(([path, changeFrequency, priority]) => ({
+        url: `${SITE.url}${path === "/" ? "/" : path}`,
+        lastModified: now,
+        changeFrequency,
+        priority,
+    }));
 }

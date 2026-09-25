@@ -6,8 +6,9 @@ import { Footer } from "@/components/footer";
 import { ArrowUpRight, Download, ExternalLink, ChevronLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Resume - Ayush Goyal',
-  description: 'Resume of Ayush Goyal — AI Engineer focused on Physical AI & Robotics',
+  title: 'Resume',
+  description: 'Resume of Ayush Goyal — Forward Deployed Engineer (freelance), AI Engineer at TAP Innovations, and robot builder.',
+  alternates: { canonical: '/resume' },
 };
 
 const BLUR_FADE_DELAY = 0.04;
@@ -39,8 +40,8 @@ export default function ResumePage() {
 
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <div className="max-w-lg text-pretty text-sm text-muted-foreground">
-              One page, zero filler. AI engineer doing Physical AI — machines that
-              work outside a browser tab.
+              One page, zero filler. Forward deployed engineer, AI engineer, robot
+              builder.
             </div>
           </BlurFade>
 
@@ -66,9 +67,9 @@ export default function ResumePage() {
             </Link>
 
             <div className="flex flex-wrap gap-1">
-              <Badge variant="chip">Physical AI</Badge>
-              <Badge variant="chip">Robotics</Badge>
+              <Badge variant="chip">Forward Deployed Engineer</Badge>
               <Badge variant="chip">AI Engineer</Badge>
+              <Badge variant="chip">Robotics</Badge>
             </div>
           </BlurFade>
         </div>
@@ -131,17 +132,17 @@ export default function ResumePage() {
                 </Link>
                 <span className="text-muted-foreground">•</span>
                 <Link
-                  href="/#projects"
+                  href="/#work"
                   className="text-sm text-blue-500 hover:underline"
                 >
                   Projects
                 </Link>
                 <span className="text-muted-foreground">•</span>
                 <Link
-                  href="/#skills"
+                  href="/robotics"
                   className="text-sm text-blue-500 hover:underline"
                 >
-                  Skills
+                  Robots
                 </Link>
                 <span className="text-muted-foreground">•</span>
                 <Link

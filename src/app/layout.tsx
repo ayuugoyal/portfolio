@@ -29,7 +29,7 @@ const fontMono = JetBrains_Mono({
 
 const TITLE = `${SITE.name} — ${SITE.role}`;
 const DESCRIPTION =
-    "Freelance AI Solution Architect & GTM Engineer. I build AI agents, bilingual voice agents, RAG systems, MCP servers, lead-generation and workflow automation, and Physical AI robotics. Available for contract work, remote worldwide.";
+    "Ayush Goyal — freelance Forward Deployed Engineer and full-time AI Engineer who builds robots on the side. Embeds with your team to ship AI agents, voice agents, RAG, MCP servers and integrations into production. Remote worldwide.";
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE.url),
@@ -48,10 +48,14 @@ export const metadata: Metadata = {
         canonical: "/",
         types: {
             "text/markdown": `${SITE.url}/index.md`,
+            "text/plain": `${SITE.url}/llms.txt`,
         },
     },
     openGraph: {
-        type: "website",
+        type: "profile",
+        firstName: "Ayush",
+        lastName: "Goyal",
+        username: "ayuugoyal",
         locale: "en_US",
         url: SITE.url,
         siteName: TITLE,
@@ -101,18 +105,10 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
-                <link
-                    rel="alternate"
-                    type="text/markdown"
-                    href="/index.md"
-                    title="This page as markdown"
-                />
-                <link
-                    rel="alternate"
-                    type="text/plain"
-                    href="/llms.txt"
-                    title="llms.txt"
-                />
+                <link rel="author" href={`${SITE.url}/#person`} />
+                <link rel="me" href={SITE.socials.github} />
+                <link rel="me" href={SITE.socials.linkedin} />
+                <link rel="me" href={SITE.socials.x} />
                 <StructuredData />
             </head>
             <body

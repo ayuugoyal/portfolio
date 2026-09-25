@@ -6,8 +6,9 @@ import { Footer } from "@/components/footer";
 import { ArrowUpRight, Download, ExternalLink, ChevronLeft, FileText, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'UK Design Patent - Ayush Goyal',
-  description: 'Pneumatically Actuated Four-Finger Adaptive Gripper Industrial Robot - UK Design Registration 6450987',
+  title: 'UK Design 6450987 — Pneumatic Four-Finger Robotic Gripper',
+  description: 'UK Design Registration 6450987 by Ayush Goyal: a 3D-printed, pneumatically actuated four-finger adaptive gripper for industrial robots. Registered 13 June 2025, granted 30 June 2025.',
+  alternates: { canonical: '/patents/6450987' },
 };
 
 const BLUR_FADE_DELAY = 0.04;

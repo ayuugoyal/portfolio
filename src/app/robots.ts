@@ -22,12 +22,17 @@ const AI_CRAWLERS = [
     // Perplexity
     "PerplexityBot",
     "Perplexity-User",
-    // Google / Apple / Meta
+    // Google / Apple / Meta / Microsoft
     "Google-Extended",
+    "GoogleOther",
+    "Bingbot",
     "Applebot",
     "Applebot-Extended",
     "meta-externalagent",
-    // Others
+    "meta-externalfetcher",
+    "FacebookBot",
+    // Mistral / others
+    "MistralAI-User",
     "CCBot",
     "cohere-ai",
     "Amazonbot",

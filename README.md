@@ -1,12 +1,18 @@
 # Ayush Goyal — Portfolio 😎
 
-Personal portfolio of **Ayush Goyal** — AI Engineer focused on Physical AI & Robotics.
+Personal portfolio of **Ayush Goyal** — Forward Deployed Engineer (freelance), AI Engineer (full-time), robot builder (side projects).
 
 Live at → [ayuugoyal.tech](https://www.ayuugoyal.tech)
 
 ## 👨‍💻 About Me
 
-AI Engineer focused on Physical AI — bringing intelligence into the real world through robots and embedded systems. Building production-grade GenAI systems (RAG pipelines, LLM integrations, MCP servers) and the robotics software that puts them into motion, from ROS2 control stacks and Arduino firmware to patented robotic hardware. Currently an AI Engineer at TAP Innovations (remote, US), open-source contributor with $400 in bounties from archestra-ai, and UK patent holder for a pneumatic robotic gripper.
+Freelance forward deployed engineer: I embed with client teams and ship AI into production — including a WhatsApp machine-maintenance bot live on a factory floor and SiteOS for an architecture studio. Full-time AI (Harness) Engineer at TAP Innovations. After hours I build robots (ROS2 arm, SCARA, ArduPilot voice control) and hold UK Design 6450987 for a pneumatic gripper.
+
+## 🤖 Content & AI-SEO layout
+
+- `src/lib/site.ts` — the only place content lives. Pages, JSON-LD, markdown and llms.txt all read from it.
+- Home page is deliberately short for humans; depth lives on `/forward-deployed-engineer`, `/robotics`, `/services` and in the machine layer.
+- Machine layer: JSON-LD graph (`src/lib/schema.ts`), `/llms.txt`, `/llms-full.txt`, markdown twins (`/index.md`, `/forward-deployed-engineer.md`, `/robotics.md`) served via `Accept: text/markdown` and advertised in a `Link` header, sitemap, and a robots.txt that explicitly allows AI crawlers.
 
 ## 🛠️ Tech Stack
 

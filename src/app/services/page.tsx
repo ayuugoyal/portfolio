@@ -4,15 +4,18 @@ import { Footer } from "@/components/footer";
 import { ArrowUpRight, CalendarDays, ChevronLeft, Mail } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 import { ServiceCard } from "@/components/service-card";
-import { FAQS, PROCESS, SERVICES, SITE } from "@/lib/site";
+import { FaqList } from "@/components/faq-list";
+import { JsonLd } from "@/components/structured-data";
+import { FAQS, PLAYBOOK, SERVICES, SITE } from "@/lib/site";
+import { IDS, breadcrumbSchema, faqSchema } from "@/lib/schema";
 
 const D = 0.06;
 
 const DESCRIPTION =
-    "AI services: agents and chatbots, WhatsApp and voice agents, RAG and knowledge systems, MCP servers, lead generation, workflow automation, integrations, LLMOps and Physical AI robotics. Freelance and contract, remote worldwide.";
+    "What a forward deployed engineer ships: AI agents, WhatsApp and voice agents, enterprise integrations, RAG, MCP servers, LLMOps, automation and Physical AI. Freelance, remote worldwide.";
 
 export const metadata: Metadata = {
-    title: "AI Services — Agents, Voice, RAG, Automation & Integrations",
+    title: "Forward Deployed AI Services — Agents, Voice, RAG & Integrations",
     description: DESCRIPTION,
     alternates: { canonical: "/services" },
     openGraph: {
@@ -23,65 +26,24 @@ export const metadata: Metadata = {
     },
 };
 
-/**
- * FAQ markup lives here rather than in the root layout: Google requires the
- * marked-up answers to be visible on the same page, and the FAQ block was
- * removed from the home page.
- */
-function FaqSchema() {
-    return (
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "FAQPage",
-                    "@id": `${SITE.url}/services#faq`,
-                    mainEntity: FAQS.map((f) => ({
-                        "@type": "Question",
-                        name: f.q,
-                        acceptedAnswer: { "@type": "Answer", text: f.a },
-                    })),
-                }),
-            }}
-        />
-    );
-}
-
-/** Breadcrumbs help this page surface as its own result rather than a fragment. */
-function Breadcrumbs() {
-    return (
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "BreadcrumbList",
-                    itemListElement: [
-                        {
-                            "@type": "ListItem",
-                            position: 1,
-                            name: "Home",
-                            item: SITE.url,
-                        },
-                        {
-                            "@type": "ListItem",
-                            position: 2,
-                            name: "Services",
-                            item: `${SITE.url}/services`,
-                        },
-                    ],
-                }),
-            }}
-        />
-    );
-}
-
 export default function ServicesPage() {
     return (
         <div className="px-5">
-            <Breadcrumbs />
-            <FaqSchema />
+            <JsonLd
+                graph={[
+                    breadcrumbSchema([{ name: "Services", path: "/services" }]),
+                    {
+                        "@type": "WebPage",
+                        "@id": `${SITE.url}/services#page`,
+                        url: `${SITE.url}/services`,
+                        name: "Forward deployed AI services",
+                        description: DESCRIPTION,
+                        about: { "@id": IDS.service },
+                        isPartOf: { "@id": IDS.website },
+                    },
+                    faqSchema(`${SITE.url}/services#faq`, FAQS.general),
+                ]}
+            />
             <section className="mx-auto w-full max-w-2xl space-y-6">
                 <BlurFade delay={D}>
                     <Link
@@ -101,9 +63,11 @@ export default function ServicesPage() {
                     </BlurFade>
                     <BlurFade delay={D}>
                         <p className="max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground">
-                            I scope the system, choose the models, build it, and hand you
-                            something your team can actually run. Fixed-scope builds or ongoing
-                            retainers — remote, worldwide.
+                            Everything I ship as a{" "}
+                            <Link href="/forward-deployed-engineer" className="text-foreground underline underline-offset-4">
+                                forward deployed engineer
+                            </Link>
+                            . Fixed-scope sprints or embedded retainers — remote, worldwide.
                         </p>
                     </BlurFade>
                     <BlurFade delay={D} className="flex flex-wrap items-center gap-2 pt-1">
@@ -145,8 +109,8 @@ export default function ServicesPage() {
                         <h2 className="font-display text-lg font-bold tracking-tight">
                             How it works
                         </h2>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                            {PROCESS.map((p) => (
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+                            {PLAYBOOK.map((p) => (
                                 <div key={p.step} className="space-y-1">
                                     <div className="font-mono text-[10px] tabular-nums text-muted-foreground">
                                         {p.step}
@@ -168,23 +132,7 @@ export default function ServicesPage() {
                         <h2 className="font-display text-lg font-bold tracking-tight">
                             Questions I actually get
                         </h2>
-                        <div className="divide-y divide-border border-b border-border">
-                            {FAQS.map((f) => (
-                                <details key={f.q} className="group py-3.5">
-                                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 marker:content-none">
-                                        <h3 className="font-display text-sm font-bold tracking-tight">
-                                            {f.q}
-                                        </h3>
-                                        <span className="mt-0.5 shrink-0 font-mono text-xs text-muted-foreground transition-transform group-open:rotate-45">
-                                            +
-                                        </span>
-                                    </summary>
-                                    <p className="pr-8 pt-2 text-sm leading-relaxed text-muted-foreground">
-                                        {f.a}
-                                    </p>
-                                </details>
-                            ))}
-                        </div>
+                        <FaqList faqs={FAQS.general} />
                     </div>
                 </BlurFade>
 
@@ -203,7 +151,7 @@ export default function ServicesPage() {
                                 <CalendarDays className="size-3.5" />
                                 book a scope call
                             </Link>
-                            <Link href="/#projects" className="btn-quiet">
+                            <Link href="/#work" className="btn-quiet">
                                 see the work
                                 <ArrowUpRight className="size-3.5" />
                             </Link>

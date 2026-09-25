@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react";
+import { BotIcon, BriefcaseIcon, CalendarIcon, HomeIcon, MailIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -61,7 +61,11 @@ const Icons = {
 };
 
 const DATA = {
-    navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
+    navbar: [
+        { href: "/", icon: HomeIcon, label: "Home" },
+        { href: "/forward-deployed-engineer", icon: BriefcaseIcon, label: "Hire me (FDE)" },
+        { href: "/robotics", icon: BotIcon, label: "Robots" },
+    ],
     contact: {
         social: {
             GitHub: {
