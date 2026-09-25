@@ -8,7 +8,9 @@ import Image from "next/image";
 import { SectionHeading } from "@/components/section-heading";
 import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/structured-data";
-import { EXPERIENCE, HATS, PROJECTS, SITE } from "@/lib/site";
+import { ResumeCard } from "@/components/resume-card";
+import { HackathonCard } from "@/components/pro-card";
+import { EXPERIENCE, HATS, PATENT, PROJECTS, SITE } from "@/lib/site";
 import {
     IDS,
     experienceSchema,
@@ -27,8 +29,6 @@ const D = 0.06;
  */
 
 const featured = PROJECTS.filter((p) => p.blurb);
-const current = EXPERIENCE.filter((e) => e.current);
-const previously = EXPERIENCE.filter((e) => !e.current);
 
 /** ProfilePage is Google's recommended type for a personal site's home page. */
 function HomeSchema() {
@@ -226,7 +226,7 @@ export default function Home() {
                             href="/forward-deployed-engineer#deployed"
                             className="font-mono text-[11px] lowercase text-muted-foreground hover:text-foreground"
                         >
-                            client work →
+                            fde deployments →
                         </Link>
                         <Link
                             href="/robotics"
@@ -245,39 +245,69 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ───────────────────────── now ───────────────────────── */}
+            {/* ───────────────────────── experience ───────────────────────── */}
             <section id="work-experience" className="px-5 pt-16">
                 <div className="mx-auto w-full max-w-2xl space-y-3">
                     <BlurFade delay={D}>
-                        <SectionHeading index="03" title="right now" sub="experience" />
+                        <SectionHeading
+                            index="03"
+                            title="where i've been cooking"
+                            sub="experience"
+                            kicker="tap for the yap"
+                        />
                     </BlurFade>
+                    <div>
+                        {EXPERIENCE.map((e) => (
+                            <BlurFade key={e.company} delay={D}>
+                                <ResumeCard
+                                    logoUrl={e.logoUrl}
+                                    altText={e.company}
+                                    title={e.company}
+                                    subtitle={e.title}
+                                    href={e.href}
+                                    current={e.current}
+                                    period={`${e.start} — ${e.end ?? "now"}`}
+                                    description={e.description}
+                                />
+                            </BlurFade>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ───────────────────────── patent ───────────────────────── */}
+            <section id="patents" className="px-5 pt-16">
+                <div className="mx-auto w-full max-w-2xl space-y-2">
                     <BlurFade delay={D}>
-                        <dl className="divide-y divide-border border-y border-border">
-                            {current.map((e) => (
-                                <div
-                                    key={e.company}
-                                    className="flex flex-col gap-0.5 py-3 sm:flex-row sm:items-baseline sm:gap-4"
-                                >
-                                    <dt className="w-28 shrink-0 font-mono text-[10px] lowercase text-muted-foreground">
-                                        {e.start} — now
-                                    </dt>
-                                    <dd className="text-sm">
-                                        <span className="font-medium">{e.title}</span>
-                                        <span className="text-muted-foreground">
-                                            {" "}
-                                            · {e.company}
-                                        </span>
-                                    </dd>
-                                </div>
-                            ))}
-                        </dl>
+                        <SectionHeading
+                            index="04"
+                            title="certified inventor arc"
+                            sub="uk design patent"
+                            kicker="the uk agreed"
+                        />
                     </BlurFade>
-                    <BlurFade delay={D}>
-                        <p className="font-mono text-[10px] lowercase leading-relaxed text-muted-foreground">
-                            previously: {previously.map((e) => e.company.toLowerCase()).join(" · ")}{" "}
-                            · uk design patent holder · $400 in open-source bounties
-                        </p>
-                    </BlurFade>
+                    <ul className="divide-y divide-border">
+                        <BlurFade delay={D}>
+                            <HackathonCard
+                                title={PATENT.title}
+                                description={`${PATENT.summary} UK Design Registration ${PATENT.number}.`}
+                                dates="June 2025"
+                                image="/patent.png"
+                                links={[
+                                    {
+                                        title: "see the patent",
+                                        href: PATENT.url,
+                                        icon: <ArrowUpRight />,
+                                    },
+                                    {
+                                        title: "gov.uk record",
+                                        href: PATENT.official,
+                                        icon: <ArrowUpRight />,
+                                    },
+                                ]}
+                            />
+                        </BlurFade>
+                    </ul>
                 </div>
             </section>
 

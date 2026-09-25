@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     twitter: { title: `${TITLE} — ${SITE.name}`, description: DESCRIPTION },
 };
 
-const deployed = PROJECTS.filter((p) => p.category === "Forward-Deployed & Client Work");
+const deployed = PROJECTS.filter((p) => p.category === "Freelance FDE Deployments");
 
 export default function FdePage() {
     return (
@@ -53,7 +53,7 @@ export default function FdePage() {
                         isPartOf: { "@id": IDS.website },
                     },
                     faqSchema(`${SITE.url}${PATH}#faq`, FAQS.fde),
-                    projectListSchema(deployed, "Forward-deployed client work"),
+                    projectListSchema(deployed, "Freelance FDE deployments"),
                 ]}
             />
 
@@ -174,7 +174,7 @@ export default function FdePage() {
 
                 <section id="deployed" className="scroll-mt-24 space-y-4 pt-6">
                     <BlurFade delay={D}>
-                        <SectionHeading index="03" title="where i've deployed" sub="client work" />
+                        <SectionHeading index="03" title="where i've deployed" sub="live in production" />
                     </BlurFade>
                     <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         {deployed.map((p) => (

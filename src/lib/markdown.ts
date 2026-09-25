@@ -191,7 +191,7 @@ export function fdeMarkdown(): string {
 
     lines.push("## Where Ayush has deployed");
     lines.push("");
-    for (const p of PROJECTS.filter((p) => p.category === "Forward-Deployed & Client Work")) {
+    for (const p of PROJECTS.filter((p) => p.category === "Freelance FDE Deployments")) {
         lines.push(projectLine(p));
     }
     lines.push("");

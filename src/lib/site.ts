@@ -87,9 +87,7 @@ export const SERVICES = [
         ],
         proof: [
             "Machine Maintenance Bot (live on a factory floor)",
-            "SiteOS",
-            "NBC 2016 WhatsApp assistant",
-            "Sensor Dash factory server",
+            "SiteOS (live for an architecture studio)",
         ],
     },
     {
@@ -299,7 +297,7 @@ export const FAQS: Record<"fde" | "general" | "robots", Faq[]> = {
         },
         {
             q: "Can you build WhatsApp bots and AI agents?",
-            a: "Yes. Shipped WhatsApp assistants on FastAPI and Gemini answer domain questions over a client's own documentation, run cheaply on a small VPS, and can push live alerts to a WhatsApp group. The same agent brain can power a web chat widget.",
+            a: "Yes. Two WhatsApp systems are live in production from freelance FDE work: a machine-maintenance ticketing bot on WhatsApp Flows for a factory, and SiteOS, which turns site engineers' WhatsApp photos and notes into tickets and daily reports. Personal builds include a FastAPI + Gemini assistant for National Building Code questions that runs on a small VPS.",
         },
         {
             q: "Can you integrate AI with the tools we already use?",
@@ -346,58 +344,58 @@ export type Project = {
 };
 
 export const PROJECT_CATEGORIES = [
-    "Forward-Deployed & Client Work",
-    "AI Engineering",
+    "Freelance FDE Deployments",
+    "Personal Projects",
     "Robots & Physical AI",
 ] as const;
 
 export const PROJECTS: Project[] = [
-    // ── forward-deployed & client work ──
+    // ── freelance fde deployments (live in production) ──
     {
         slug: "machine-maintenance-bot",
         blurb: "WhatsApp breakdown & maintenance tickets, live on a factory floor",
-        category: "Forward-Deployed & Client Work",
+        category: "Freelance FDE Deployments",
         title: "Machine Maintenance Bot",
         dates: "2025 — now",
         description:
-            "Production WhatsApp bot running a factory's machine-breakdown workflow. Operators report breakdowns through WhatsApp Flows with photos, supervisors accept and dispatch technicians, and every ticket is tracked in SharePoint — with optional 5-Why root-cause analysis and a nightly PDF report with Gemini-written analysis. Redis locks and idempotent intake keep parallel supervisors from double-acting. Live in production; private client work.",
+            "Production WhatsApp bot running a factory's machine-breakdown workflow. Operators report breakdowns through WhatsApp Flows with photos, supervisors accept and dispatch technicians, and every ticket is tracked in SharePoint — with optional 5-Why root-cause analysis and a nightly PDF report with Gemini-written analysis. Redis locks and idempotent intake keep parallel supervisors from double-acting. Deployed as a freelance forward deployed engineer; live in production.",
         technologies: ["Node.js", "Express", "WhatsApp Cloud API", "WhatsApp Flows", "SharePoint / Graph API", "Redis", "Gemini", "Puppeteer", "Docker"],
         links: [],
     },
     {
         slug: "siteos",
         blurb: "WhatsApp-to-dashboard site tracking for an architecture studio",
-        category: "Forward-Deployed & Client Work",
+        category: "Freelance FDE Deployments",
         title: "SiteOS",
         dates: "2026",
         description:
-            "Project, drawing and site-update platform for an architecture studio. Site engineers send photos, video or notes on WhatsApp; SiteOS works out the project and floor, groups a 10-minute window into one update, stitches media into a single video, and pushes a ticket to the project manager — plus a daily report page and SharePoint archive. The office gets a dashboard with DXF plans as clickable layouts, versioned drawings and strict role-based access. Live in production; private client work.",
+            "Project, drawing and site-update platform for an architecture studio. Site engineers send photos, video or notes on WhatsApp; SiteOS works out the project and floor, groups a 10-minute window into one update, stitches media into a single video, and pushes a ticket to the project manager — plus a daily report page and SharePoint archive. The office gets a dashboard with DXF plans as clickable layouts, versioned drawings and strict role-based access. Deployed as a freelance forward deployed engineer; live in production.",
         technologies: ["Next.js", "React", "PostgreSQL", "Drizzle", "BullMQ", "Redis", "ffmpeg", "WhatsApp Cloud API", "SharePoint", "Docker"],
         links: [],
     },
     {
         slug: "nbc-whatsapp-assistant",
-        category: "Forward-Deployed & Client Work",
+        category: "Personal Projects",
         title: "NBC 2016 WhatsApp Assistant",
         dates: "2025",
         description:
-            "A WhatsApp AI agent that answers National Building Code (Part 4) questions over the client's own documentation. FastAPI + Gemini with a comprehensive domain prompt instead of a vectorstore, tuned to run on a low-resource VPS. Private client work.",
+            "A WhatsApp AI agent that answers National Building Code (Part 4) questions from the code's own text. FastAPI + Gemini with a comprehensive domain prompt instead of a vectorstore, tuned to run on a low-resource VPS.",
         technologies: ["Python", "FastAPI", "Gemini API", "WhatsApp Business API", "Docker", "VPS"],
         links: [],
     },
     {
         slug: "sensor-dash",
-        category: "Forward-Deployed & Client Work",
+        category: "Robots & Physical AI",
         title: "Sensor Dash — IoT Factory Server",
         dates: "2025",
         description:
-            "Raspberry Pi sensor server for live factory visibility. FastAPI with WebSocket streaming, Arduino for analog sensors, DHT / BH1750 / MCP3008 over I2C and SPI, and a Next.js dashboard on top. Private client work.",
+            "Raspberry Pi sensor server for live factory visibility. FastAPI with WebSocket streaming, Arduino for analog sensors, DHT / BH1750 / MCP3008 over I2C and SPI, and a Next.js dashboard on top.",
         technologies: ["Python", "FastAPI", "Raspberry Pi", "Arduino", "WebSockets", "SQLite", "Next.js"],
         links: [],
     },
     {
         slug: "lead-enrichment-tool",
-        category: "Forward-Deployed & Client Work",
+        category: "Personal Projects",
         title: "Lead Enrichment Tool",
         href: "https://github.com/ayuugoyal/lead-enrich-data",
         dates: "",
@@ -411,7 +409,7 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "cold-outreach-engine",
-        category: "Forward-Deployed & Client Work",
+        category: "Personal Projects",
         title: "Cold Outreach Engine",
         href: "https://github.com/ayuugoyal/auto-mail",
         dates: "",
@@ -425,7 +423,7 @@ export const PROJECTS: Project[] = [
     {
         slug: "ai-devops-agent",
         blurb: "run cloud infra from Slack through MCP",
-        category: "AI Engineering",
+        category: "Personal Projects",
         title: "AI DevOps Agent",
         href: "https://github.com/ayuugoyal/ai-devops-agent",
         dates: "2026",
@@ -436,7 +434,7 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "slack-claude",
-        category: "AI Engineering",
+        category: "Personal Projects",
         title: "slack-claude",
         href: "https://github.com/ayuugoyal/slack-claude",
         dates: "2026",
@@ -447,7 +445,7 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "quickdocs",
-        category: "AI Engineering",
+        category: "Personal Projects",
         title: "QuickDocs",
         href: "https://github.com/ayuugoyal/quickdocs",
         dates: "2026",
@@ -459,7 +457,7 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "chatter-ai",
-        category: "AI Engineering",
+        category: "Personal Projects",
         title: "Chatter AI",
         href: "https://www.chatterai.tech/",
         dates: "",
@@ -474,7 +472,7 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "lawgpt",
-        category: "AI Engineering",
+        category: "Personal Projects",
         title: "LawGPT",
         href: "https://lawgpt.rndynamolabs.tech/",
         dates: "",
@@ -559,7 +557,7 @@ export const EXPERIENCE = [
         start: "2025",
         current: true,
         description:
-            "Embedding with client teams to ship AI into production. Shipped a WhatsApp machine-maintenance ticketing bot that runs a factory's breakdown workflow and SiteOS, a WhatsApp-to-dashboard site-tracking platform for an architecture studio — both live. Also WhatsApp and voice agents, RAG over client documentation, enterprise integrations, factory IoT servers and outbound automation. Discovery with real users, pilot in their stack, production rollout, handover.",
+            "Embedding with client teams to ship AI into production. Shipped a WhatsApp machine-maintenance ticketing bot that runs a factory's breakdown workflow and SiteOS, a WhatsApp-to-dashboard site-tracking platform for an architecture studio — both live in production. Discovery with real users, pilot in their stack, production rollout, handover.",
     },
     {
         company: "TAP Innovations",
@@ -570,7 +568,7 @@ export const EXPERIENCE = [
         start: "May 2026",
         current: true,
         description:
-            "Full-time AI (Harness) Engineer at TAP Innovations, a US software company building integrations, analytics and custom apps for enterprise systems. Shipping AI-driven solutions into enterprise integrations, fully remote.",
+            "AI (Harness) Engineer at TAP Innovations, a US software startup building integrations, analytics and custom apps for enterprise systems. Fully remote, shipping AI-driven solutions — while going all in on Physical AI, i.e. machine intelligence inside actual robots and embedded hardware. Calling it now: that's the next big thing.",
     },
     {
         company: "Loadshare Networks",
@@ -581,7 +579,7 @@ export const EXPERIENCE = [
         start: "Nov 2025",
         end: "Apr 2026",
         description:
-            "AI Engineer at Loadshare Networks, a logistics and supply-chain tech company. Built AI-driven solutions to optimise logistics operations and improve delivery and customer experience.",
+            "AI Engineer at Loadshare Networks, a big name in logistics and supply chain tech. Built AI-driven solutions to optimise logistics ops, make deliveries way less painful, and level up the customer experience. Also freelanced AI/ML consulting on the side across a bunch of domains.",
     },
     {
         company: "Data Alt Dynamics",
@@ -592,7 +590,7 @@ export const EXPERIENCE = [
         start: "Jul 2025",
         end: "Nov 2025",
         description:
-            "Shipped a Raspberry Pi server with multi-sensor integration for real-time data acquisition and control. Tuned local ComfyUI workflows for a 70% efficiency gain, and wired Cloudflare Tunnel to n8n for secure remote access, cutting 40% of manual work.",
+            "Shipped a Raspberry Pi server with multi-sensor integration for real-time data acquisition and control. Tuned local ComfyUI workflows and made AI-driven processes 70% more efficient. Glued Cloudflare Tunnel to n8n for secure remote access and clean cloud sync, which deleted 40% of the manual busywork.",
     },
     {
         company: "Physics Wallah",
@@ -603,7 +601,7 @@ export const EXPERIENCE = [
         start: "May 2025",
         end: "Jul 2025",
         description:
-            "Backend and platform engineering at India's largest ed-tech, serving millions of students across JEE, NEET and school curricula.",
+            "Backend and platform engineering at India's biggest ed-tech, serving millions of students across JEE, NEET and school curricula. Real traffic, real stakes, zero room to fumble.",
     },
     {
         company: "Bharat Electronics Limited",
@@ -614,7 +612,7 @@ export const EXPERIENCE = [
         start: "Jun 2024",
         end: "Aug 2024",
         description:
-            "Embedded systems and electronics at India's leading defence electronics manufacturer, under the Ministry of Defence. First proper taste of industrial hardware — and the reason robots became the side quest.",
+            "Embedded systems and electronics at India's top defence electronics manufacturer, under the Ministry of Defence. First proper taste of industrial hardware, and the reason i'm stuck on this stuff now.",
     },
 ];
 
