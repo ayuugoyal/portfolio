@@ -63,7 +63,7 @@ export const HATS = [
         key: "robots",
         mode: "side projects",
         title: "Robot Builder",
-        body: "After hours I build robots: an SO-101 arm Claude Code drives over MCP, LiDAR obstacle avoidance for an ArduPilot rover, a ROS2 6-DOF arm, a SCARA and a patented pneumatic gripper. Physical AI, from firmware to LLM.",
+        body: "After hours I build robots: an SO-101 arm that Claude Code drives over MCP, and LiDAR obstacle avoidance for a 2.2 m ArduPilot rover. Physical AI, from firmware to LLM.",
         href: "/robotics",
         cta: "see the robots",
     },
@@ -346,6 +346,10 @@ export type Project = {
     /** self-hosted demo video + poster frame */
     video?: string;
     poster?: string;
+    /** short silent loop for previews */
+    loop?: string;
+    /** 3-4 scannable points shown instead of the full description */
+    highlights?: string[];
 };
 
 export const PROJECT_CATEGORIES = [
@@ -498,7 +502,6 @@ export const PROJECTS: Project[] = [
     // ── robots ──
     {
         slug: "so101-claude-code",
-        featured: true,
         blurb: "MCP server that lets Claude Code drive a real SO-101 arm",
         category: "Robots & Physical AI",
         title: "SO-101 × Claude Code",
@@ -510,10 +513,15 @@ export const PROJECTS: Project[] = [
         image: "/robotics/so101-claude-code.jpg",
         video: "/robotics/so101-claude-code.mp4",
         poster: "/robotics/so101-claude-code.jpg",
+        loop: "/robotics/so101-loop.mp4",
+        highlights: [
+            "Claude Code drives a real arm through 10 MCP tools — joints, poses, gestures, gripper, camera",
+            "Safety core on LeRobot: clamps to calibrated range, caps speed, parks before torque-off",
+            "Desktop studio: sliders, leader-arm teleop, chat or voice — shows Claude's moves live",
+        ],
     },
     {
         slug: "raftaar-rover",
-        featured: true,
         blurb: "ROS 2 + Nav2 LiDAR obstacle avoidance for a GPS-guided ArduPilot rover",
         category: "Robots & Physical AI",
         title: "Raftaar — Autonomous Rover",
@@ -525,10 +533,16 @@ export const PROJECTS: Project[] = [
         image: "/robotics/raftaar-rover.jpg",
         video: "/robotics/raftaar-rover.mp4",
         poster: "/robotics/raftaar-rover.jpg",
+        loop: "/robotics/raftaar-loop.mp4",
+        highlights: [
+            "Two LiDARs at different heights; either one seeing an obstacle hands control from AUTO to GUIDED",
+            "Nav2 MPPI planner steers around it, then the GPS mission resumes",
+            "Debounce, cooldown, manual-override lock, stuck watchdog and command timeout",
+            "NVIDIA Jetson + CubeOrange+ over MAVROS · co-maintainer",
+        ],
     },
     {
         slug: "bcn3d-moveo",
-        featured: true,
         blurb: "ROS2 control stack for a 6-DOF robot arm",
         category: "Robots & Physical AI",
         title: "BCN3D Moveo Control System",
@@ -561,7 +575,6 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "ardupilot-assistant",
-        featured: true,
         blurb: "voice & natural-language control of ArduPilot vehicles",
         category: "Robots & Physical AI",
         title: "ArduPilot Assistant",

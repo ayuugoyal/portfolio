@@ -3,8 +3,9 @@ import Link from "next/link";
 import { ArrowUpRight, CalendarDays, ChevronLeft } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 import { Footer } from "@/components/footer";
+import { RobotFeature } from "@/components/robot-showcase";
 import { JsonLd } from "@/components/structured-data";
-import { PROJECTS, SITE, SKILLS } from "@/lib/site";
+import { PROJECTS, SITE } from "@/lib/site";
 import {
     IDS,
     breadcrumbSchema,
@@ -37,7 +38,6 @@ export const metadata: Metadata = {
 const robots = PROJECTS.filter((p) => p.category === "Robots & Physical AI");
 const arm = robots.find((p) => p.slug === "so101-claude-code")!;
 const rover = robots.find((p) => p.slug === "raftaar-rover")!;
-const stack = SKILLS.find((s) => s.category === "Robotics & Physical AI")?.skills ?? [];
 
 export default function RoboticsPage() {
     return (
@@ -60,7 +60,7 @@ export default function RoboticsPage() {
                 ]}
             />
 
-            <section className="mx-auto w-full max-w-2xl space-y-6">
+            <section className="mx-auto w-full max-w-2xl space-y-8">
                 <BlurFade delay={D}>
                     <Link
                         href="/"
@@ -91,67 +91,11 @@ export default function RoboticsPage() {
                     </BlurFade>
                 </div>
 
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-[2fr_3fr]">
-                    <BlurFade delay={D}>
-                        <figure id={arm.slug} className="scroll-mt-24 space-y-2">
-                            <video
-                                src={arm.video}
-                                poster={arm.poster}
-                                controls
-                                playsInline
-                                preload="none"
-                                className="aspect-[9/16] w-full rounded-xl border border-border bg-muted object-cover"
-                            />
-                            <figcaption className="font-mono text-[10px] lowercase text-muted-foreground">
-                                sound on · claude code drives the arm over mcp
-                            </figcaption>
-                        </figure>
+                {[arm, rover].map((p, i) => (
+                    <BlurFade key={p.slug} delay={D}>
+                        <RobotFeature project={p} index={i + 1} />
                     </BlurFade>
-                    <div className="space-y-3">
-                        <BlurFade delay={D}>
-                            <div className="space-y-2">
-                                <h2 className="font-display text-xl font-bold tracking-tight">
-                                    {arm.title}
-                                </h2>
-                                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
-                                    {arm.description}
-                                </p>
-                            </div>
-                        </BlurFade>
-                        <BlurFade delay={D}>
-                            <figure id={rover.slug} className="scroll-mt-24 space-y-2 pt-2">
-                                <video
-                                    src={rover.video}
-                                    poster={rover.poster}
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    className="aspect-video w-full rounded-xl border border-border bg-muted object-cover"
-                                />
-                                <figcaption className="space-y-1">
-                                    <span className="block font-display text-sm font-bold tracking-tight">
-                                        {rover.title}
-                                    </span>
-                                    <span className="block text-pretty text-sm leading-relaxed text-muted-foreground">
-                                        {rover.description}
-                                    </span>
-                                </figcaption>
-                            </figure>
-                        </BlurFade>
-                    </div>
-                </div>
-
-                <BlurFade delay={D}>
-                    <p className="font-mono text-[11px] lowercase leading-loose text-muted-foreground">
-                        {stack.map((s, i) => (
-                            <span key={s}>
-                                {i > 0 && <span className="px-2 opacity-30">/</span>}
-                                {s}
-                            </span>
-                        ))}
-                    </p>
-                </BlurFade>
+                ))}
 
                 <BlurFade delay={D}>
                     <div className="mb-16 space-y-4 border-t border-border pt-8">

@@ -6,6 +6,7 @@ import { ArrowUpRight, CalendarDays, Github, Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { SectionHeading } from "@/components/section-heading";
+import { RobotTiles } from "@/components/robot-showcase";
 import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/structured-data";
 import { ResumeCard } from "@/components/resume-card";
@@ -29,6 +30,7 @@ const D = 0.06;
  */
 
 const featured = PROJECTS.filter((p) => p.featured);
+const robots = PROJECTS.filter((p) => p.loop);
 
 /** ProfilePage is Google's recommended type for a personal site's home page. */
 function HomeSchema() {
@@ -217,12 +219,29 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* ──────────────────────── robots ──────────────────────── */}
+            <section id="robots" className="px-5 pt-16">
+                <div className="mx-auto w-full max-w-2xl space-y-4">
+                    <BlurFade delay={D}>
+                        <SectionHeading
+                            index="03"
+                            title="robots"
+                            sub="physical ai"
+                            kicker="llms driving real hardware"
+                        />
+                    </BlurFade>
+                    <BlurFade delay={D}>
+                        <RobotTiles projects={robots} />
+                    </BlurFade>
+                </div>
+            </section>
+
             {/* ──────────────────────── selected work ──────────────────────── */}
             <section id="work" className="px-5 pt-16">
                 <div className="mx-auto w-full max-w-2xl space-y-3">
                     <BlurFade delay={D}>
                         <SectionHeading
-                            index="03"
+                            index="04"
                             title="selected work"
                             sub="projects"
                             kicker={`${PROJECTS.length} total`}
@@ -288,7 +307,7 @@ export default function Home() {
                 <div className="mx-auto w-full max-w-2xl space-y-3">
                     <BlurFade delay={D}>
                         <SectionHeading
-                            index="04"
+                            index="05"
                             title="where i've been cooking"
                             sub="experience"
                             kicker="tap for the yap"
@@ -318,7 +337,7 @@ export default function Home() {
                 <div className="mx-auto w-full max-w-2xl space-y-2">
                     <BlurFade delay={D}>
                         <SectionHeading
-                            index="05"
+                            index="06"
                             title="certified inventor arc"
                             sub="uk design patent"
                             kicker="the uk agreed"
