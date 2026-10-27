@@ -3,9 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight, CalendarDays, ChevronLeft } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 import { Footer } from "@/components/footer";
-import { ProjectCard } from "@/components/project-card";
 import { JsonLd } from "@/components/structured-data";
-import { withIcons } from "@/components/project-links";
 import { PROJECTS, SITE, SKILLS } from "@/lib/site";
 import {
     IDS,
@@ -16,9 +14,9 @@ import {
 
 const D = 0.06;
 const PATH = "/robotics";
-const TITLE = "Robots — Claude Code SO-101 Arm, Autonomous Rover, ROS2 & Physical AI";
+const TITLE = "Robots — Claude Code SO-101 Arm & Autonomous Rover";
 const DESCRIPTION =
-    "Robots Ayush Goyal builds: an SO-101 arm Claude Code drives over MCP, ROS 2 + Nav2 LiDAR obstacle avoidance for an ArduPilot rover, a ROS2-controlled BCN3D Moveo 6-DOF arm, a browser-controlled SCARA, voice control for ArduPilot vehicles, and a patented pneumatic four-finger gripper.";
+    "Robots Ayush Goyal builds: an SO-101 arm Claude Code drives over MCP, and ROS 2 + Nav2 LiDAR obstacle avoidance for a 2.2 m skid-steer ArduPilot rover running on an NVIDIA Jetson.";
 
 export const metadata: Metadata = {
     title: TITLE,
@@ -55,9 +53,9 @@ export default function RoboticsPage() {
                         description: DESCRIPTION,
                         author: { "@id": IDS.person },
                         isPartOf: { "@id": IDS.website },
-                        about: ["Robotics", "Physical AI", "ROS2", "Nav2", "LeRobot", "SO-101", "MCP", "Claude Code", "Robot arm", "Autonomous rover", "SCARA", "ArduPilot"],
+                        about: ["Robotics", "Physical AI", "ROS2", "Nav2", "LeRobot", "SO-101", "MCP", "Claude Code", "Robot arm", "Autonomous rover", "ArduPilot"],
                     },
-                    projectListSchema(robots, "Robots"),
+                    projectListSchema([arm, rover], "Robots"),
                     patentSchema(),
                 ]}
             />
@@ -143,22 +141,6 @@ export default function RoboticsPage() {
                         </BlurFade>
                     </div>
                 </div>
-
-                <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    {robots.filter((p) => !p.video).map((p) => (
-                        <BlurFade key={p.slug} delay={D}>
-                            <ProjectCard
-                                href={p.href}
-                                title={p.title}
-                                description={p.blurb ?? p.description}
-                                dates={p.dates}
-                                tags={[]}
-                                image={p.image}
-                                links={withIcons(p.links)}
-                            />
-                        </BlurFade>
-                    ))}
-                </ul>
 
                 <BlurFade delay={D}>
                     <p className="font-mono text-[11px] lowercase leading-loose text-muted-foreground">
