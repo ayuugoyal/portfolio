@@ -230,7 +230,11 @@ export default function Home() {
                     </BlurFade>
                     <ul className="divide-y divide-border border-y border-border">
                         {featured.map((p) => {
-                            const href = p.href ?? "/forward-deployed-engineer#deployed";
+                            const href =
+                                p.href ??
+                                (p.category === "Robots & Physical AI"
+                                    ? `/robotics#${p.slug}`
+                                    : "/forward-deployed-engineer#deployed");
                             return (
                                 <BlurFade key={p.slug} delay={D}>
                                     <li>

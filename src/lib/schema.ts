@@ -58,7 +58,7 @@ export function personSchema() {
                 "@type": "Occupation",
                 name: "Robotics Engineer",
                 description:
-                    "Side projects: ROS2 robot arms, SCARA, ArduPilot voice control, IoT sensor servers, pneumatic grippers.",
+                    "Side projects: SO-101 arm driven by Claude Code over MCP, ROS 2 + Nav2 rover obstacle avoidance, ROS2 robot arms, SCARA, ArduPilot voice control, IoT sensor servers, pneumatic grippers.",
             },
         ],
         knowsAbout: [

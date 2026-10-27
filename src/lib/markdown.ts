@@ -42,12 +42,13 @@ function contactBlock(lines: string[]) {
 }
 
 function summaryParagraph(): string {
-    return `${SITE.name} is a Forward Deployed Engineer and AI Engineer (${SITE.location}). As a freelance forward deployed engineer, Ayush embeds with client teams and ships AI into production — including a WhatsApp machine-maintenance ticketing bot running live on a factory floor and SiteOS, a WhatsApp-to-dashboard site-tracking platform for an architecture studio. That work spans AI agents and chatbots, WhatsApp and bilingual Hindi/English voice agents, RAG and knowledge systems, MCP servers, enterprise integrations and workflow automation. Full-time, Ayush is an ${SITE.employer.title} at ${SITE.employer.name}, remote for a US team. On the side, Ayush builds robots — a ROS2-controlled 6-DOF arm, a SCARA, voice-controlled ArduPilot vehicles and IoT factory sensor servers — and holds UK Design Registration ${PATENT.number} for a pneumatic four-finger robotic gripper. Ayush has also earned $400 in maintainer-awarded open-source bounties from archestra-ai.`;
+    return `${SITE.name} is a Forward Deployed Engineer and AI Engineer (${SITE.location}). As a freelance forward deployed engineer, Ayush embeds with client teams and ships AI into production — including a WhatsApp machine-maintenance ticketing bot running live on a factory floor and SiteOS, a WhatsApp-to-dashboard site-tracking platform for an architecture studio. That work spans AI agents and chatbots, WhatsApp and bilingual Hindi/English voice agents, RAG and knowledge systems, MCP servers, enterprise integrations and workflow automation. Full-time, Ayush is an ${SITE.employer.title} at ${SITE.employer.name}, remote for a US team. On the side, Ayush builds robots — an SO-101 arm that Claude Code drives over MCP, ROS 2 + Nav2 LiDAR obstacle avoidance for an ArduPilot rover, a ROS2-controlled 6-DOF arm, a SCARA, voice-controlled ArduPilot vehicles and IoT factory sensor servers — and holds UK Design Registration ${PATENT.number} for a pneumatic four-finger robotic gripper. Ayush has also earned $400 in maintainer-awarded open-source bounties from archestra-ai.`;
 }
 
 function projectLine(p: Project): string {
     const url = p.href ? ` (${abs(p.href)})` : "";
-    return `- **${p.title}**${url} — ${p.description} _Stack: ${p.technologies.join(", ")}._`;
+    const video = p.video ? ` Video: ${abs(p.video)}.` : "";
+    return `- **${p.title}**${url} — ${p.description}${video} _Stack: ${p.technologies.join(", ")}._`;
 }
 
 function faqBlock(lines: string[], faqs: { q: string; a: string }[]) {
@@ -210,7 +211,7 @@ export function roboticsMarkdown(): string {
     lines.push(`# Robots by ${SITE.name}`);
     lines.push("");
     lines.push(
-        "> Side projects in Physical AI: robot arms, a SCARA, voice-controlled ArduPilot vehicles, IoT sensor rigs and a patented pneumatic gripper — from firmware to browser."
+        "> Side projects in Physical AI: an SO-101 arm Claude Code drives over MCP, LiDAR obstacle avoidance for an ArduPilot rover, robot arms, a SCARA, voice-controlled ArduPilot vehicles, IoT sensor rigs and a patented pneumatic gripper — from firmware to browser."
     );
     lines.push("");
     contactBlock(lines);
@@ -259,7 +260,7 @@ export function llmsTxt(): string {
         `- [Hire a Forward Deployed Engineer](${SITE.url}/forward-deployed-engineer): how Ayush embeds with teams and ships AI to production ([markdown](${SITE.url}/forward-deployed-engineer.md))`
     );
     lines.push(
-        `- [Robots](${SITE.url}/robotics): robot arms, SCARA, ArduPilot voice control, IoT and a patented gripper ([markdown](${SITE.url}/robotics.md))`
+        `- [Robots](${SITE.url}/robotics): SO-101 × Claude Code, autonomous rover, robot arms, SCARA, ArduPilot voice control, IoT and a patented gripper ([markdown](${SITE.url}/robotics.md))`
     );
     lines.push(`- [Services](${SITE.url}/services): every deliverable in detail`);
     lines.push(`- [Resume](${SITE.url}/resume): downloadable CV`);

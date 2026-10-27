@@ -63,7 +63,7 @@ export const HATS = [
         key: "robots",
         mode: "side projects",
         title: "Robot Builder",
-        body: "After hours I build robots: a 6-DOF arm, a SCARA, voice-controlled ArduPilot vehicles, IoT sensor rigs, and a patented pneumatic gripper. Physical AI, from firmware to browser.",
+        body: "After hours I build robots: an SO-101 arm Claude Code drives over MCP, LiDAR obstacle avoidance for an ArduPilot rover, a ROS2 6-DOF arm, a SCARA and a patented pneumatic gripper. Physical AI, from firmware to LLM.",
         href: "/robotics",
         cta: "see the robots",
     },
@@ -289,7 +289,7 @@ export const FAQS: Record<"fde" | "general" | "robots", Faq[]> = {
         },
         {
             q: "What does Ayush Goyal build?",
-            a: "Production AI systems — including a WhatsApp machine-maintenance ticketing bot live on a factory floor and SiteOS, a WhatsApp-to-dashboard platform for an architecture studio — plus AI agents and chatbots, WhatsApp bots, bilingual Hindi and English voice agents, RAG and knowledge systems, MCP servers, enterprise integrations and workflow automation — plus robots and Physical AI: ROS2 robot arms, a SCARA, voice-controlled ArduPilot vehicles and IoT factory sensor servers.",
+            a: "Production AI systems — including a WhatsApp machine-maintenance ticketing bot live on a factory floor and SiteOS, a WhatsApp-to-dashboard platform for an architecture studio — plus AI agents and chatbots, WhatsApp bots, bilingual Hindi and English voice agents, RAG and knowledge systems, MCP servers, enterprise integrations and workflow automation — plus robots and Physical AI: an SO-101 arm Claude Code drives over MCP, LiDAR obstacle avoidance for an ArduPilot rover, ROS2 robot arms, a SCARA, voice-controlled ArduPilot vehicles and IoT factory sensor servers.",
         },
         {
             q: "Can you build voice agents that speak Hindi and English?",
@@ -307,7 +307,7 @@ export const FAQS: Record<"fde" | "general" | "robots", Faq[]> = {
     robots: [
         {
             q: "What robots has Ayush Goyal built?",
-            a: "A full control system for the BCN3D Moveo 6-DOF robot arm (ROS2, Arduino, Next.js), a 4-axis SCARA robot controlled from the browser, ArduPilot Assistant for natural-language and voice control of ArduPilot vehicles over MAVLink, a Raspberry Pi IoT factory sensor server, and a 3D-printed pneumatic four-finger gripper registered as UK Design 6450987.",
+            a: "An MCP server that lets Claude Code drive a real SO-101 arm (LeRobot, teleoperation, camera, gestures), a ROS 2 + Nav2 LiDAR obstacle-avoidance stack for a 2.2 m ArduPilot rover on an NVIDIA Jetson, a full control system for the BCN3D Moveo 6-DOF robot arm (ROS2, Arduino, Next.js), a 4-axis SCARA robot controlled from the browser, ArduPilot Assistant for natural-language and voice control of ArduPilot vehicles over MAVLink, a Raspberry Pi IoT factory sensor server, and a 3D-printed pneumatic four-finger gripper registered as UK Design 6450987.",
         },
         {
             q: "Is robotics your job or a side project?",
@@ -315,11 +315,11 @@ export const FAQS: Record<"fde" | "general" | "robots", Faq[]> = {
         },
         {
             q: "What robotics stack do you use?",
-            a: "ROS2 Humble and ROSBridge, Arduino and embedded C++, Raspberry Pi, stepper motion control, MAVLink and ArduPilot, WebSockets for live control, Next.js for web control panels and 3D visualisation, and FDM and resin 3D printing for parts.",
+            a: "ROS2 Humble, Nav2 and MAVROS, LeRobot and MCP for LLM-driven arms, NVIDIA Jetson, ROSBridge, Arduino and embedded C++, Raspberry Pi, stepper motion control, MAVLink and ArduPilot, WebSockets for live control, Next.js for web control panels and 3D visualisation, and FDM and resin 3D printing for parts.",
         },
         {
             q: "Can AI and LLMs control real robots?",
-            a: "Yes, with a safety layer in between. ArduPilot Assistant turns spoken or typed commands into MAVLink through an LLM orchestration layer, and the same pattern applies to robot arms: the model proposes, a deterministic controller validates and executes.",
+            a: "Yes, with a safety layer in between. ArduPilot Assistant turns spoken or typed commands into MAVLink through an LLM orchestration layer, and the SO-101 project gives Claude Code a real arm over MCP: the model proposes, a deterministic controller clamps, rate-limits and executes.",
         },
     ],
 };
@@ -343,6 +343,9 @@ export type Project = {
     blurb?: string;
     /** shown in "selected work" on the home page */
     featured?: boolean;
+    /** self-hosted demo video + poster frame */
+    video?: string;
+    poster?: string;
 };
 
 export const PROJECT_CATEGORIES = [
@@ -493,6 +496,36 @@ export const PROJECTS: Project[] = [
     },
 
     // ── robots ──
+    {
+        slug: "so101-claude-code",
+        featured: true,
+        blurb: "MCP server that lets Claude Code drive a real SO-101 arm",
+        category: "Robots & Physical AI",
+        title: "SO-101 × Claude Code",
+        dates: "2026",
+        description:
+            "An MCP server that gives Claude Code a real SO-101 robot arm. Claude reads joint state, moves joints, runs saved poses and gestures (wave, nod, shake, look around — even garba), works the gripper and looks at the desk through a camera. A safety core on top of LeRobot clamps every target to the calibrated range, caps speed, and parks the arm before torque goes off. A companion desktop studio drives the same arm with sliders, a leader arm for teleoperation, chat or voice; when it is running, the MCP server routes through it so the UI shows Claude's moves live.",
+        technologies: ["Python", "MCP", "Claude Code", "LeRobot", "SO-101", "Teleoperation", "Computer Vision", "FastAPI"],
+        links: [{ type: "Demo Video", href: "/robotics/so101-claude-code.mp4" }],
+        image: "/robotics/so101-claude-code.jpg",
+        video: "/robotics/so101-claude-code.mp4",
+        poster: "/robotics/so101-claude-code.jpg",
+    },
+    {
+        slug: "raftaar-rover",
+        featured: true,
+        blurb: "ROS 2 + Nav2 LiDAR obstacle avoidance for a GPS-guided ArduPilot rover",
+        category: "Robots & Physical AI",
+        title: "Raftaar — Autonomous Rover",
+        dates: "2026",
+        description:
+            "ROS 2 stack that lets a 2.2 m skid-steer ArduPilot rover drive itself around obstacles its flight controller cannot see. Two RPLidars at different heights feed a mode switcher that flips the rover from AUTO to GUIDED; Nav2's MPPI local planner steers around the obstruction, then control hands back to the GPS mission. Debounce, cooldown, a manual-override lock, a stuck watchdog and command timeouts keep a heavy vehicle safe. Runs on an NVIDIA Jetson talking to a CubeOrange+ over MAVROS. Co-maintainer: fixed the obstacle-avoidance stack and added docs, tests and a dev container.",
+        technologies: ["ROS 2 Humble", "Nav2 (MPPI)", "MAVROS", "ArduPilot", "RPLidar", "NVIDIA Jetson", "Python", "Docker"],
+        links: [{ type: "Demo Video", href: "/robotics/raftaar-rover.mp4" }],
+        image: "/robotics/raftaar-rover.jpg",
+        video: "/robotics/raftaar-rover.mp4",
+        poster: "/robotics/raftaar-rover.jpg",
+    },
     {
         slug: "bcn3d-moveo",
         featured: true,
@@ -764,8 +797,13 @@ export const SKILLS = [
         category: "Robotics & Physical AI",
         skills: [
             "ROS2 Humble",
+            "Nav2 (MPPI)",
+            "MAVROS / MAVLink / ArduPilot",
+            "LeRobot",
+            "MCP for Robots",
+            "LiDAR",
+            "NVIDIA Jetson",
             "ROSBridge",
-            "MAVLink / ArduPilot",
             "Arduino & Embedded C++",
             "Raspberry Pi",
             "Stepper & Motion Control",
@@ -837,6 +875,13 @@ export const KEYWORDS = [
     "robot arm control system",
     "SCARA robot",
     "ArduPilot",
+    "SO-101 robot arm",
+    "LeRobot",
+    "Claude Code robot",
+    "MCP robot control",
+    "Nav2 obstacle avoidance",
+    "autonomous rover",
+    "forward deployed robotics engineer",
     "LangGraph",
     "LangChain",
 ];

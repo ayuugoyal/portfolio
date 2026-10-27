@@ -16,9 +16,9 @@ import {
 
 const D = 0.06;
 const PATH = "/robotics";
-const TITLE = "Robots — ROS2 Arms, SCARA, ArduPilot & Physical AI";
+const TITLE = "Robots — Claude Code SO-101 Arm, Autonomous Rover, ROS2 & Physical AI";
 const DESCRIPTION =
-    "Robots Ayush Goyal builds as side projects: a ROS2-controlled BCN3D Moveo 6-DOF arm, a browser-controlled SCARA, voice control for ArduPilot vehicles, and a patented pneumatic four-finger gripper.";
+    "Robots Ayush Goyal builds: an SO-101 arm Claude Code drives over MCP, ROS 2 + Nav2 LiDAR obstacle avoidance for an ArduPilot rover, a ROS2-controlled BCN3D Moveo 6-DOF arm, a browser-controlled SCARA, voice control for ArduPilot vehicles, and a patented pneumatic four-finger gripper.";
 
 export const metadata: Metadata = {
     title: TITLE,
@@ -37,6 +37,8 @@ export const metadata: Metadata = {
 };
 
 const robots = PROJECTS.filter((p) => p.category === "Robots & Physical AI");
+const arm = robots.find((p) => p.slug === "so101-claude-code")!;
+const rover = robots.find((p) => p.slug === "raftaar-rover")!;
 const stack = SKILLS.find((s) => s.category === "Robotics & Physical AI")?.skills ?? [];
 
 export default function RoboticsPage() {
@@ -53,7 +55,7 @@ export default function RoboticsPage() {
                         description: DESCRIPTION,
                         author: { "@id": IDS.person },
                         isPartOf: { "@id": IDS.website },
-                        about: ["Robotics", "Physical AI", "ROS2", "Robot arm", "SCARA", "ArduPilot"],
+                        about: ["Robotics", "Physical AI", "ROS2", "Nav2", "LeRobot", "SO-101", "MCP", "Claude Code", "Robot arm", "Autonomous rover", "SCARA", "ArduPilot"],
                     },
                     projectListSchema(robots, "Robots"),
                     patentSchema(),
@@ -84,13 +86,66 @@ export default function RoboticsPage() {
                     </BlurFade>
                     <BlurFade delay={D}>
                         <p className="max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground">
-                            Day job is AI. After hours it&apos;s motors, firmware and ROS2.
+                            Day job is AI. After hours it&apos;s motors, firmware and ROS2 — and
+                            putting LLMs in charge of real hardware, behind a controller that keeps
+                            them safe.
                         </p>
                     </BlurFade>
                 </div>
 
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-[2fr_3fr]">
+                    <BlurFade delay={D}>
+                        <figure id={arm.slug} className="scroll-mt-24 space-y-2">
+                            <video
+                                src={arm.video}
+                                poster={arm.poster}
+                                controls
+                                playsInline
+                                preload="none"
+                                className="aspect-[9/16] w-full rounded-xl border border-border bg-muted object-cover"
+                            />
+                            <figcaption className="font-mono text-[10px] lowercase text-muted-foreground">
+                                sound on · claude code drives the arm over mcp
+                            </figcaption>
+                        </figure>
+                    </BlurFade>
+                    <div className="space-y-3">
+                        <BlurFade delay={D}>
+                            <div className="space-y-2">
+                                <h2 className="font-display text-xl font-bold tracking-tight">
+                                    {arm.title}
+                                </h2>
+                                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                                    {arm.description}
+                                </p>
+                            </div>
+                        </BlurFade>
+                        <BlurFade delay={D}>
+                            <figure id={rover.slug} className="scroll-mt-24 space-y-2 pt-2">
+                                <video
+                                    src={rover.video}
+                                    poster={rover.poster}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="aspect-video w-full rounded-xl border border-border bg-muted object-cover"
+                                />
+                                <figcaption className="space-y-1">
+                                    <span className="block font-display text-sm font-bold tracking-tight">
+                                        {rover.title}
+                                    </span>
+                                    <span className="block text-pretty text-sm leading-relaxed text-muted-foreground">
+                                        {rover.description}
+                                    </span>
+                                </figcaption>
+                            </figure>
+                        </BlurFade>
+                    </div>
+                </div>
+
                 <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    {robots.map((p) => (
+                    {robots.filter((p) => !p.video).map((p) => (
                         <BlurFade key={p.slug} delay={D}>
                             <ProjectCard
                                 href={p.href}
@@ -119,7 +174,7 @@ export default function RoboticsPage() {
                 <BlurFade delay={D}>
                     <div className="mb-16 space-y-4 border-t border-border pt-8">
                         <h2 className="font-display text-2xl font-bold lowercase tracking-tight sm:text-3xl">
-                            need ai in a machine?
+                            hiring for robotics or physical ai?
                         </h2>
                         <div className="flex flex-wrap gap-2">
                             <Link
@@ -130,6 +185,10 @@ export default function RoboticsPage() {
                             >
                                 <CalendarDays className="size-3.5" />
                                 book a call
+                            </Link>
+                            <Link href="/resume" className="btn-quiet">
+                                resume
+                                <ArrowUpRight className="size-3.5" />
                             </Link>
                             <Link href="/patents/6450987" className="btn-quiet">
                                 the gripper patent
