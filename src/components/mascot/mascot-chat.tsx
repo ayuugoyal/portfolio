@@ -16,9 +16,11 @@ import {
     type ToolOutcome,
     getAgentMode,
     getAgentStatus,
+    isCheckingHuman,
     loadAgentStatus,
     runAgentTurn,
     subscribeAgentMode,
+    warmSession,
 } from "@/lib/agent/client";
 import { type ClientMessage, LIMITS } from "@/lib/agent/protocol";
 import { getArm, matchArmIntent } from "@/lib/arm/bridge";
@@ -178,9 +180,14 @@ export default function MascotChat({
     const messagesRef = useRef(messages);
     messagesRef.current = messages;
 
-    // is the live agent on? (status only: no Turnstile, no model call until the visitor sends something)
+    const checkingHuman = useSyncExternalStore(subscribeAgentMode, isCheckingHuman, () => false);
+
+    // the chat is open: get the live agent ready (status, then the Turnstile check) before the first question
     useEffect(() => {
-        if (open) void loadAgentStatus();
+        if (!open) return;
+        void loadAgentStatus().then((s) => {
+            if (s) void warmSession(turnstileRef.current);
+        });
     }, [open]);
 
     // opening the chat is a click, so the browser lets it speak: voice on (unless muted before) and say hello
@@ -515,6 +522,11 @@ export default function MascotChat({
                                         <div className="flex items-center gap-3">
                                             <MiniClaude />
                                             <TypingDots />
+                                            {checkingHuman && (
+                                                <span className="font-mono text-[11px] text-muted-foreground">
+                                                    quick check that you&apos;re human…
+                                                </span>
+                                            )}
                                         </div>
                                     )}
                                     {fresh && !typing && (

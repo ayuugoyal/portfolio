@@ -36,6 +36,15 @@ const setMode = (m: AgentMode) => {
 };
 
 export const getAgentMode = (): AgentMode => mode;
+
+/** true while the Turnstile check runs (the chat says so instead of showing bare dots) */
+let checking = false;
+const setChecking = (on: boolean) => {
+    if (checking === on) return;
+    checking = on;
+    listeners.forEach((l) => l());
+};
+export const isCheckingHuman = (): boolean => checking;
 export const getAgentStatus = (): AgentStatus | null => status;
 
 /** For useSyncExternalStore. */
@@ -107,7 +116,9 @@ async function turnstileToken(host: HTMLElement, siteKey: string): Promise<strin
     let id: string | undefined;
     try {
         return await new Promise<string>((resolve, reject) => {
-            const timer = window.setTimeout(() => reject(new Error("timeout")), 45_000);
+            // short: a check that hasn't finished by now (blocked domain, stuck widget) won't, and the visitor
+            // is waiting on it; give up and let the scripted answer reply instead
+            const timer = window.setTimeout(() => reject(new Error("timeout")), 15_000);
             const done = (fn: () => void) => {
                 window.clearTimeout(timer);
                 fn();
@@ -137,6 +148,7 @@ function ensureSession(host: HTMLElement | null, force = false): Promise<boolean
     sessionPromise ??= (async () => {
         const s = status ?? (await loadAgentStatus());
         if (!s?.siteKey || !host) return false;
+        setChecking(true);
         try {
             const token = await turnstileToken(host, s.siteKey);
             const res = await fetch("/api/agent/session", {
@@ -149,12 +161,26 @@ function ensureSession(host: HTMLElement | null, force = false): Promise<boolean
             return res.ok;
         } catch {
             return false;
+        } finally {
+            setChecking(false);
         }
     })().then((ok) => {
         if (!ok) sessionPromise = null;
         return ok;
     });
     return sessionPromise;
+}
+
+/**
+ * Run the Turnstile check ahead of the first message (when the chat opens), so a question is answered
+ * straight away. If the check fails, live mode goes off for this visit and questions get the scripted
+ * answers immediately instead of waiting on a check that will not pass.
+ */
+export async function warmSession(host: HTMLElement | null): Promise<void> {
+    if (mode === "off" || status?.session) return;
+    const s = await loadAgentStatus();
+    if (!s || s.session) return;
+    if (!(await ensureSession(host))) disableAgent();
 }
 
 // ─── the tool loop ─────────────────────────────────────────────────────────────────────────────────
