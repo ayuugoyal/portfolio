@@ -42,7 +42,7 @@ function contactBlock(lines: string[]) {
 }
 
 function summaryParagraph(): string {
-    return `${SITE.name} is a Forward Deployed Engineer and AI Engineer (${SITE.location}). As a freelance forward deployed engineer, Ayush embeds with client teams and ships AI into production — including a WhatsApp machine-maintenance ticketing bot running live on a factory floor and SiteOS, a WhatsApp-to-dashboard site-tracking platform for an architecture studio. That work spans AI agents and chatbots, WhatsApp and bilingual Hindi/English voice agents, RAG and knowledge systems, MCP servers, enterprise integrations and workflow automation. Full-time, Ayush is an ${SITE.employer.title} at ${SITE.employer.name}, remote for a US team. On the side, Ayush builds robots — an SO-101 arm that Claude Code drives over MCP, ROS 2 + Nav2 LiDAR obstacle avoidance for an ArduPilot rover, a ROS2-controlled 6-DOF arm, a SCARA, voice-controlled ArduPilot vehicles and IoT factory sensor servers — and holds UK Design Registration ${PATENT.number} for a pneumatic four-finger robotic gripper. Ayush has also earned $400 in maintainer-awarded open-source bounties from archestra-ai.`;
+    return `${SITE.name} is a Forward Deployed Engineer and AI Engineer (${SITE.location}). As a freelance forward deployed engineer, Ayush embeds with client teams and ships AI into production — including a WhatsApp machine-maintenance bot with predictive failure alerts running live on a factory floor, and SiteOS, which runs an architecture studio's sites, assets and maintenance from WhatsApp. That work spans AI agents and chatbots, WhatsApp and bilingual Hindi/English voice agents, RAG and knowledge systems, MCP servers, enterprise integrations and workflow automation. Full-time, Ayush is an ${SITE.employer.title} at ${SITE.employer.name}, remote for a US team. Ayush also takes freelance robotics work and builds his own robots — an SO-101 arm that Claude Code drives over MCP, ROS 2 + Nav2 LiDAR obstacle avoidance for an ArduPilot rover, a ROS2-controlled 5-axis BCN3D Moveo arm, a SCARA, voice-controlled ArduPilot vehicles and IoT factory sensor servers — and holds UK Design Registration ${PATENT.number} for a pneumatic four-finger robotic gripper. Ayush has also earned $400 in maintainer-awarded open-source bounties from archestra-ai.`;
 }
 
 function projectLine(p: Project): string {
@@ -211,7 +211,7 @@ export function roboticsMarkdown(): string {
     lines.push(`# Robots by ${SITE.name}`);
     lines.push("");
     lines.push(
-        "> Side projects in Physical AI: an SO-101 arm Claude Code drives over MCP, LiDAR obstacle avoidance for an ArduPilot rover, robot arms, a SCARA, voice-controlled ArduPilot vehicles, IoT sensor rigs and a patented pneumatic gripper — from firmware to browser."
+        "> Freelance robotics and own builds in Physical AI: an SO-101 arm Claude Code drives over MCP, LiDAR obstacle avoidance for an ArduPilot rover, robot arms, a SCARA, voice-controlled ArduPilot vehicles, IoT sensor rigs and a patented pneumatic gripper — from firmware to browser."
     );
     lines.push("");
     contactBlock(lines);

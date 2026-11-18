@@ -65,7 +65,7 @@ export function HackathonCard({
           const restText = words.slice(1).join(' ');
 
           let action: AnnotationAction = "highlight";
-          let color = "#FF9800";
+          let color = "brand"; // resolved from --brand by the Highlighter
 
           if (firstWord.includes('#')) {
             const splitParts = firstWord.split('#');
@@ -93,16 +93,16 @@ export function HackathonCard({
 
   return (
     <li className="flex items-start gap-3 py-4">
-      <Avatar className="size-9 shrink-0 rounded-lg border border-border bg-white">
+      <Avatar className="size-9 shrink-0 rounded-lg border border-border bg-card dark:bg-foreground">
         <AvatarImage src={image} alt={title} className="object-contain" />
-        <AvatarFallback className="rounded-lg font-display text-sm font-bold">
+        <AvatarFallback className="rounded-lg font-display text-sm font-medium">
           {title[0]}
         </AvatarFallback>
       </Avatar>
 
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <div className="flex flex-wrap items-baseline justify-between gap-x-2">
-          <h3 className="font-display text-sm font-bold tracking-tight">
+          <h3 className="font-display text-sm font-medium tracking-[-0.01em]">
             {title}
           </h3>
           {dates && (

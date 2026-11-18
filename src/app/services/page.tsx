@@ -47,7 +47,7 @@ export default function ServicesPage() {
                     faqSchema(`${SITE.url}/services#faq`, ALL_FAQS),
                 ]}
             />
-            <section className="mx-auto w-full max-w-2xl space-y-6">
+            <section className="mx-auto w-full max-w-4xl space-y-6">
                 <BlurFade delay={D}>
                     <Link
                         href="/"
@@ -60,7 +60,7 @@ export default function ServicesPage() {
 
                 <div className="space-y-3">
                     <BlurFade delay={D}>
-                        <h1 className="font-display text-4xl font-bold lowercase tracking-tight sm:text-5xl">
+                        <h1 className="font-display text-4xl font-medium lowercase tracking-[-0.01em] sm:text-5xl">
                             what i build
                         </h1>
                     </BlurFade>
@@ -109,7 +109,7 @@ export default function ServicesPage() {
 
                 <BlurFade delay={D}>
                     <div className="space-y-4 pt-2">
-                        <h2 className="font-display text-lg font-bold tracking-tight">
+                        <h2 className="font-display text-lg font-medium tracking-[-0.01em]">
                             How it works
                         </h2>
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
@@ -118,7 +118,7 @@ export default function ServicesPage() {
                                     <div className="font-mono text-[10px] tabular-nums text-muted-foreground">
                                         {p.step}
                                     </div>
-                                    <h3 className="font-display text-sm font-bold tracking-tight">
+                                    <h3 className="font-display text-sm font-medium tracking-[-0.01em]">
                                         {p.title}
                                     </h3>
                                     <p className="text-xs leading-relaxed text-muted-foreground">
@@ -148,7 +148,7 @@ export default function ServicesPage() {
 
                 <BlurFade delay={D}>
                     <div className="space-y-2 pt-4">
-                        <h2 className="font-display text-lg font-bold tracking-tight">
+                        <h2 className="font-display text-lg font-medium tracking-[-0.01em]">
                             Questions I actually get
                         </h2>
                         <FaqList faqs={ALL_FAQS} />
@@ -157,7 +157,7 @@ export default function ServicesPage() {
 
                 <BlurFade delay={D}>
                     <div className="mb-16 space-y-4 border-t border-border pt-8">
-                        <h2 className="font-display text-2xl font-bold lowercase tracking-tight sm:text-3xl">
+                        <h2 className="font-display text-2xl font-medium lowercase tracking-[-0.01em] sm:text-3xl">
                             got something that needs a brain?
                         </h2>
                         <div className="flex flex-wrap gap-2">

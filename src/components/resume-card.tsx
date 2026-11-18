@@ -80,7 +80,7 @@ export const ResumeCard = ({
           const restText = words.slice(1).join(' ');
 
           let action: AnnotationAction = "highlight";
-          let color = "#FF9800";
+          let color = "brand"; // resolved from --brand by the Highlighter
 
           if (firstWord.includes('#')) {
             const splitParts = firstWord.split('#');
@@ -118,30 +118,30 @@ export const ResumeCard = ({
         <div className="flex-none">
           {href ? (
             <Link href={href} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-              <Avatar className="size-9 rounded-lg border border-border bg-white">
+              <Avatar className="size-9 rounded-lg border border-border bg-card dark:bg-foreground">
                 <AvatarImage
                   src={logoUrl}
                   alt={altText}
                   className="object-contain p-0.5"
                 />
-                <AvatarFallback className="rounded-lg font-display text-sm font-bold">{altText[0]}</AvatarFallback>
+                <AvatarFallback className="rounded-lg font-display text-sm font-medium">{altText[0]}</AvatarFallback>
               </Avatar>
             </Link>
           ) : (
-            <Avatar className="size-9 rounded-lg border border-border bg-white">
+            <Avatar className="size-9 rounded-lg border border-border bg-card dark:bg-foreground">
               <AvatarImage
                 src={logoUrl}
                 alt={altText}
                 className="object-contain p-0.5"
               />
-              <AvatarFallback className="rounded-lg font-display text-sm font-bold">{altText[0]}</AvatarFallback>
+              <AvatarFallback className="rounded-lg font-display text-sm font-medium">{altText[0]}</AvatarFallback>
             </Avatar>
           )}
         </div>
 
         <div className="flex flex-grow flex-col">
           <div className="flex items-start justify-between gap-x-2">
-            <h3 className="inline-flex items-center gap-x-1.5 font-display text-sm font-bold leading-tight">
+            <h3 className="inline-flex items-center gap-x-1.5 font-display text-sm font-medium leading-tight">
               {href ? (
                 <Link
                   href={href}
@@ -158,8 +158,8 @@ export const ResumeCard = ({
               )}
               {current && (
                 <span className="relative flex size-1.5" title="current role">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
-                  <span className="relative inline-flex size-1.5 rounded-full bg-brand" />
+                  <span className="absolute inline-flex h-full w-full animate-ping bg-brand opacity-60 motion-reduce:animate-none" />
+                  <span className="relative inline-flex size-1.5 bg-brand" />
                 </span>
               )}
               {badges && badges.length > 0 && (

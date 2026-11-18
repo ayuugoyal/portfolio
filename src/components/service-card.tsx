@@ -64,7 +64,7 @@ export function ServiceCard({
                     <span className="font-mono text-[10px] tabular-nums text-muted-foreground">
                         {num}
                     </span>
-                    <h2 className="font-display text-base font-bold tracking-tight">
+                    <h2 className="font-display text-base font-medium tracking-[-0.01em]">
                         {title}
                     </h2>
                 </div>
@@ -80,7 +80,7 @@ export function ServiceCard({
                     <span className="font-mono text-[10px] tabular-nums text-muted-foreground">
                         {num}
                     </span>
-                    <h3 className="font-display text-base font-bold tracking-tight">
+                    <h3 className="font-display text-base font-medium tracking-[-0.01em]">
                         {title}
                     </h3>
                 </span>

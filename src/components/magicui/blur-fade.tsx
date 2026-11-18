@@ -5,6 +5,7 @@ import {
   AnimatePresence,
   motion,
   useInView,
+  useReducedMotion,
   UseInViewOptions,
   Variants,
 } from "framer-motion";
@@ -30,21 +31,25 @@ export default function BlurFade({
   children,
   className,
   variant,
-  duration = 0.4,
+  duration = 0.5,
   delay = 0,
   yOffset = 6,
   inView = false,
   inViewMargin = "-50px",
-  blur = "6px",
+  blur = "4px",
 }: BlurFadeProps) {
+  const reduceMotion = useReducedMotion();
   const ref = useRef(null);
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
   const isInView = !inView || inViewResult;
-  const defaultVariants: Variants = {
-    hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
-    visible: { y: -yOffset, opacity: 1, filter: `blur(0px)` },
-  };
-  const combinedVariants = variant || defaultVariants;
+  // Calm reveal: a short lift with a light blur; opacity only under reduced motion.
+  const defaultVariants: Variants = reduceMotion
+    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+    : {
+        hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
+        visible: { y: 0, opacity: 1, filter: `blur(0px)` },
+      };
+  const combinedVariants = (!reduceMotion && variant) || defaultVariants;
   return (
     <AnimatePresence>
       <motion.div
@@ -56,7 +61,7 @@ export default function BlurFade({
         transition={{
           delay: 0.04 + delay,
           duration,
-          ease: "easeOut",
+          ease: [0.22, 1, 0.36, 1],
         }}
         className={className}
       >

@@ -2,8 +2,9 @@ import { Metadata } from 'next';
 import BlurFade from "@/components/magicui/blur-fade";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import Image from "next/image";
 import { Footer } from "@/components/footer";
-import { ArrowUpRight, Download, ExternalLink, ChevronLeft, FileText, Shield } from "lucide-react";
+import { ArrowUpRight, Download, ChevronLeft, FileText, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'UK Design 6450987 — Pneumatic Four-Finger Robotic Gripper',
@@ -14,9 +15,8 @@ export const metadata: Metadata = {
 const BLUR_FADE_DELAY = 0.04;
 
 export default function PatentPage() {
-  // Replace with your actual Google Drive file ID for the patent PDF
-  const driveFileId = '1xsc2_M8KXS3l0ov_KBF9Q9UpacP8zVNp';
-  const embedUrl = `https://drive.google.com/file/d/${driveFileId}/preview`;
+  // certificate PDF served from /public (no Drive)
+  const pdf = "/patents/uk-design-6450987.pdf";
   const officialPatentUrl = 'https://www.registered-design.service.gov.uk/find/6450987';
 
   return (
@@ -35,14 +35,14 @@ export default function PatentPage() {
           </BlurFade>
 
           <BlurFade delay={BLUR_FADE_DELAY * 2}>
-              <h1 className="font-display text-4xl font-bold lowercase tracking-tight sm:text-5xl">
+              <h1 className="font-display text-4xl font-medium lowercase tracking-[-0.01em] sm:text-5xl">
                   uk design patent
               </h1>
           </BlurFade>
 
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <div className="space-y-2">
-              <p className="max-w-2xl text-pretty text-sm font-medium">
+              <p className="max-w-4xl text-pretty text-sm font-medium">
                 Pneumatically Actuated Four-Finger Adaptive Gripper Industrial Robot
               </p>
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] lowercase text-muted-foreground">
@@ -68,24 +68,16 @@ export default function PatentPage() {
               <ArrowUpRight className="h-3 w-3" />
             </Link>
 
-            <Link
-              href={`https://drive.google.com/file/d/${driveFileId}/view?usp=sharing`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-quiet"
-            >
+            <Link href={pdf} target="_blank" rel="noopener" className="btn-quiet">
               <FileText className="h-3.5 w-3.5" />
               certificate
               <ArrowUpRight className="h-3 w-3" />
             </Link>
 
-            <Link
-              href={`https://drive.google.com/uc?export=download&id=${driveFileId}`}
-              className="btn-quiet"
-            >
+            <a href={pdf} download="UK-Design-6450987-Certificate.pdf" className="btn-quiet">
               <Download className="h-3.5 w-3.5" />
               download
-            </Link>
+            </a>
 
             <div className="flex flex-wrap gap-1">
               <Badge variant="chip">Robotics</Badge>
@@ -97,55 +89,23 @@ export default function PatentPage() {
         </div>
 
 
-        {/* PDF Viewer Container */}
+        {/* Certificate preview: first page as an image, linking to the full PDF */}
         <BlurFade delay={BLUR_FADE_DELAY * 6}>
-          <div className="relative overflow-hidden rounded-xl border border-border bg-card">
-            <div className="aspect-[3/4] w-full min-h-[800px]">
-              <iframe
-                src={embedUrl}
-                className="w-full h-full border-0"
-                title="UK Design Patent Certificate - 6450987"
-                allow="autoplay"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Fallback overlay for loading issues */}
-            <div className="absolute inset-0 flex items-center justify-center bg-muted/50 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              <div className="text-center space-y-2 pointer-events-auto">
-                <p className="text-sm text-muted-foreground">
-                  Patent certificate not loading properly?
-                </p>
-                <div className="flex gap-2 justify-center">
-                  <Link
-                    href={officialPatentUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1.5 bg-primary text-primary-foreground rounded text-xs font-medium hover:bg-primary/90 transition-colors"
-                  >
-                    <Shield className="w-3 h-3 mr-1" />
-                    Official Record
-                  </Link>
-                  <Link
-                    href={`https://drive.google.com/file/d/${driveFileId}/view?usp=sharing`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1.5 bg-secondary text-secondary-foreground rounded text-xs font-medium hover:bg-secondary/80 transition-colors"
-                  >
-                    <ExternalLink className="w-3 h-3 mr-1" />
-                    Open Externally
-                  </Link>
-                  <Link
-                    href={`https://drive.google.com/uc?export=download&id=${driveFileId}`}
-                    className="inline-flex items-center px-3 py-1.5 bg-muted text-muted-foreground rounded text-xs font-medium hover:bg-muted/80 transition-colors"
-                  >
-                    <Download className="w-3 h-3 mr-1" />
-                    Download
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Link
+            href={pdf}
+            target="_blank"
+            rel="noopener"
+            className="mx-auto block max-w-xl overflow-hidden rounded-xl border border-border bg-white transition-colors hover:border-foreground/30"
+          >
+            <Image
+              src="/patents/uk-design-6450987.png"
+              alt="UK IPO Certificate of Registration for UK Design 6450987, Pneumatically Actuated Four-Finger Adaptive Gripper Industrial Robot, granted 30 June 2025"
+              width={496}
+              height={702}
+              sizes="(max-width: 576px) 100vw, 576px"
+              className="h-auto w-full"
+            />
+          </Link>
         </BlurFade>
 
         {/* Technology & Innovation Section */}
@@ -153,10 +113,10 @@ export default function PatentPage() {
           <div className="mt-8">
             <div className="space-y-4">
               <div className="space-y-2">
-                <h3 className="font-display text-lg font-bold lowercase tracking-tight">
+                <h3 className="font-display text-lg font-medium lowercase tracking-[-0.01em]">
                   why it goes hard
                 </h3>
-                <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                <p className="max-w-4xl text-sm leading-relaxed text-muted-foreground">
                   Four pneumatically actuated fingers that just conform to whatever
                   they pick up — no reprogramming per object. Precision control plus
                   adaptive grasping, built for messy real-world manufacturing lines.
@@ -170,7 +130,7 @@ export default function PatentPage() {
                   { value: "industrial", label: "robot application" },
                 ].map((item) => (
                   <div key={item.label} className="py-3 md:px-4">
-                    <div className="font-display text-base font-bold lowercase">
+                    <div className="font-display text-base font-medium lowercase">
                       {item.value}
                     </div>
                     <div className="font-mono text-[10px] lowercase text-muted-foreground">
@@ -192,29 +152,29 @@ export default function PatentPage() {
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
                 <Link
-                  href="/#projects"
-                  className="text-sm text-blue-500 hover:underline"
+                  href="/#work"
+                  className="text-sm text-brand-ink underline-offset-4 hover:underline"
                 >
                   View More Projects
                 </Link>
                 <span className="text-muted-foreground">•</span>
                 <Link
                   href="/#work-experience"
-                  className="text-sm text-blue-500 hover:underline"
+                  className="text-sm text-brand-ink underline-offset-4 hover:underline"
                 >
                   Work Experience
                 </Link>
                 <span className="text-muted-foreground">•</span>
                 <Link
-                  href="/#skills"
-                  className="text-sm text-blue-500 hover:underline"
+                  href="/#what-i-do"
+                  className="text-sm text-brand-ink underline-offset-4 hover:underline"
                 >
                   Technical Skills
                 </Link>
                 <span className="text-muted-foreground">•</span>
                 <Link
                   href="/#contact"
-                  className="text-sm text-blue-500 hover:underline"
+                  className="text-sm text-brand-ink underline-offset-4 hover:underline"
                 >
                   Get in Touch
                 </Link>

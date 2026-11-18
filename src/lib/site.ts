@@ -61,9 +61,9 @@ export const HATS = [
     },
     {
         key: "robots",
-        mode: "side projects",
-        title: "Robot Builder",
-        body: "After hours I build robots: an SO-101 arm that Claude Code drives over MCP, and LiDAR obstacle avoidance for a 2.2 m ArduPilot rover. Physical AI, from firmware to LLM.",
+        mode: "freelance + builds",
+        title: "Robotics Engineer",
+        body: "I take freelance robotics work too: ROS 2 stacks, robot arms, rovers and factory hardware, from firmware to LLM. My own builds prove it: an SO-101 arm Claude Code drives over MCP, and LiDAR obstacle avoidance for a 2.2 m ArduPilot rover.",
         href: "/robotics",
         cta: "see the robots",
     },
@@ -193,14 +193,17 @@ export const SERVICES = [
         slug: "physical-ai-robotics",
         title: "Physical AI & Robotics Integration",
         summary:
-            "AI that touches hardware. ROS2 control stacks, robot arms, IoT sensor networks and live factory dashboards — from firmware all the way up to the browser.",
+            "Freelance robotics and AI that touches hardware: ROS 2 control stacks, robot arms, rovers, IoT sensor networks and live factory dashboards — from firmware all the way up to the browser, and LLMs that drive the machine.",
         deliverables: [
             "ROS2 control stacks and embedded firmware",
-            "Robot arm integration (6-DOF, SCARA)",
+            "Robot arm integration (5-axis, SO-101, SCARA)",
             "IoT sensor networks and OEE dashboards",
-            "Voice and LLM control of real machines",
+            "Voice and LLM control of real machines (MCP)",
+            "Autonomous navigation: ROS 2 + Nav2, LiDAR, ArduPilot",
         ],
         proof: [
+            "SO-101 × Claude Code",
+            "Raftaar — Autonomous Rover",
             "BCN3D Moveo",
             "SCARA Robot",
             "Sensor Dash",
@@ -285,7 +288,7 @@ export const FAQS: Record<"fde" | "general" | "robots", Faq[]> = {
     general: [
         {
             q: "Who is Ayush Goyal?",
-            a: "Ayush Goyal is a Forward Deployed Engineer and AI Engineer based in India and working remotely worldwide. Ayush takes freelance forward-deployed AI engagements, works full-time as an AI (Harness) Engineer at TAP Innovations, builds robots as side projects, holds UK Design Registration 6450987 for a pneumatic robotic gripper, and has earned $400 in open-source bounties from archestra-ai.",
+            a: "Ayush Goyal is a Forward Deployed Engineer and AI Engineer based in India and working remotely worldwide. Ayush takes freelance forward-deployed AI engagements, works full-time as an AI (Harness) Engineer at TAP Innovations, takes freelance robotics work and builds his own robots, holds UK Design Registration 6450987 for a pneumatic robotic gripper, and has earned $400 in open-source bounties from archestra-ai.",
         },
         {
             q: "What does Ayush Goyal build?",
@@ -307,11 +310,11 @@ export const FAQS: Record<"fde" | "general" | "robots", Faq[]> = {
     robots: [
         {
             q: "What robots has Ayush Goyal built?",
-            a: "An MCP server that lets Claude Code drive a real SO-101 arm (LeRobot, teleoperation, camera, gestures), a ROS 2 + Nav2 LiDAR obstacle-avoidance stack for a 2.2 m ArduPilot rover on an NVIDIA Jetson, a full control system for the BCN3D Moveo 6-DOF robot arm (ROS2, Arduino, Next.js), a 4-axis SCARA robot controlled from the browser, ArduPilot Assistant for natural-language and voice control of ArduPilot vehicles over MAVLink, a Raspberry Pi IoT factory sensor server, and a 3D-printed pneumatic four-finger gripper registered as UK Design 6450987.",
+            a: "An MCP server that lets Claude Code drive a real SO-101 arm (LeRobot, teleoperation, camera, gestures), a ROS 2 + Nav2 LiDAR obstacle-avoidance stack for a 2.2 m ArduPilot rover on an NVIDIA Jetson, a full control system for the BCN3D Moveo 5-axis robot arm (ROS2, Arduino, Next.js), a 4-axis SCARA robot controlled from the browser, ArduPilot Assistant for natural-language and voice control of ArduPilot vehicles over MAVLink, a Raspberry Pi IoT factory sensor server, and a 3D-printed pneumatic four-finger gripper registered as UK Design 6450987.",
         },
         {
             q: "Is robotics your job or a side project?",
-            a: "Side projects. Ayush's day job is AI engineering and the freelance work is forward-deployed AI engineering; robots are what Ayush builds after hours, often through RnDynamos Labs. That hardware work is available on client projects too.",
+            a: "Both. Ayush takes freelance robotics work — ROS 2 stacks, robot arms, rovers and factory hardware — alongside freelance forward-deployed AI engineering, and keeps building his own robots, often through RnDynamos Labs: the SO-101 arm Claude Code drives over MCP, the Raftaar rover and the BCN3D Moveo.",
         },
         {
             q: "What robotics stack do you use?",
@@ -368,21 +371,33 @@ export const PROJECTS: Project[] = [
         title: "Machine Maintenance Bot",
         dates: "2025 — now",
         description:
-            "Production WhatsApp bot running a factory's machine-breakdown workflow. Operators report breakdowns through WhatsApp Flows with photos, supervisors accept and dispatch technicians, and every ticket is tracked in SharePoint — with optional 5-Why root-cause analysis and a nightly PDF report with Gemini-written analysis. Redis locks and idempotent intake keep parallel supervisors from double-acting. Deployed as a freelance forward deployed engineer; live in production.",
-        technologies: ["Node.js", "Express", "WhatsApp Cloud API", "WhatsApp Flows", "SharePoint / Graph API", "Redis", "Gemini", "Puppeteer", "Docker"],
+            "Production WhatsApp bot that runs a factory's machine-breakdown workflow end to end. Operators report a breakdown through a WhatsApp Flow with photos; supervisors accept it, dispatch a technician from their department and close it out, and every ticket lives in SharePoint. Breakdowns open for more than five hours escalate automatically and get a 5-Why root-cause analysis. Every morning a predictive-maintenance sweep reads the whole breakdown history and warns supervisors on WhatsApp about machines trending toward failure — when the time between failures shrinks, or failures suddenly cluster. Nightly PDF reports with Gemini-written analysis, on-demand day / week / month / department reports, MTTR, MTBF and MTTF, and Excel exports. Redis per-ticket locks and idempotent intake keep parallel supervisors from double-acting. Deployed as a freelance forward deployed engineer; live in production since 2025.",
+        technologies: ["Node.js", "Express", "WhatsApp Cloud API", "WhatsApp Flows", "SharePoint / Graph API", "Redis", "Gemini", "Puppeteer", "node-cron", "Docker"],
         links: [],
+        highlights: [
+            "Breakdown → supervisor → technician → close-out, all inside WhatsApp Flows; tickets in SharePoint",
+            "Predictive maintenance: a daily sweep flags machines whose failures are speeding up, before they stop",
+            "Auto-escalation past 5 hours, 5-Why root cause, MTTR / MTBF / MTTF, nightly AI-written PDF reports",
+            "Redis locks and idempotent intake: two supervisors tapping at once can't double-act",
+        ],
     },
     {
         slug: "siteos",
         featured: true,
-        blurb: "WhatsApp-to-dashboard site tracking for an architecture studio",
+        blurb: "WhatsApp-run site tracking, asset register and maintenance for an architecture studio",
         category: "Freelance FDE Deployments",
         title: "SiteOS",
         dates: "2026",
         description:
-            "Project, drawing and site-update platform for an architecture studio. Site engineers send photos, video or notes on WhatsApp; SiteOS works out the project and floor, groups a 10-minute window into one update, stitches media into a single video, and pushes a ticket to the project manager — plus a daily report page and SharePoint archive. The office gets a dashboard with DXF plans as clickable layouts, versioned drawings and strict role-based access. Deployed as a freelance forward deployed engineer; live in production.",
-        technologies: ["Next.js", "React", "PostgreSQL", "Drizzle", "BullMQ", "Redis", "ffmpeg", "WhatsApp Cloud API", "SharePoint", "Docker"],
+            "The operating system for an architecture studio's sites, run from WhatsApp. Site engineers send photos, video, notes or Hindi / Hinglish voice notes (transcribed on the server with Whisper); SiteOS works out the project and floor, groups a burst into one update, sorts it by trade with AI and sends managers a ticket page, plus an end-of-day report and a SharePoint archive. A 5 pm WhatsApp voice call reminds engineers who haven't sent anything. The office dashboard turns DXF plans into clickable floor layouts with versioned drawings, keeps the site programme by trade, and holds an asset register per room (AMC, preventive maintenance, cost, invoices). Faults are raised by tapping the plan, handled on WhatsApp and closed with a WhatsApp Flow; supplier bills sent to the bot are read by a vision model and written into the accounts workbook. Strict role-based access, a client view, and AI search. Deployed as a freelance forward deployed engineer; live in production.",
+        technologies: ["Next.js", "React", "PostgreSQL", "Drizzle", "BullMQ", "Redis", "ffmpeg", "whisper.cpp", "WhatsApp Cloud API", "WhatsApp Flows", "SharePoint / Graph API", "Docker"],
         links: [],
+        highlights: [
+            "Site updates over WhatsApp — photos, video, voice notes — grouped, sorted by trade, sent as ticket pages",
+            "DXF plans become clickable rooms; versioned drawings; asset register and maintenance tickets per room",
+            "Bills read by a vision model into the accounts sheet; 5 pm reminder voice calls on WhatsApp",
+            "Daily reports, site programme by trade, client view and AI search",
+        ],
     },
     {
         slug: "nbc-whatsapp-assistant",
@@ -543,13 +558,13 @@ export const PROJECTS: Project[] = [
     },
     {
         slug: "bcn3d-moveo",
-        blurb: "ROS2 control stack for a 6-DOF robot arm",
+        blurb: "ROS2 control stack for a 5-axis robot arm",
         category: "Robots & Physical AI",
         title: "BCN3D Moveo Control System",
         href: "https://github.com/ayuugoyal/bcn-3d-control-system",
         dates: "",
         description:
-            "Full control system for the BCN3D Moveo 6-DOF robot arm — Next.js web UI, ROS2 integration, Arduino firmware. Real-time WebSocket comms, joint + cartesian control, 3D visualisation and health monitoring.",
+            "Full control system for the BCN3D Moveo 5-axis robot arm — Next.js web UI, ROS2 integration, Arduino firmware. Real-time WebSocket comms, joint + cartesian control, 3D visualisation and health monitoring.",
         technologies: ["ROS2 Humble", "ROSBridge", "Python", "C++", "Arduino", "Next.js", "WebSockets"],
         links: [
             { type: "Github", href: "https://github.com/ayuugoyal/bcn-3d-control-system" },
@@ -609,11 +624,11 @@ export const EXPERIENCE = [
         href: "/forward-deployed-engineer",
         location: "Remote, worldwide",
         title: "Forward Deployed Engineer",
-        logoUrl: "/sakuta.png",
+        logoUrl: "/mascot.svg",
         start: "2025",
         current: true,
         description:
-            "Embedding with client teams to ship AI into production. Shipped a WhatsApp machine-maintenance ticketing bot that runs a factory's breakdown workflow and SiteOS, a WhatsApp-to-dashboard site-tracking platform for an architecture studio — both live in production. Discovery with real users, pilot in their stack, production rollout, handover.",
+            "Embedding with client teams to ship AI and robotics into production. Shipped a WhatsApp machine-maintenance bot that runs a factory's breakdown workflow with predictive failure alerts, and SiteOS, which runs an architecture studio's sites, assets and maintenance from WhatsApp — both live in production. Also takes freelance robotics work: ROS 2, robot arms and rovers. Discovery with real users, pilot in their stack, production rollout, handover.",
     },
     {
         company: "TAP Innovations",
@@ -683,7 +698,7 @@ export const OPEN_SOURCE = [
         image: "https://github.com/archestra-ai.png",
         /** home-page copy; *action#color text* renders as a hand-drawn highlight */
         display:
-            "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. Shipped the Notion connector, Gemini embeddings, SharePoint & OneDrive connectors, an OAuth proxy fix, and recursive subfolder traversal across 6 PRs. *underline#84cc16 Maintainers paid out $400 in bounties.* Big W.",
+            "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. Shipped the Notion connector, Gemini embeddings, SharePoint & OneDrive connectors, an OAuth proxy fix, and recursive subfolder traversal across 6 PRs. *underline Maintainers paid out $400 in bounties.* Big W.",
     },
     {
         title: "bolna-ai/bolna",

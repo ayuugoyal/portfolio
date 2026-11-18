@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight, CalendarDays, ChevronLeft } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 import { Footer } from "@/components/footer";
-import { RobotFeature } from "@/components/robot-showcase";
+import { RobotTabs } from "@/components/robots/robot-tabs";
 import { JsonLd } from "@/components/structured-data";
 import { PROJECTS, SITE } from "@/lib/site";
 import {
@@ -37,6 +37,7 @@ export const metadata: Metadata = {
 
 const robots = PROJECTS.filter((p) => p.category === "Robots & Physical AI");
 const arm = robots.find((p) => p.slug === "so101-claude-code")!;
+const moveo = robots.find((p) => p.slug === "bcn3d-moveo")!;
 const rover = robots.find((p) => p.slug === "raftaar-rover")!;
 
 export default function RoboticsPage() {
@@ -55,12 +56,12 @@ export default function RoboticsPage() {
                         isPartOf: { "@id": IDS.website },
                         about: ["Robotics", "Physical AI", "ROS2", "Nav2", "LeRobot", "SO-101", "MCP", "Claude Code", "Robot arm", "Autonomous rover", "ArduPilot"],
                     },
-                    projectListSchema([arm, rover], "Robots"),
+                    projectListSchema([arm, moveo, rover], "Robots"),
                     patentSchema(),
                 ]}
             />
 
-            <section className="mx-auto w-full max-w-2xl space-y-8">
+            <section className="mx-auto w-full max-w-4xl space-y-8">
                 <BlurFade delay={D}>
                     <Link
                         href="/"
@@ -74,32 +75,37 @@ export default function RoboticsPage() {
                 <div className="space-y-3">
                     <BlurFade delay={D}>
                         <p className="font-mono text-[10px] lowercase text-muted-foreground">
-                            side projects · physical ai
+                            freelance robotics · physical ai
                         </p>
                     </BlurFade>
                     <BlurFade delay={D}>
-                        <h1 className="font-display text-4xl font-bold lowercase tracking-tight sm:text-5xl">
+                        <h1 className="font-display text-4xl font-medium lowercase tracking-[-0.01em] sm:text-5xl">
                             robots i build
                         </h1>
                     </BlurFade>
                     <BlurFade delay={D}>
                         <p className="max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground">
-                            Day job is AI. After hours it&apos;s motors, firmware and ROS2 — and
+                            Motors, firmware and ROS 2, for clients and for my own builds — and
                             putting LLMs in charge of real hardware, behind a controller that keeps
-                            them safe.
+                            them safe. Need a robot built or brought to life? I take freelance
+                            robotics work.
                         </p>
                     </BlurFade>
                 </div>
 
-                {[arm, rover].map((p, i) => (
-                    <BlurFade key={p.slug} delay={D}>
-                        <RobotFeature project={p} index={i + 1} />
-                    </BlurFade>
-                ))}
+                <BlurFade delay={D}>
+                    <RobotTabs
+                        robots={[
+                            { kind: "so101", label: "SO-101", project: arm },
+                            { kind: "moveo", label: "BCN3D Moveo", project: moveo },
+                            { kind: "rover", label: "Raftaar", project: rover },
+                        ]}
+                    />
+                </BlurFade>
 
                 <BlurFade delay={D}>
                     <div className="mb-16 space-y-4 border-t border-border pt-8">
-                        <h2 className="font-display text-2xl font-bold lowercase tracking-tight sm:text-3xl">
+                        <h2 className="font-display text-2xl font-medium lowercase tracking-[-0.01em] sm:text-3xl">
                             hiring for robotics or physical ai?
                         </h2>
                         <div className="flex flex-wrap gap-2">

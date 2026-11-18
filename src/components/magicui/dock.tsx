@@ -18,7 +18,9 @@ const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
 
 const dockVariants = cva(
-  "mx-auto w-max mt-8 h-[58px] p-2 flex gap-2 rounded-2xl border supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-md",
+  // Sized so all icons fit a 390px-wide phone: 34px icons + 4px gaps below
+  // `sm`, the full 40px/8px dock with hover magnification above it.
+  "mx-auto w-max mt-8 h-[50px] sm:h-[58px] p-1.5 sm:p-2 flex gap-1 sm:gap-2 rounded-2xl border bg-card/80 backdrop-blur",
 );
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
@@ -121,7 +123,7 @@ const DockIcon = ({
       ref={ref}
       style={{ width }}
       className={cn(
-        "flex aspect-square cursor-pointer items-center justify-center rounded-full",
+        "flex aspect-square max-w-[34px] cursor-pointer items-center justify-center rounded-full sm:max-w-none",
         className,
       )}
       {...props}

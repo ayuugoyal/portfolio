@@ -1,0 +1,14 @@
+so101.v1.glb — SO-101 robot arm model
+
+Source: https://github.com/TheRobotStudio/SO-ARM100
+  commit 5f6d2b876a53a4872e405b991dd925556c9e38a4
+  files  Simulation/SO101/so101_new_calib.urdf and the STL meshes it references (Simulation/SO101/assets/)
+Copyright TheRobotStudio. Licensed under the Apache License, Version 2.0; see LICENSE-SO-ARM100.txt.
+
+Modified by Ayush Goyal (built by scripts/build-so101-glb.mjs):
+  - converted from URDF + STL to a single glTF binary (GLB), Z-up turned to Y-up
+  - joint hierarchy kept as named nodes (shoulder_pan … gripper, gripper_frame); inertial/collision data dropped
+  - meshes simplified (meshoptimizer, ~12% of vertices), deduplicated, normals recomputed
+  - materials replaced with two flat colours; geometry quantized and meshopt-compressed (EXT_meshopt_compression)
+
+so101-poster.v1.png is a still render of this model (same modifications), used before the 3D scene loads.

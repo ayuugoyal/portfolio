@@ -4,9 +4,8 @@ import TypingAnimation from "@/components/magicui/typing-animation";
 import { Highlighter } from "@/components/magicui/highlighter";
 import { ArrowUpRight, CalendarDays, Github, Mail } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { SectionHeading } from "@/components/section-heading";
-import { RobotTiles } from "@/components/robot-showcase";
+import { RobotTabs } from "@/components/robots/robot-tabs";
 import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/structured-data";
 import { ResumeCard } from "@/components/resume-card";
@@ -30,7 +29,12 @@ const D = 0.06;
  */
 
 const featured = PROJECTS.filter((p) => p.featured);
-const robots = PROJECTS.filter((p) => p.loop);
+const bySlug = (slug: string) => PROJECTS.find((p) => p.slug === slug)!;
+const robots = [
+    { kind: "so101" as const, label: "SO-101", project: bySlug("so101-claude-code") },
+    { kind: "moveo" as const, label: "BCN3D Moveo", project: bySlug("bcn3d-moveo") },
+    { kind: "rover" as const, label: "Raftaar", project: bySlug("raftaar-rover") },
+];
 
 /** ProfilePage is Google's recommended type for a personal site's home page. */
 function HomeSchema() {
@@ -72,12 +76,22 @@ export default function Home() {
 
             {/* ───────────────────────── hero ───────────────────────── */}
             <section id="hero" className="px-5">
-                <div className="mx-auto w-full max-w-2xl space-y-5">
+                <div className="relative isolate mx-auto w-full max-w-4xl space-y-5">
+                    {/* faded pixel portrait behind the name (scripts/build-hero-pixel.mjs) */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                        src="/hero-pixel.svg"
+                        alt=""
+                        aria-hidden
+                        width={36}
+                        height={40}
+                        className="pointer-events-none absolute -top-4 right-0 -z-10 w-28 select-none opacity-[0.1] [image-rendering:pixelated] [mask-image:linear-gradient(to_bottom,black_60%,transparent)] dark:opacity-[0.1] sm:w-56 sm:opacity-[0.14] md:-top-8 md:w-72"
+                    />
                     <BlurFade delay={D}>
                         <div className="inline-flex items-center gap-2 font-mono text-[10px] lowercase text-muted-foreground">
-                            <span className="relative flex size-1.5">
-                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
-                                <span className="relative inline-flex size-1.5 rounded-full bg-brand" />
+                            <span aria-hidden className="relative flex size-1.5">
+                                <span className="absolute inline-flex h-full w-full animate-ping bg-brand opacity-60 motion-reduce:animate-none" />
+                                <span className="relative inline-flex size-1.5 bg-brand" />
                             </span>
                             taking freelance fde engagements
                         </div>
@@ -93,21 +107,13 @@ export default function Home() {
                                 />
                             </BlurFade>
 
-                            <BlurFadeText
-                                delay={D}
-                                className="font-display text-5xl font-bold lowercase leading-[0.9] tracking-tight sm:text-6xl"
-                                yOffset={8}
-                                text="ayush"
-                            />
-                            <BlurFadeText
-                                delay={D + 0.08}
-                                className="text-outline -mt-1 font-display text-5xl font-bold lowercase leading-[0.9] tracking-tight sm:text-6xl"
-                                yOffset={8}
-                                text="goyal"
-                            />
+                            <div className="flex items-baseline gap-x-[0.28em] whitespace-nowrap font-display text-5xl font-medium lowercase leading-[0.95] tracking-[-0.01em] sm:text-6xl md:text-7xl">
+                                <BlurFadeText delay={D} yOffset={8} text="ayush" />
+                                <BlurFadeText delay={D + 0.08} className="text-outline" yOffset={8} text="goyal" />
+                            </div>
 
                             <BlurFade delay={D} className="pt-1">
-                                <h1 className="font-display text-lg font-bold tracking-tight sm:text-xl">
+                                <h1 className="font-display text-lg font-medium tracking-[-0.01em] sm:text-xl">
                                     Forward Deployed Engineer &amp; AI Engineer
                                 </h1>
                             </BlurFade>
@@ -117,24 +123,14 @@ export default function Home() {
                                 className="max-w-md text-sm leading-relaxed text-muted-foreground"
                             >
                                 I drop into your team and ship{" "}
-                                <Highlighter action="underline" color="#a3e635">
+                                <Highlighter action="underline">
                                     <span className="text-foreground">AI that actually runs</span>
                                 </Highlighter>{" "}
-                                in production. Full-time AI engineer, freelance FDE, and I
-                                build robots on the side.
+                                in production. Full-time AI engineer, freelance FDE for AI
+                                and robotics, and I build my own robots.
                             </BlurFade>
                         </div>
 
-                        <BlurFade delay={D} className="shrink-0">
-                            <Image
-                                src="/sakuta.png"
-                                alt="Ayush Goyal, Forward Deployed Engineer and AI Engineer"
-                                width={160}
-                                height={160}
-                                className="size-16 rounded-2xl border border-border object-cover sm:size-24"
-                                priority
-                            />
-                        </BlurFade>
                     </div>
 
                     <BlurFade delay={D} className="flex flex-wrap items-center gap-2">
@@ -150,12 +146,16 @@ export default function Home() {
                             <ArrowUpRight className="size-3.5" />
                         </Link>
                     </BlurFade>
+
+                    <BlurFade delay={D} className="pt-6">
+                        <RobotTabs robots={robots} variant="hero" />
+                    </BlurFade>
                 </div>
             </section>
 
             {/* ──────────────────────── three hats ──────────────────────── */}
             <section id="what-i-do" className="px-5 pt-16">
-                <div className="mx-auto w-full max-w-2xl space-y-3">
+                <div className="mx-auto w-full max-w-4xl space-y-3">
                     <BlurFade delay={D}>
                         <SectionHeading index="01" title="three hats" sub="what i do" />
                     </BlurFade>
@@ -170,7 +170,7 @@ export default function Home() {
                                         {h.mode}
                                     </span>
                                     <div className="space-y-1">
-                                        <h2 className="font-display text-base font-bold tracking-tight">
+                                        <h2 className="font-display text-base font-medium tracking-[-0.01em]">
                                             {h.title}
                                         </h2>
                                         <p className="text-sm leading-relaxed text-muted-foreground">
@@ -187,7 +187,7 @@ export default function Home() {
 
             {/* ───────────────────────── open source ───────────────────────── */}
             <section id="open-source" className="px-5 pt-16">
-                <div className="mx-auto w-full max-w-2xl space-y-2">
+                <div className="mx-auto w-full max-w-4xl space-y-2">
                     <BlurFade delay={D}>
                         <SectionHeading
                             index="02"
@@ -219,29 +219,12 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ──────────────────────── robots ──────────────────────── */}
-            <section id="robots" className="px-5 pt-16">
-                <div className="mx-auto w-full max-w-2xl space-y-4">
+            {/* ──────────────────────── selected work ──────────────────────── */}
+            <section id="work" className="px-5 pt-16">
+                <div className="mx-auto w-full max-w-4xl space-y-3">
                     <BlurFade delay={D}>
                         <SectionHeading
                             index="03"
-                            title="robots"
-                            sub="physical ai"
-                            kicker="llms driving real hardware"
-                        />
-                    </BlurFade>
-                    <BlurFade delay={D}>
-                        <RobotTiles projects={robots} />
-                    </BlurFade>
-                </div>
-            </section>
-
-            {/* ──────────────────────── selected work ──────────────────────── */}
-            <section id="work" className="px-5 pt-16">
-                <div className="mx-auto w-full max-w-2xl space-y-3">
-                    <BlurFade delay={D}>
-                        <SectionHeading
-                            index="04"
                             title="selected work"
                             sub="projects"
                             kicker={`${PROJECTS.length} total`}
@@ -263,7 +246,7 @@ export default function Home() {
                                             className="group flex items-baseline justify-between gap-4 py-3"
                                         >
                                             <span className="min-w-0">
-                                                <span className="font-display text-sm font-bold tracking-tight">
+                                                <span className="font-display text-sm font-medium tracking-[-0.01em]">
                                                     {p.title}
                                                 </span>
                                                 <span className="text-sm text-muted-foreground">
@@ -304,10 +287,10 @@ export default function Home() {
 
             {/* ───────────────────────── experience ───────────────────────── */}
             <section id="work-experience" className="px-5 pt-16">
-                <div className="mx-auto w-full max-w-2xl space-y-3">
+                <div className="mx-auto w-full max-w-4xl space-y-3">
                     <BlurFade delay={D}>
                         <SectionHeading
-                            index="05"
+                            index="04"
                             title="where i've been cooking"
                             sub="experience"
                             kicker="tap for the yap"
@@ -334,10 +317,10 @@ export default function Home() {
 
             {/* ───────────────────────── patent ───────────────────────── */}
             <section id="patents" className="px-5 pt-16">
-                <div className="mx-auto w-full max-w-2xl space-y-2">
+                <div className="mx-auto w-full max-w-4xl space-y-2">
                     <BlurFade delay={D}>
                         <SectionHeading
-                            index="06"
+                            index="05"
                             title="certified inventor arc"
                             sub="uk design patent"
                             kicker="the uk agreed"
@@ -371,8 +354,8 @@ export default function Home() {
             {/* ───────────────────────── contact ───────────────────────── */}
             <section id="contact" className="px-5 pb-20 pt-20">
                 <BlurFade delay={D}>
-                    <div className="mx-auto flex w-full max-w-2xl flex-col items-center space-y-4 text-center">
-                        <h2 className="font-display text-2xl font-bold lowercase tracking-tight sm:text-3xl">
+                    <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-4 text-center">
+                        <h2 className="font-display text-2xl font-medium lowercase tracking-[-0.01em] sm:text-3xl">
                             got ai that needs shipping?
                         </h2>
                         <p className="max-w-md text-sm leading-relaxed text-muted-foreground">

@@ -4,31 +4,37 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 8%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 8%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 96.5%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 96.5%;
-    --muted-foreground: 240 4% 46%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5% 91%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    /* warm paper, warm near-black ink */
+    --background: 42 38% 94%;
+    --foreground: 45 7% 11%;
+    --card: 40 40% 97%;
+    --card-foreground: 45 7% 11%;
+    --popover: 40 40% 97%;
+    --popover-foreground: 45 7% 11%;
+    --primary: 45 7% 11%;
+    --primary-foreground: 42 38% 96%;
+    --secondary: 40 24% 89%;
+    --secondary-foreground: 45 7% 11%;
+    --muted: 40 24% 89%;
+    --muted-foreground: 38 8% 39%;
+    --accent: 38 28% 90%;
+    --accent-foreground: 45 7% 11%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 40 40% 97%;
+    --border: 40 18% 84%;
+    --input: 40 18% 84%;
+    --ring: 15 56% 52%;
     --radius: 0.75rem;
 
-    /* The single accent, used only as a FILL — a live dot, a hover, a marker.
-       Never as text on the page background: lime on white has no contrast. */
-    --brand: 74 95% 48%;
-    --brand-foreground: 60 8% 8%;
+    /* The clay accent. --brand is for FILLS (dots, markers, hovers).
+       --brand-ink is the same hue darkened for TEXT, so it passes AA. */
+    --brand: 15 56% 52%;
+    --brand-ink: 15 57% 41%;
+    --brand-foreground: 40 40% 97%;
+
+    /* mascot sprite colours (same in both themes) */
+    --mascot-visor: 45 7% 11%;
+    --mascot-eye: 40 40% 96%;
 
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -38,37 +44,38 @@
   }
 
   .dark {
-    --background: 240 8% 5%;
-    --foreground: 60 8% 96%;
-    --card: 240 8% 5%;
-    --card-foreground: 60 8% 96%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 5% 12%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 5% 12%;
-    --muted-foreground: 240 5% 58%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 40 6% 10%;
+    --foreground: 43 24% 90%;
+    --card: 40 5% 13%;
+    --card-foreground: 43 24% 90%;
+    --popover: 40 5% 13%;
+    --popover-foreground: 43 24% 90%;
+    --primary: 43 24% 90%;
+    --primary-foreground: 40 6% 10%;
+    --secondary: 40 5% 15%;
+    --secondary-foreground: 43 24% 90%;
+    --muted: 40 5% 15%;
+    --muted-foreground: 40 7% 61%;
+    --accent: 40 5% 17%;
+    --accent-foreground: 43 24% 90%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5% 15%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --destructive-foreground: 43 24% 90%;
+    --border: 40 5% 20%;
+    --input: 40 5% 20%;
+    --ring: 15 63% 60%;
 
-    --brand: 74 90% 56%;
-    --brand-foreground: 60 8% 8%;
+    --brand: 15 63% 60%;
+    --brand-ink: 15 63% 60%;
+    --brand-foreground: 40 6% 10%;
+
+    --mascot-visor: 45 7% 11%;
+    --mascot-eye: 40 40% 96%;
 
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-  }
-  .theme {
-    --animate-line-shadow: line-shadow 15s linear infinite;
   }
 }
 
@@ -78,21 +85,21 @@
   }
   html {
     scroll-behavior: smooth;
+    font-synthesis-weight: none;
   }
   body {
     @apply bg-background text-foreground;
   }
   ::selection {
-    background-color: hsl(var(--brand));
-    color: hsl(var(--brand-foreground));
+    background-color: hsl(var(--brand) / 0.25);
+    color: inherit;
   }
 }
 
 @layer components {
-  /* hollow display type — the surname in the hero */
+  /* the quiet half of the hero name: italic serif, muted */
   .text-outline {
-    color: transparent;
-    -webkit-text-stroke: 1px hsl(var(--foreground) / 0.45);
+    @apply font-display italic text-muted-foreground;
   }
 
   /* one button shape, two weights */
@@ -104,6 +111,53 @@
   }
   .btn-quiet {
     @apply btn border border-border text-foreground hover:border-foreground/30 hover:bg-secondary;
+  }
+}
+
+@layer utilities {
+  /* A small pixel accent: a 2px border with stepped (notched) corners.
+     Outer layer is the border colour, ::before is the card fill inset by 2px.
+     It sets no position: the element must be positioned itself (relative/absolute/fixed),
+     otherwise this would override `fixed` and friends. */
+  .pixel-frame {
+    --pixel-notch: 4px;
+    isolation: isolate;
+    background: hsl(var(--border));
+    clip-path: polygon(
+      0 var(--pixel-notch),
+      var(--pixel-notch) var(--pixel-notch),
+      var(--pixel-notch) 0,
+      calc(100% - var(--pixel-notch)) 0,
+      calc(100% - var(--pixel-notch)) var(--pixel-notch),
+      100% var(--pixel-notch),
+      100% calc(100% - var(--pixel-notch)),
+      calc(100% - var(--pixel-notch)) calc(100% - var(--pixel-notch)),
+      calc(100% - var(--pixel-notch)) 100%,
+      var(--pixel-notch) 100%,
+      var(--pixel-notch) calc(100% - var(--pixel-notch)),
+      0 calc(100% - var(--pixel-notch))
+    );
+  }
+  .pixel-frame::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    z-index: -1;
+    background: hsl(var(--card));
+    clip-path: polygon(
+      0 var(--pixel-notch),
+      var(--pixel-notch) var(--pixel-notch),
+      var(--pixel-notch) 0,
+      calc(100% - var(--pixel-notch)) 0,
+      calc(100% - var(--pixel-notch)) var(--pixel-notch),
+      100% var(--pixel-notch),
+      100% calc(100% - var(--pixel-notch)),
+      calc(100% - var(--pixel-notch)) calc(100% - var(--pixel-notch)),
+      calc(100% - var(--pixel-notch)) 100%,
+      var(--pixel-notch) 100%,
+      var(--pixel-notch) calc(100% - var(--pixel-notch)),
+      0 calc(100% - var(--pixel-notch))
+    );
   }
 }
 
@@ -129,13 +183,8 @@
   }
 }
 
-@theme inline {
-  @keyframes line-shadow {
-  0% {
-    background-position: 0 0;
-    }
-  100% {
-    background-position: 100% -100%;
-    }
+@media print {
+  [data-mascot] {
+    display: none !important;
   }
 }

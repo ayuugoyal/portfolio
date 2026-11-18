@@ -1,0 +1,50 @@
+moveo.v1.glb — BCN3D Moveo robot arm model
+
+Design: BCN3D Moveo, an open-source 3D-printed robot arm by BCN3D Technologies
+  https://github.com/BCN3D/BCN3D-Moveo (commit 0866a92501277636f76000a195d8a16d44b5b476)
+  Released under the MIT License; the licence text is reproduced below.
+
+Source of the files converted here: https://github.com/ayuugoyal/bcn3d_ws
+  commit cee7021482ca4ad6e55d06cf32816ddbd05cffc0
+  files  src/moveo_description/urdf/moveo.urdf and the STL meshes it references (src/moveo_description/meshes/)
+  A SolidWorks-to-URDF export of the Moveo, with joint axes and limits set for Ayush Goyal's build.
+
+Modified by Ayush Goyal (built by scripts/build-moveo-glb.mjs):
+  - converted from URDF + STL to a single glTF binary (GLB), Z-up turned to Y-up
+  - joint hierarchy kept as named nodes; names lower-cased for the web:
+      J_1   -> joint_1   revolute, 0.0°…118.6°
+      J_2   -> joint_2   revolute, 0.0°…206.1°
+      J_3   -> joint_3   revolute, 0.0°…198.3°
+      J_4   -> joint_4   revolute, 0.0°…189.5°
+      J_5   -> joint_5   revolute, 0.0°…157.4°
+      Link_N -> link_N, <link>.STL -> <link>_mesh
+  - each joint's axis folded into fixed <joint>_origin / <joint>_unalign nodes so the joint node turns about +Z
+  - inertial/collision data dropped
+  - meshes simplified (meshoptimizer, ~50% of vertices), deduplicated, normals recomputed
+  - materials replaced with flat colours; geometry quantized and meshopt-compressed (EXT_meshopt_compression)
+
+moveo-poster.v1.png is a still render of this model (same modifications), used before the 3D scene loads
+(rendered by scripts/render-moveo-poster.mjs).
+
+------------------------------------------------------------------------------
+The MIT License (MIT)
+
+Copyright (c) 2016 BCN3D Technologies
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

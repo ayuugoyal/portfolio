@@ -2,8 +2,9 @@ import { Metadata } from 'next';
 import BlurFade from "@/components/magicui/blur-fade";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import Image from "next/image";
 import { Footer } from "@/components/footer";
-import { ArrowUpRight, Download, ExternalLink, ChevronLeft } from "lucide-react";
+import { ArrowUpRight, Download, ChevronLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Resume',
@@ -14,8 +15,8 @@ export const metadata: Metadata = {
 const BLUR_FADE_DELAY = 0.04;
 
 export default function ResumePage() {
-  const driveFileId = '1wPyEPWPzfSSmk5lwP6279Tt6vzUMp5xT';
-  const embedUrl = `https://drive.google.com/file/d/${driveFileId}/preview`;
+  // the PDF is built from LaTeX and served from /public, so the site owns it (no Drive)
+  const pdf = "/ayush-goyal-resume.pdf";
 
   return (
     <div className="px-5 py-8">
@@ -33,7 +34,7 @@ export default function ResumePage() {
           </BlurFade>
 
           <BlurFade delay={BLUR_FADE_DELAY * 2}>
-              <h1 className="font-display text-4xl font-bold lowercase tracking-tight sm:text-5xl">
+              <h1 className="font-display text-4xl font-medium lowercase tracking-[-0.01em] sm:text-5xl">
                   the resume
               </h1>
           </BlurFade>
@@ -47,24 +48,15 @@ export default function ResumePage() {
 
           {/* Action Buttons */}
           <BlurFade delay={BLUR_FADE_DELAY * 4} className="flex flex-wrap items-center gap-2.5">
-            <Link
-              href={`https://drive.google.com/file/d/${driveFileId}/view?usp=sharing`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-solid"
-            >
-              <ExternalLink className="h-3.5 w-3.5" />
-              open in drive
+            <Link href={pdf} target="_blank" rel="noopener" className="btn-solid">
+              open pdf
               <ArrowUpRight className="h-3 w-3" />
             </Link>
 
-            <Link
-              href={`https://drive.google.com/uc?export=download&id=${driveFileId}`}
-              className="btn-quiet"
-            >
+            <a href={pdf} download="Ayush-Goyal-Resume.pdf" className="btn-quiet">
               <Download className="h-3.5 w-3.5" />
               download pdf
-            </Link>
+            </a>
 
             <div className="flex flex-wrap gap-1">
               <Badge variant="chip">Forward Deployed Engineer</Badge>
@@ -74,46 +66,24 @@ export default function ResumePage() {
           </BlurFade>
         </div>
 
-        {/* PDF Viewer Container */}
+        {/* Preview: an image of the one page, linking to the PDF (works on every phone, unlike PDF iframes) */}
         <BlurFade delay={BLUR_FADE_DELAY * 5}>
-          <div className="relative overflow-hidden rounded-xl border border-border bg-card">
-            <div className="aspect-[3/4] w-full min-h-[800px]">
-              <iframe
-                src={embedUrl}
-                className="w-full h-full border-0"
-                title="Ayush Goyal - Resume"
-                allow="autoplay"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Fallback overlay for loading issues */}
-            <div className="absolute inset-0 flex items-center justify-center bg-muted/50 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              <div className="text-center space-y-2 pointer-events-auto">
-                <p className="text-sm text-muted-foreground">
-                  PDF not loading properly?
-                </p>
-                <div className="flex gap-2 justify-center">
-                  <Link
-                    href={`https://drive.google.com/file/d/${driveFileId}/view?usp=sharing`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1.5 bg-primary text-primary-foreground rounded text-xs font-medium hover:bg-primary/90 transition-colors"
-                  >
-                    <ExternalLink className="w-3 h-3 mr-1" />
-                    Open Externally
-                  </Link>
-                  <Link
-                    href={`https://drive.google.com/uc?export=download&id=${driveFileId}`}
-                    className="inline-flex items-center px-3 py-1.5 bg-secondary text-secondary-foreground rounded text-xs font-medium hover:bg-secondary/80 transition-colors"
-                  >
-                    <Download className="w-3 h-3 mr-1" />
-                    Download
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Link
+            href={pdf}
+            target="_blank"
+            rel="noopener"
+            className="group block overflow-hidden rounded-xl border border-border bg-white transition-colors hover:border-foreground/30"
+          >
+            <Image
+              src="/ayush-goyal-resume.png"
+              alt="Resume of Ayush Goyal: Forward Deployed Engineer and AI Engineer; projects SO-101 x Claude Code, Raftaar autonomous rover, BCN3D Moveo arm; experience at TAP Innovations and Loadshare Networks"
+              width={935}
+              height={1210}
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="h-auto w-full"
+              priority
+            />
+          </Link>
         </BlurFade>
 
         {/* Footer Info */}
@@ -126,28 +96,28 @@ export default function ResumePage() {
               <div className="flex flex-wrap gap-2 justify-center">
                 <Link
                   href="/#work-experience"
-                  className="text-sm text-blue-500 hover:underline"
+                  className="text-sm text-brand-ink underline-offset-4 hover:underline"
                 >
                   Work Experience
                 </Link>
                 <span className="text-muted-foreground">•</span>
                 <Link
                   href="/#work"
-                  className="text-sm text-blue-500 hover:underline"
+                  className="text-sm text-brand-ink underline-offset-4 hover:underline"
                 >
                   Projects
                 </Link>
                 <span className="text-muted-foreground">•</span>
                 <Link
                   href="/robotics"
-                  className="text-sm text-blue-500 hover:underline"
+                  className="text-sm text-brand-ink underline-offset-4 hover:underline"
                 >
                   Robots
                 </Link>
                 <span className="text-muted-foreground">•</span>
                 <Link
                   href="/#contact"
-                  className="text-sm text-blue-500 hover:underline"
+                  className="text-sm text-brand-ink underline-offset-4 hover:underline"
                 >
                   Get in Touch
                 </Link>

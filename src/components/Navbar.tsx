@@ -94,11 +94,12 @@ const DATA = {
 
 export function Navbar() {
     return (
-        <div className="fixed z-50 bottom-10 right-0 left-0 flex flex-col w-full items-center justify-center">
+        <div className="pointer-events-none fixed z-50 bottom-10 right-0 left-0 flex flex-col w-full items-center justify-center">
             <TooltipProvider>
                 <Dock
+                    data-dock
                     direction="middle"
-                    className="rounded-full border border-border bg-background/70"
+                    className="pointer-events-auto rounded-full border border-border bg-card/80 backdrop-blur"
                 >
                     {DATA.navbar.map((item) => (
                         <DockIcon key={item.label}>
@@ -111,7 +112,7 @@ export function Navbar() {
                                                 variant: "ghost",
                                                 size: "icon",
                                             }),
-                                            "size-12 rounded-full"
+                                            "size-full rounded-full"
                                         )}
                                     >
                                         <item.icon className="size-4" />
@@ -136,7 +137,7 @@ export function Navbar() {
                                                     variant: "ghost",
                                                     size: "icon",
                                                 }),
-                                                "size-12 rounded-full"
+                                                "size-full rounded-full"
                                             )}
                                             target="_blank"
                                         >
@@ -156,7 +157,7 @@ export function Navbar() {
                             <TooltipTrigger asChild>
                                 <ModeToggle />
                             </TooltipTrigger>
-                            <TooltipContent>
+                            <TooltipContent className="font-mono text-[10px] lowercase">
                                 <p>Theme</p>
                             </TooltipContent>
                         </Tooltip>

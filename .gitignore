@@ -34,3 +34,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# model build cache
+/scripts/.cache
+
+# secrets (API keys) never go to git
+.env
+
+.env*

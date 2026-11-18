@@ -12,15 +12,15 @@ const LINKS = [
 ];
 export function Footer() {
     return (
-        <footer className="mx-auto w-full max-w-2xl border-t border-border pt-8 text-center">
-            <p className="font-display text-sm font-bold tracking-tight">
+        <footer className="mx-auto w-full max-w-4xl border-t border-border pt-8 text-center">
+            <p className="font-display text-sm font-medium tracking-[-0.01em]">
                 {SITE.handle}
             </p>
             <p className="mt-1 font-mono text-[10px] lowercase text-muted-foreground">
                 forward deployed engineer · ai engineer · robots
             </p>
             <p className="mt-1.5 font-mono text-[10px] lowercase text-muted-foreground">
-                <span className="mr-1.5 inline-flex size-1.5 rounded-full bg-brand align-middle" />
+                <span aria-hidden className="mr-1.5 inline-flex size-1.5 bg-brand align-middle" />
                 open for freelance
             </p>
 

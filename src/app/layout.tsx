@@ -1,22 +1,24 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import DotPattern from "@/components/magicui/dot-pattern";
 import { Navbar } from "@/components/Navbar";
+import { Mascot } from "@/components/mascot/mascot";
 import { StructuredData } from "@/components/structured-data";
-import { Space_Grotesk, Syne, JetBrains_Mono } from "next/font/google";
+import { Inter, Newsreader, JetBrains_Mono, Silkscreen } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { KEYWORDS, SITE } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
-const fontSans = Space_Grotesk({
+const fontSans = Inter({
     subsets: ["latin"],
     variable: "--font-sans",
     display: "swap",
 });
 
-const fontDisplay = Syne({
+const fontDisplay = Newsreader({
     subsets: ["latin"],
-    weight: ["600", "700", "800"],
+    weight: ["500"],
+    style: ["normal", "italic"],
     variable: "--font-display",
     display: "swap",
 });
@@ -27,9 +29,18 @@ const fontMono = JetBrains_Mono({
     display: "swap",
 });
 
+// tiny pixel accents only — never body text
+const fontPixel = Silkscreen({
+    subsets: ["latin"],
+    weight: ["400"],
+    variable: "--font-pixel",
+    display: "swap",
+    preload: false,
+});
+
 const TITLE = `${SITE.name} — ${SITE.role}`;
 const DESCRIPTION =
-    "Ayush Goyal — freelance Forward Deployed Engineer and full-time AI Engineer who builds robots on the side. Embeds with your team to ship AI agents, voice agents, RAG, MCP servers and integrations into production. Remote worldwide.";
+    "Ayush Goyal — freelance Forward Deployed Engineer for AI and robotics, and full-time AI Engineer. Embeds with your team to ship AI agents, voice agents, RAG, MCP servers and integrations into production. Remote worldwide.";
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE.url),
@@ -87,15 +98,12 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
     themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-        { media: "(prefers-color-scheme: dark)", color: "#0b0b0d" },
+        { media: "(prefers-color-scheme: light)", color: "#F5F1E8" },
+        { media: "(prefers-color-scheme: dark)", color: "#1C1B19" },
     ],
     width: "device-width",
     initialScale: 1,
 };
-
-import { cn } from "@/lib/utils";
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 export default function RootLayout({
     children,
@@ -116,23 +124,18 @@ export default function RootLayout({
                     "min-h-screen bg-background font-sans antialiased py-12 sm:py-20",
                     fontSans.variable,
                     fontDisplay.variable,
-                    fontMono.variable
+                    fontMono.variable,
+                    fontPixel.variable
                 )}
             >
-                <ThemeProvider attribute="class" defaultTheme="system">
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    disableTransitionOnChange
+                >
                     <Navbar />
+                    <Mascot />
                     {children}
-                    <DotPattern
-                        width={20}
-                        height={20}
-                        cx={1}
-                        cy={1}
-                        cr={1}
-                        className={cn(
-                            "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] -z-10"
-                        )}
-                    />
-                    <SmoothCursor />
                     <Analytics />
                 </ThemeProvider>
             </body>

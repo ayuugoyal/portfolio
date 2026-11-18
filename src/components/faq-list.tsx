@@ -8,7 +8,7 @@ export function FaqList({ faqs }: { faqs: { q: string; a: string }[] }) {
             {faqs.map((f) => (
                 <details key={f.q} className="group py-3.5">
                     <summary className="flex cursor-pointer list-none items-start justify-between gap-4 marker:content-none">
-                        <h3 className="font-display text-sm font-bold tracking-tight">{f.q}</h3>
+                        <h3 className="font-display text-sm font-medium tracking-[-0.01em]">{f.q}</h3>
                         <span className="mt-0.5 shrink-0 font-mono text-xs text-muted-foreground transition-transform group-open:rotate-45">
                             +
                         </span>

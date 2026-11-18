@@ -23,10 +23,13 @@ const config = {
                 sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
                 display: [
                     "var(--font-display)",
-                    "var(--font-sans)",
-                    ...defaultTheme.fontFamily.sans,
+                    "Georgia",
+                    "Cambria",
+                    '"Times New Roman"',
+                    ...defaultTheme.fontFamily.serif,
                 ],
                 mono: ["var(--font-mono)", ...defaultTheme.fontFamily.mono],
+                pixel: ["var(--font-pixel)", ...defaultTheme.fontFamily.mono],
             },
             colors: {
                 border: "hsl(var(--border))",
@@ -34,9 +37,10 @@ const config = {
                 ring: "hsl(var(--ring))",
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
-                // lime accent — fills only, never text on the page background
+                // clay accent — `brand` for fills/markers, `brand-ink` when clay is text (AA)
                 brand: {
                     DEFAULT: "hsl(var(--brand))",
+                    ink: "hsl(var(--brand-ink))",
                     foreground: "hsl(var(--brand-foreground))",
                 },
                 primary: {
@@ -87,11 +91,21 @@ const config = {
                         backgroundPosition: "var(--bg-size) 0",
                     },
                 },
+                "mascot-bob": {
+                    "0%, 100%": { transform: "translateY(0)" },
+                    "50%": { transform: "translateY(-4px)" },
+                },
+                "mascot-hop": {
+                    "0%, 100%": { transform: "translateY(0)" },
+                    "50%": { transform: "translateY(-12px)" },
+                },
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
                 gradient: "gradient 8s linear infinite",
+                "mascot-bob": "mascot-bob 2s ease-in-out infinite",
+                "mascot-hop": "mascot-hop 450ms ease-out",
             },
         },
     },

@@ -104,17 +104,17 @@ export default function HeroVideoDialog({
             }}
             onClick={() => setIsVideoOpen(false)}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 rounded-sm z-50 flex items-center justify-center bg-black/50 backdrop-blur-md"
+            className="fixed inset-0 rounded-sm z-50 flex items-center justify-center bg-background/70 backdrop-blur-md"
           >
             <motion.div
               {...selectedAnimation}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               className="relative mx-4 aspect-video w-full max-w-4xl md:mx-0"
             >
-              <motion.button className="absolute -top-16 right-0 rounded-full bg-neutral-900/50 p-2 text-xl text-white ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black">
+              <motion.button className="absolute -top-16 right-0 rounded-full bg-card/80 p-2 text-xl text-foreground ring-1 ring-border backdrop-blur-md">
                 <XIcon className="size-5" />
               </motion.button>
-              <div className="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-white">
+              <div className="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-border">
                 <iframe
                   src={videoSrc}
                   title="Hero Video player"

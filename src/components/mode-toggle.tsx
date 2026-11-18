@@ -6,18 +6,28 @@ import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 
-export function ModeToggle() {
-    const { setTheme, theme } = useTheme();
+export const ModeToggle = React.forwardRef<
+    HTMLButtonElement,
+    React.ComponentPropsWithoutRef<typeof Button>
+>(function ModeToggle({ onClick, ...props }, ref) {
+    // Switch on the *resolved* theme: with "system" selected, `theme` is
+    // "system", so comparing it to "light" always picked dark.
+    const { setTheme, resolvedTheme } = useTheme();
     return (
         <Button
+            ref={ref}
             variant="ghost"
-            className="size-12 rounded-full"
+            className="size-full rounded-full text-foreground"
             size="icon"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            {...props}
+            onClick={(e) => {
+                onClick?.(e);
+                setTheme(resolvedTheme === "dark" ? "light" : "dark");
+            }}
         >
-            <Sun className="h-[1.2rem] w-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200" />{" "}
-            <Moon className="hidden h-[1.2rem] w-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200" />
+            <Sun className="h-[1.1rem] w-[1.1rem] dark:hidden" />
+            <Moon className="hidden h-[1.1rem] w-[1.1rem] dark:block" />
             <span className="sr-only">Toggle theme</span>
         </Button>
     );
-}
+});

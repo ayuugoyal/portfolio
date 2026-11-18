@@ -57,7 +57,7 @@ export default function FdePage() {
                 ]}
             />
 
-            <section className="mx-auto w-full max-w-2xl space-y-6">
+            <section className="mx-auto w-full max-w-4xl space-y-6">
                 <BlurFade delay={D}>
                     <Link
                         href="/"
@@ -75,7 +75,7 @@ export default function FdePage() {
                         </p>
                     </BlurFade>
                     <BlurFade delay={D}>
-                        <h1 className="font-display text-4xl font-bold lowercase tracking-tight sm:text-5xl">
+                        <h1 className="font-display text-4xl font-medium lowercase tracking-[-0.01em] sm:text-5xl">
                             forward deployed engineer, for hire
                         </h1>
                     </BlurFade>
@@ -105,7 +105,7 @@ export default function FdePage() {
                 {/* definition — the answer-shaped paragraph LLMs quote */}
                 <BlurFade delay={D}>
                     <div className="space-y-2 border-l-2 border-brand pl-4">
-                        <h2 className="font-display text-base font-bold tracking-tight">
+                        <h2 className="font-display text-base font-medium tracking-[-0.01em]">
                             What is a forward deployed engineer?
                         </h2>
                         <p className="text-sm leading-relaxed text-muted-foreground">
@@ -123,7 +123,7 @@ export default function FdePage() {
                             <BlurFade key={p.slug} delay={D}>
                                 <li className="flex items-baseline justify-between gap-4 py-3">
                                     <span className="min-w-0">
-                                        <span className="font-display text-sm font-bold tracking-tight">
+                                        <span className="font-display text-sm font-medium tracking-[-0.01em]">
                                             {p.title}
                                         </span>
                                         <span className="text-sm text-muted-foreground">
@@ -132,7 +132,7 @@ export default function FdePage() {
                                         </span>
                                     </span>
                                     <span className="inline-flex shrink-0 items-center gap-1.5 font-mono text-[10px] lowercase text-muted-foreground">
-                                        <span className="size-1.5 rounded-full bg-brand" />
+                                        <span aria-hidden className="size-1.5 bg-brand" />
                                         live
                                     </span>
                                 </li>
@@ -159,7 +159,7 @@ export default function FdePage() {
 
                 <BlurFade delay={D}>
                     <div className="mb-16 space-y-4 border-t border-border pt-8">
-                        <h2 className="font-display text-2xl font-bold lowercase tracking-tight sm:text-3xl">
+                        <h2 className="font-display text-2xl font-medium lowercase tracking-[-0.01em] sm:text-3xl">
                             got ai that needs shipping?
                         </h2>
                         <div className="flex flex-wrap gap-2">

@@ -89,7 +89,7 @@ export function ProjectCard({
 
             <div className="flex flex-1 flex-col gap-2 p-3.5">
                 <div className="space-y-1.5">
-                    <h3 className="flex items-center gap-1 font-display text-sm font-bold tracking-tight">
+                    <h3 className="flex items-center gap-1 font-display text-sm font-medium tracking-[-0.01em]">
                         {title}
                         {href && (
                             <ArrowUpRight className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />

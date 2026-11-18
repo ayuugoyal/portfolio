@@ -37,7 +37,7 @@ export default function TypingAnimation({
     return (
         <p
             className={cn(
-                "font-display text-4xl font-bold leading-tight tracking-[-0.02em]",
+                "font-display text-4xl font-medium leading-tight tracking-[-0.02em]",
                 className
             )}
         >

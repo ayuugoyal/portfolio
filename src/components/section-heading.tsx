@@ -27,9 +27,14 @@ export function SectionHeading({
         >
             <div className="flex items-baseline gap-2.5">
                 <span className="font-mono text-[10px] tabular-nums text-muted-foreground">
+                    {/* the pixel marker: a 6x6 clay square */}
+                    <span
+                        aria-hidden
+                        className="mr-1.5 inline-block size-1.5 bg-brand align-[1px]"
+                    />
                     {index}
                 </span>
-                <h2 className="font-display text-lg font-bold tracking-tight sm:text-xl">
+                <h2 className="font-display text-lg font-medium tracking-[-0.01em] sm:text-xl">
                     {title}
                 </h2>
                 {sub && (
