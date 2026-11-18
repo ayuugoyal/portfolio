@@ -172,13 +172,10 @@ export default function MascotChat({
     const [agentBusy, setAgentBusy] = useState(false);
     const speaking = useSyncExternalStore(subscribeSpeaking, isSpeaking, () => false);
     const voiceOn = useVoiceOn();
-    const greeted = useRef(false);
     const [messages, setMessages] = useState<Msg[]>(() => {
         const hello = answer("hi", ctx());
         return hello ? [{ id: 0, who: "bot", text: hello.text }] : [];
     });
-    const messagesRef = useRef(messages);
-    messagesRef.current = messages;
 
     const checkingHuman = useSyncExternalStore(subscribeAgentMode, isCheckingHuman, () => false);
 
@@ -190,17 +187,10 @@ export default function MascotChat({
         });
     }, [open]);
 
-    // opening the chat is a click, so the browser lets it speak: voice on (unless muted before) and say hello
+    // opening the chat is a click, so the browser allows audio later: replies to the visitor's questions are
+    // read aloud (unless they muted it before). Nothing is said until they ask something.
     useEffect(() => {
-        if (!open) return;
-        enableVoiceByDefault();
-        if (greeted.current) return;
-        greeted.current = true;
-        const t = window.setTimeout(() => {
-            const first = messagesRef.current[0];
-            if (first?.id === 0) speak(first.text);
-        }, 250);
-        return () => window.clearTimeout(t);
+        if (open) enableVoiceByDefault();
     }, [open]);
 
     // live: swap the scripted greeting while it is still the only message
