@@ -3,11 +3,9 @@
 import { Eye } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-// Free, tokenless hit counter — https://abacus.jasoncameron.dev
-const COUNTER_URL = "https://abacus.jasoncameron.dev/hit/ayuugoyal-tech/home";
-
 export function VisitorCount() {
     const [count, setCount] = useState<number | null>(null);
+    const [failed, setFailed] = useState(false);
     const hasRun = useRef(false);
 
     useEffect(() => {
@@ -15,15 +13,18 @@ export function VisitorCount() {
         if (hasRun.current) return;
         hasRun.current = true;
 
-        fetch(COUNTER_URL)
+        // the server counts each visitor once a day; this POST is safe to send on every load
+        fetch("/api/visits", { method: "POST" })
             .then((res) => res.json())
             .then((data) => {
-                if (typeof data?.value === "number") setCount(data.value);
+                if (typeof data?.count === "number") setCount(data.count);
+                else setFailed(true);
             })
-            .catch(() => {
-                /* silently ignore if the counter service is unavailable */
-            });
+            .catch(() => setFailed(true));
     }, []);
+
+    // nothing to show if the count can't be loaded: hide it rather than leave dots on screen
+    if (failed) return null;
 
     return (
         <div className="inline-flex items-center gap-1.5 font-mono text-[10px] lowercase text-muted-foreground">
