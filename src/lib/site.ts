@@ -586,15 +586,22 @@ export const PROJECTS: Project[] = [
         category: "Robots & Physical AI",
         title: "SCARA Robot",
         href: "https://github.com/ayuugoyal/scara",
-        dates: "",
+        dates: "2025",
         description:
-            "Control system for a 4-axis SCARA robot — Express.js API, Next.js frontend, Arduino Mega firmware. Precise motion control you can run remotely from a browser tab.",
-        technologies: ["Arduino Mega", "NEMA 17 Steppers", "Next.js", "TypeScript", "Express.js"],
+            "Control system for a 4-axis SCARA robot — Express.js API, Next.js frontend, Arduino Mega firmware. Four NEMA 17 steppers on A4988 drivers move the base, shoulder, elbow and Z-axis, with an electromagnet as the gripper and a 3D-printed PLA frame. The browser panel talks to the Express API, which drives the Arduino over serial; you can run it remotely from a browser tab.",
+        technologies: ["Arduino Mega", "AccelStepper", "NEMA 17 Steppers", "Next.js", "TypeScript", "Express.js", "3D Printing"],
         links: [
-            { type: "Github", href: "https://github.com/ayuugoyal/scara/" },
+            { type: "Github", href: "https://github.com/ayuugoyal/scara" },
             { type: "Demo Video", href: "/robotics/scara.mp4" },
         ],
         image: "/scara.png",
+        video: "/robotics/scara.mp4",
+        poster: "/robotics/scara.jpg",
+        highlights: [
+            "4 axes — base, shoulder, elbow and Z — on NEMA 17 steppers with A4988 drivers and AccelStepper",
+            "Electromagnetic end effector; frame and links 3D-printed in PLA, GT2 belts and pulleys",
+            "Next.js control panel → Express.js API → Arduino Mega over serial, with live status",
+        ],
     },
     {
         slug: "ardupilot-assistant",

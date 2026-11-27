@@ -12,7 +12,7 @@ import { RoverPlayground } from "@/components/rover/rover-playground";
 import type { Project } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-export type RobotKind = "so101" | "moveo" | "rover";
+export type RobotKind = "so101" | "moveo" | "rover" | "scara";
 export type RobotTab = { kind: RobotKind; label: string; project: Project };
 
 const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
@@ -23,8 +23,11 @@ const linkCls = "text-foreground underline-offset-4 hover:underline";
 function Demo({ kind, hero = false }: { kind: RobotKind; hero?: boolean }) {
     if (kind === "so101") return <ArmPlayground variant={hero ? "hero" : "robotics"} />;
     if (kind === "moveo") return <MoveoPlayground />;
-    return <RoverPlayground />;
+    if (kind === "rover") return <RoverPlayground />;
+    return null; // no 3D scene yet: the panel shows the real robot's video
 }
+
+const HAS_DEMO: Record<RobotKind, boolean> = { so101: true, moveo: true, rover: true, scara: false };
 
 const CREDITS: Partial<Record<RobotKind, ReactNode>> = {
     so101: (
@@ -181,7 +184,7 @@ export function RobotTabs({
                                 id={null}
                                 bordered={false}
                                 mediaActive={selected}
-                                demo={selected ? <Demo kind={r.kind} /> : undefined}
+                                demo={selected && HAS_DEMO[r.kind] ? <Demo kind={r.kind} /> : undefined}
                                 credit={CREDITS[r.kind]}
                             />
                         )}

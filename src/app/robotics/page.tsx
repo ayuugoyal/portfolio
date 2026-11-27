@@ -39,6 +39,7 @@ const robots = PROJECTS.filter((p) => p.category === "Robots & Physical AI");
 const arm = robots.find((p) => p.slug === "so101-claude-code")!;
 const moveo = robots.find((p) => p.slug === "bcn3d-moveo")!;
 const rover = robots.find((p) => p.slug === "raftaar-rover")!;
+const scara = robots.find((p) => p.slug === "scara-robot")!;
 
 export default function RoboticsPage() {
     return (
@@ -54,9 +55,9 @@ export default function RoboticsPage() {
                         description: DESCRIPTION,
                         author: { "@id": IDS.person },
                         isPartOf: { "@id": IDS.website },
-                        about: ["Robotics", "Physical AI", "ROS2", "Nav2", "LeRobot", "SO-101", "MCP", "Claude Code", "Robot arm", "Autonomous rover", "ArduPilot"],
+                        about: ["Robotics", "Physical AI", "ROS2", "Nav2", "LeRobot", "SO-101", "MCP", "Claude Code", "Robot arm", "SCARA", "Autonomous rover", "ArduPilot"],
                     },
-                    projectListSchema([arm, moveo, rover], "Robots"),
+                    projectListSchema([arm, moveo, rover, scara], "Robots"),
                     patentSchema(),
                 ]}
             />
@@ -99,6 +100,7 @@ export default function RoboticsPage() {
                             { kind: "so101", label: "SO-101", project: arm },
                             { kind: "moveo", label: "BCN3D Moveo", project: moveo },
                             { kind: "rover", label: "Raftaar", project: rover },
+                            { kind: "scara", label: "SCARA", project: scara },
                         ]}
                     />
                 </BlurFade>
