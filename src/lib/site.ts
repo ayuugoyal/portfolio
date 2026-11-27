@@ -520,11 +520,15 @@ export const PROJECTS: Project[] = [
         blurb: "MCP server that lets Claude Code drive a real SO-101 arm",
         category: "Robots & Physical AI",
         title: "SO-101 × Claude Code",
+        href: "https://github.com/ayuugoyal/so101-claude-code",
         dates: "2026",
         description:
             "An MCP server that gives Claude Code a real SO-101 robot arm. Claude reads joint state, moves joints, runs saved poses and gestures (wave, nod, shake, look around — even garba), works the gripper and looks at the desk through a camera. A safety core on top of LeRobot clamps every target to the calibrated range, caps speed, and parks the arm before torque goes off. A companion desktop studio drives the same arm with sliders, a leader arm for teleoperation, chat or voice; when it is running, the MCP server routes through it so the UI shows Claude's moves live.",
         technologies: ["Python", "MCP", "Claude Code", "LeRobot", "SO-101", "Teleoperation", "Computer Vision", "FastAPI"],
-        links: [{ type: "Demo Video", href: "/robotics/so101-claude-code.mp4" }],
+        links: [
+            { type: "Github", href: "https://github.com/ayuugoyal/so101-claude-code" },
+            { type: "Demo Video", href: "/robotics/so101-claude-code.mp4" },
+        ],
         image: "/robotics/so101-claude-code.jpg",
         video: "/robotics/so101-claude-code.mp4",
         poster: "/robotics/so101-claude-code.jpg",
