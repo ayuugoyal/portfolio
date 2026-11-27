@@ -523,7 +523,7 @@ export const PROJECTS: Project[] = [
         href: "https://github.com/ayuugoyal/so101-claude-code",
         dates: "2026",
         description:
-            "An MCP server that gives Claude Code a real SO-101 robot arm. Claude reads joint state, moves joints, runs saved poses and gestures (wave, nod, shake, look around — even garba), works the gripper and looks at the desk through a camera. A safety core on top of LeRobot clamps every target to the calibrated range, caps speed, and parks the arm before torque goes off. A companion desktop studio drives the same arm with sliders, a leader arm for teleoperation, chat or voice; when it is running, the MCP server routes through it so the UI shows Claude's moves live.",
+            "An MCP server that gives Claude Code a real SO-101 robot arm. Claude reads joint state, moves joints, runs saved poses and gestures (wave, nod, shake, look around — even garba), works the gripper and looks at the desk through a camera. A safety core on top of LeRobot clamps every target to the calibrated range, caps speed, and parks the arm before torque goes off. The MCP server is open source (Apache-2.0) with a setup guide and a smoke test, so anyone with an SO-101 can plug it into Claude Code. A separate desktop studio, not part of the repo, drives the same arm with sliders, a leader arm for teleoperation, chat or voice; when it is running, the MCP server can route through it so the UI shows Claude's moves live.",
         technologies: ["Python", "MCP", "Claude Code", "LeRobot", "SO-101", "Teleoperation", "Computer Vision", "FastAPI"],
         links: [
             { type: "Github", href: "https://github.com/ayuugoyal/so101-claude-code" },
@@ -537,6 +537,7 @@ export const PROJECTS: Project[] = [
             "Claude Code drives a real arm through 10 MCP tools — joints, poses, gestures, gripper, camera",
             "Safety core on LeRobot: clamps to calibrated range, caps speed, parks before torque-off",
             "Desktop studio: sliders, leader-arm teleop, chat or voice — shows Claude's moves live",
+            "Open source (Apache-2.0): clone it, calibrate your SO-101, add it to Claude Code",
         ],
     },
     {
@@ -566,15 +567,18 @@ export const PROJECTS: Project[] = [
         category: "Robots & Physical AI",
         title: "BCN3D Moveo Control System",
         href: "https://github.com/ayuugoyal/bcn-3d-control-system",
-        dates: "",
+        dates: "2025",
         description:
-            "Full control system for the BCN3D Moveo 5-axis robot arm — Next.js web UI, ROS2 integration, Arduino firmware. Real-time WebSocket comms, joint + cartesian control, 3D visualisation and health monitoring.",
-        technologies: ["ROS2 Humble", "ROSBridge", "Python", "C++", "Arduino", "Next.js", "WebSockets"],
-        links: [
-            { type: "Github", href: "https://github.com/ayuugoyal/bcn-3d-control-system" },
-            { type: "Demo Video", href: "https://rndynamolabs.tech/bcn3d.mp4" },
-        ],
+            "Full control system for the BCN3D Moveo 5-axis robot arm — Next.js web UI, ROS2 integration, Arduino firmware. A Raspberry Pi runs ROS2 Humble and talks to the Arduino over USB; the browser connects through ROSBridge WebSockets for joint and cartesian control, a live 3D view and health monitoring. Open source (Apache-2.0).",
+        technologies: ["ROS2 Humble", "ROSBridge", "Python", "C++", "Arduino", "Raspberry Pi", "Next.js", "WebSockets"],
+        links: [{ type: "Github", href: "https://github.com/ayuugoyal/bcn-3d-control-system" }],
         image: "/bcn-3d.jpg",
+        highlights: [
+            "Next.js control panel talks to ROS2 Humble over ROSBridge WebSockets",
+            "Joint sliders and cartesian end-effector control, with a live 3D view of the arm",
+            "Raspberry Pi runs the ROS2 nodes; Arduino firmware drives the servos with smooth interpolation",
+            "Open source (Apache-2.0)",
+        ],
     },
     {
         slug: "scara-robot",
@@ -588,7 +592,7 @@ export const PROJECTS: Project[] = [
         technologies: ["Arduino Mega", "NEMA 17 Steppers", "Next.js", "TypeScript", "Express.js"],
         links: [
             { type: "Github", href: "https://github.com/ayuugoyal/scara/" },
-            { type: "Demo Video", href: "https://rndynamolabs.tech/scara.mp4" },
+            { type: "Demo Video", href: "/robotics/scara.mp4" },
         ],
         image: "/scara.png",
     },
@@ -691,7 +695,48 @@ export const EXPERIENCE = [
     },
 ];
 
-export const OPEN_SOURCE = [
+export type OpenSource = {
+    title: string;
+    repo: string;
+    dates: string;
+    summary: string;
+    /** merged PRs to someone else's repo; empty for a repo Ayush wrote */
+    prs: number[];
+    /** "author": Ayush's own repo, released as open source */
+    role?: "author";
+    license?: string;
+    image: string;
+    /** home-page copy; *action#color text* renders as a hand-drawn highlight */
+    display: string;
+};
+
+export const OPEN_SOURCE: OpenSource[] = [
+    {
+        title: "ayuugoyal/so101-claude-code",
+        repo: "https://github.com/ayuugoyal/so101-claude-code",
+        dates: "2026",
+        summary:
+            "MCP server that lets Claude Code drive a real SO-101 robot arm: 10 tools for joints, poses, gestures, gripper and camera, on a LeRobot safety core that clamps to the calibrated range, caps speed and parks before torque-off.",
+        prs: [],
+        role: "author",
+        license: "Apache-2.0",
+        image: "https://github.com/ayuugoyal.png",
+        display:
+            "My MCP server that hands Claude Code a real SO-101 arm — joints, poses, gestures, gripper and a camera, behind a LeRobot safety core that clamps every move and parks before torque-off. *underline Open-sourced under Apache-2.0* with a setup guide, so anyone with an SO-101 can plug it in.",
+    },
+    {
+        title: "ayuugoyal/bcn-3d-control-system",
+        repo: "https://github.com/ayuugoyal/bcn-3d-control-system",
+        dates: "2025",
+        summary:
+            "Control system for the BCN3D Moveo 5-axis arm: Next.js web UI, ROS2 Humble over ROSBridge, Arduino firmware; joint and cartesian control with a live 3D view.",
+        prs: [],
+        role: "author",
+        license: "Apache-2.0",
+        image: "https://github.com/ayuugoyal.png",
+        display:
+            "My full stack for the BCN3D Moveo 5-axis arm — a Next.js control panel talking to ROS2 Humble over ROSBridge, Arduino firmware driving the servos, joint + cartesian control and a live 3D view. Apache-2.0.",
+    },
     {
         title: "archestra-ai/archestra",
         repo: "https://github.com/archestra-ai/archestra",
@@ -700,7 +745,6 @@ export const OPEN_SOURCE = [
             "AI agent platform. Shipped the Notion connector, Gemini embeddings, SharePoint & OneDrive connectors, an OAuth proxy fix, and recursive subfolder traversal across 6 PRs. Awarded $400 in maintainer bounties.",
         prs: [3555, 3611, 3656, 3960, 3400, 3958],
         image: "https://github.com/archestra-ai.png",
-        /** home-page copy; *action#color text* renders as a hand-drawn highlight */
         display:
             "AI agent platform — MCP servers, multi-LLM orchestration, RAG knowledge connectors & embeddings. Shipped the Notion connector, Gemini embeddings, SharePoint & OneDrive connectors, an OAuth proxy fix, and recursive subfolder traversal across 6 PRs. *underline Maintainers paid out $400 in bounties.* Big W.",
     },

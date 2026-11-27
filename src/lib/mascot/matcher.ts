@@ -298,13 +298,15 @@ function patentReply(): Reply {
 }
 
 function openSourceReply(): Reply {
-    const repos = OPEN_SOURCE.map((o) => `${o.title} (${o.prs.length} PR${o.prs.length === 1 ? "" : "s"})`);
+    const repos = OPEN_SOURCE.map((o) =>
+        o.role === "author" ? `${o.title} (his own, ${o.license ?? "open source"})` : `${o.title} (${o.prs.length} PR${o.prs.length === 1 ? "" : "s"})`,
+    );
     const bounty = OPEN_SOURCE.map((o) => ({ o, s: sentences(o.summary).find((s) => /bount/i.test(s)) })).find(
         (b) => b.s,
     );
     return reply(`Open source: ${list(repos)}.${bounty ? ` On ${bounty.o.title}: ${lowerFirst(bounty.s!)}` : ""}`, [
         { label: "open source", href: "/#open-source" },
-        ...OPEN_SOURCE.slice(0, 2).map((o) => ({ label: o.title, href: o.repo })),
+        ...OPEN_SOURCE.slice(0, 3).map((o) => ({ label: o.title, href: o.repo })),
     ]);
 }
 

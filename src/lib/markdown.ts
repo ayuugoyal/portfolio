@@ -128,7 +128,11 @@ export function siteMarkdown(): string {
     lines.push("## Open source");
     lines.push("");
     for (const o of OPEN_SOURCE) {
-        lines.push(`- **${o.title}** (${o.repo}) — ${o.summary} PRs: ${o.prs.map((n) => `#${n}`).join(", ")}.`);
+        const credit =
+            o.role === "author"
+                ? `Author${o.license ? `, ${o.license}` : ""}.`
+                : `PRs: ${o.prs.map((n) => `#${n}`).join(", ")}.`;
+        lines.push(`- **${o.title}** (${o.repo}) — ${o.summary} ${credit}`);
     }
     lines.push("");
 

@@ -223,7 +223,9 @@ export function openSourceSchema() {
         name: o.title,
         codeRepository: o.repo,
         description: o.summary,
-        contributor: { "@id": IDS.person },
+        ...(o.role === "author"
+            ? { author: { "@id": IDS.person }, ...(o.license ? { license: `https://spdx.org/licenses/${o.license}.html` } : {}) }
+            : { contributor: { "@id": IDS.person } }),
     }));
 }
 
